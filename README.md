@@ -3,7 +3,7 @@
 **Groupe :** The Odd Seagulls
 
 
-### Membres :
+**Membres :**
 - Abaline Lamya - 300038880
 
 - Raïssa Mohamed Abdillahi - 8671145
@@ -13,3 +13,6 @@
 - Mouna laouane - 300023986
 
 - Abaline Manal - 300038881 
+
+**Android Studio 3.1**
+
