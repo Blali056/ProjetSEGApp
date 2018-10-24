@@ -1,12 +1,14 @@
 # ProjetSEGApp
-Team name : The Odd Seagulls
+Groupe : The Odd Seagulls
 
-Student1 : Abaline Lamya_300038880
 
-Student2 : Raïssa Mohamed Abdillahi_8671145
+Membre:
+- Abaline Lamya - 300038880
 
-Student3 : Brian Laliberté_300023551
+- Raïssa Mohamed Abdillahi - 8671145
 
-Student4 : Mouna laouane_300023986
+- Brian Laliberté - 300023551
 
-Student5 : Abaline Manal_300038881 
+- Mouna laouane - 300023986
+
+- Abaline Manal - 300038881 
