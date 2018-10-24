@@ -1,8 +1,9 @@
 # ProjetSEGApp
-Groupe : The Odd Seagulls
+
+**Groupe :** The Odd Seagulls
 
 
-Membre:
+## Membres
 - Abaline Lamya - 300038880
 
 - Raïssa Mohamed Abdillahi - 8671145
