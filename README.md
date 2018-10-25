@@ -15,7 +15,8 @@
 - Abaline Manal - 300038881 
 
 
-**Lien du répertoire GitHub: ** https://github.com/Blali056/ProjetSEGApp  
+**Lien du répertoire GitHub** https://github.com/Blali056/ProjetSEGApp  
 
-**Version d'Android Studio utilisé: ** 3.1
+**Version d'Android Studio utilisée :** 3.1
+
 
