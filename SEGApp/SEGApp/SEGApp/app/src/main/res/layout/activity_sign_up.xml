@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <ImageView
+        android:id="@+id/backgroundColor5"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        app:srcCompat="@color/blackGrey" />
+
+    <ImageView
+        android:id="@+id/backgroundColor6"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@color/blackGrey"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:id="@+id/backgroundColor7"
+        android:layout_width="13dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/backgroundColor5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-16dp"
+        app:srcCompat="@color/blackGrey" />
+
+    <ImageView
+        android:id="@+id/backgroundColor8"
+        android:layout_width="13dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/backgroundColor5"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-16dp"
+        app:srcCompat="@color/blackGrey" />
+
+    <ImageView
+        android:id="@+id/logoImage2"
+        android:layout_width="249dp"
+        android:layout_height="51dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        app:srcCompat="@drawable/logo"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/inscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:text="INSCRIPTION"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="24sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/prenomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/nomTextView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp"
+        android:text="Prénom:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        android:layout_alignRight="@+id/nomTextView" />
+
+    <EditText
+        android:id="@+id/prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inscription"
+        android:layout_toStartOf="@+id/backgroundColor8"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_toLeftOf="@+id/backgroundColor8" />
+
+    <TextView
+        android:id="@+id/nomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nom"
+        android:layout_toLeftOf="@+id/prenom"
+        android:layout_toStartOf="@+id/prenom"
+        android:text="Nom de famille:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prenomTextView"
+        android:layout_toStartOf="@+id/backgroundColor8"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_toLeftOf="@+id/backgroundColor8" />
+
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nom"
+        android:layout_toStartOf="@+id/prenom"
+        android:text="Nom d'utilisateur:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        android:layout_toLeftOf="@+id/prenom" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomTextView"
+        android:layout_toStartOf="@+id/backgroundColor8"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_toLeftOf="@+id/backgroundColor8" />
+
+    <TextView
+        android:id="@+id/e_mailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="220dp"
+        android:layout_toStartOf="@+id/prenom"
+        android:text="Adresse e-mail:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        android:layout_toLeftOf="@+id/prenom" />
+
+    <EditText
+        android:id="@+id/e_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/e_mailTextView"
+        android:layout_toStartOf="@+id/backgroundColor8"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_toLeftOf="@+id/backgroundColor8" />
+
+    <TextView
+        android:id="@+id/pass_wordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/e_mail"
+        android:layout_toStartOf="@+id/prenom"
+        android:text="Mot de passe:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        android:layout_toLeftOf="@+id/prenom" />
+
+    <EditText
+        android:id="@+id/pass_word"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_below="@+id/e_mail"
+        android:layout_toStartOf="@+id/backgroundColor8"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_toLeftOf="@+id/backgroundColor8" />
+
+    <TextView
+        android:id="@+id/accountTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/nomTextView"
+        android:layout_marginBottom="129dp"
+        android:text="Type de compte:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/typeOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pass_word"
+        android:layout_toEndOf="@+id/accountTypeTextView">
+
+        <RadioButton
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="typeOptionsClick"
+            android:text="Utilisateur"
+            android:textColor="@android:color/background_dark"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/provider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="typeOptionsClick"
+            android:text="Fournisseur"
+            android:textColor="@android:color/background_dark"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Administrateur"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/backgroundColor5"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:onClick="registerClick"
+        android:text="S'INSCRIRE" />
+
+    <TextView
+        android:id="@+id/enterType"
+        android:layout_width="251dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register"
+        android:layout_alignStart="@+id/nomTextView"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="normal" />
+
+
+</android.widget.RelativeLayout>

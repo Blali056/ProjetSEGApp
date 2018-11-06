@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnAddService"
+        android:layout_width="161dp"
+        android:layout_height="49"
+        android:text="Ajouter service"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="242dp" />
+
+    <Button
+        android:id="@+id/btnRemoveService"
+        android:layout_width="161dp"
+        android:layout_height="49dp"
+        android:text="Supprimer service"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <Button
+        android:id="@+id/btnServices"
+        android:layout_width="326dp"
+        android:layout_height="73dp"
+        android:text="Liste de Services"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="80dp" />
+
+    <Button
+        android:id="@+id/btnModifyService"
+        android:layout_width="326"
+        android:layout_height="73"
+        android:text="Modifier service"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="387dp" />
+</android.support.constraint.ConstraintLayout>
