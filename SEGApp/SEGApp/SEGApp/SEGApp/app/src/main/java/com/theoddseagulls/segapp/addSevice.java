@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class addSevice extends AppCompatActivity {
     private EditText serviceName;
     private EditText rate;
+    private static  DB_handler mydatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +18,13 @@ public class addSevice extends AppCompatActivity {
         setContentView(R.layout.activity_add_sevice);
         serviceName = (EditText) findViewById(R.id.serviceaddEt);
         rate = (EditText) findViewById(R.id.rateAddEt);
+        mydatabase = new DB_handler(this);
+
 
     }
     public boolean serviceExist (){
         boolean isValid = true;
-        Service serviceInList = AdminAccount.getTheaccount().getServicesList().get(AdminAccount.getTheaccount().getServicesList().indexOf(serviceName.getText().toString()));
+        Service serviceInList = mydatabase.findService(serviceName.getText().toString());
         if(serviceInList == null)
             return isValid;
         return !isValid;

@@ -13,6 +13,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView welcomeUsername;
     private TextView welcomeType;
     private TextView welcome;
+    String type=getIntent().getStringExtra("TYPE");
+
 
     private Typeface typeFace;       //Pour changer le font
 
@@ -36,17 +38,17 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeUsername.setText("Bienvenue " + getIntent().getStringExtra("USERNAME"));
 
         // Recoit le type de l'activité precendente
-        welcomeType.setText(getIntent().getStringExtra("TYPE"));
+        welcomeType.setText(type);
 
     }
 
     public void continuebtnClick(View view) {
 
         // Ouvre l'activite
-
-            Intent intent = new Intent(getApplicationContext(), configuration.class);
-            startActivityForResult (intent,0);
-
+            if(type=="Administrateur") {
+                Intent intent = new Intent(getApplicationContext(), configuration.class);
+                startActivityForResult(intent, 0);
+            }
 
     }
 }
