@@ -9,16 +9,20 @@ import android.widget.Toast;
 
 public class DeleteService extends AppCompatActivity {
     private EditText serviceToDelete;
+    private static  DB_handler mydatabase;
+    private String service;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_service);
         serviceToDelete = (EditText) findViewById(R.id.servicedeleteET);
+        mydatabase = new DB_handler(this);
 
     }
     public boolean serviceExist (){
         boolean exist = true;
-        Service serviceInList = AdminAccount.getTheaccount().getServicesList().get(AdminAccount.getTheaccount().getServicesList().indexOf(serviceToDelete.getText().toString()));
+        Service serviceInList = mydatabase.findService(serviceToDelete.getText().toString());
         if(serviceInList == null)
             return !exist;
         return exist;
@@ -32,7 +36,8 @@ public class DeleteService extends AppCompatActivity {
             serviceToDelete.setError("Service InExistant");
         }
         else{
-            AdminAccount.getTheaccount().removeService(serviceToDelete.getText().toString());
+            service= serviceToDelete.getText().toString();
+            mydatabase.deleteService(service);
             Context context = getApplicationContext();
             Toast.makeText(context, "Service Supprimer",
                     Toast.LENGTH_LONG).show();

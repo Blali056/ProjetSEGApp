@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class addSevice extends AppCompatActivity {
     private EditText serviceName;
     private EditText rate;
+    private Service service;
     private static  DB_handler mydatabase;
 
     @Override
@@ -18,30 +19,33 @@ public class addSevice extends AppCompatActivity {
         setContentView(R.layout.activity_add_sevice);
         serviceName = (EditText) findViewById(R.id.serviceaddEt);
         rate = (EditText) findViewById(R.id.rateAddEt);
+        service= new Service();
         mydatabase = new DB_handler(this);
 
 
     }
     public boolean serviceExist (){
-        boolean isValid = true;
+        boolean exist = true;
         Service serviceInList = mydatabase.findService(serviceName.getText().toString());
         if(serviceInList == null)
-            return isValid;
-        return !isValid;
+            return !exist;
+        return exist;
 
     }
     public void addClick(View view){
-        if( serviceName.getText().length() == 0 ){       // Si aucun email n'est entré
+        if( serviceName.getText().length() == 0 ){
             serviceName.setError("Entrez un service" );
         }
-        if( rate.getText().length() == 0 ){       // Si aucun email n'est entré
+        if( rate.getText().length() == 0 ){
             rate.setError("Entrez un rate" );
         }
-        else if(serviceExist() == false ){       // Si l'email et le mot de passe sont invalides
+        else if(serviceExist() == true ){       // Si l'email et le mot de passe sont invalides
             serviceName.setError("Service Existant");
         }
         else{
-            AdminAccount.getTheaccount().addService(serviceName.getText().toString(),Double.parseDouble(rate.getText().toString()));
+            service.setService(serviceName.getText().toString());
+            service.setRate(Double.parseDouble(rate.getText().toString()));
+            mydatabase.addService(service);
             Context context = getApplicationContext();
             Toast.makeText(context, "Service ajouter",
                     Toast.LENGTH_LONG).show();

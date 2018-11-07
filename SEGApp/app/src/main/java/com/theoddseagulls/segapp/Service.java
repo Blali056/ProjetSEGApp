@@ -11,7 +11,10 @@ public class Service {
 
     }
     public Service(){}
+    public Service(String service){
+        this.service=service;
 
+    }
     public double getRate() {
         return rate;
     }
