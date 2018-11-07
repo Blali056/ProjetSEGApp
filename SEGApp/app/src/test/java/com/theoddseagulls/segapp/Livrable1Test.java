@@ -6,7 +6,8 @@ public class Livrable1Test {
 
     @Test
     public void checkAdminEmail() {
-        Account anAdminAccount = new AdminAccount("test@email.com", 180);
+        AdminAccount.getTheaccount("test@email.com", "secret");
+        Account anAdminAccount = AdminAccount.getTheaccount();
         assertEquals("Check the email of the account", "test@email.com",  anAdminAccount.getEmail());
     }
 

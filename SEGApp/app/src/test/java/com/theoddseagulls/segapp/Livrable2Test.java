@@ -11,8 +11,10 @@ public class Livrable2Test {
 
     @Test
     public void checkAdminEmail() {
-        Account anAdminAccount = new AdminAccount("test@email.com", 180);
-        assertEquals("Check the email of the account", "test@email.com",  anAdminAccount.getEmail());
+        AdminAccount.getTheaccount("test@email.com", "secret");
+        Account anAdminAccount = AdminAccount.getTheaccount();
+        assertEquals("Check the email of the admin", "test@email.com",  anAdminAccount.getEmail());
+        //assertEquals("Check the pass of the admin", "secret",  anAdminAccount.getPassword());
     }
 
 
