@@ -11,9 +11,9 @@ public class AdminAccount extends Account {
         super();
         super.setType(type);
     }
-    private AdminAccount(String e,String p){
+    private AdminAccount(String email,String pass){
 
-        super(e,p);
+        super(email, pass);
         super.setType(type);
     }
     private static  AdminAccount theaccount;
