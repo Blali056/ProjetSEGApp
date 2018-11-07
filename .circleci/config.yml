@@ -14,27 +14,39 @@ jobs:
           # Must be relative path from root
           paths:
             - echo-output      
-  two:
+  build:
+    working_directory: ~/SEGApp
     docker:
       - image: circleci/ruby:2.4.1
+    environment:
+      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - run: echo "A more familiar hi"  
-      - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: my_workspace
-
-      - run: |
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+         name: Chmod permissions  
+         command: sudo chmod +x ./gradlew
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Run Livrable1Test
+          command: ./gradlew test
+      - store_artifacts:
+          path: app/build/outputs/apk/debug/
+          destination: apks/
+      - store_test_results:
+          path: app/build/test-results
+ 
+          
 workflows:
   version: 2
   one_and_two:
     jobs:
       - one
-      - two:
-          requires:
-            - one
+      - build
