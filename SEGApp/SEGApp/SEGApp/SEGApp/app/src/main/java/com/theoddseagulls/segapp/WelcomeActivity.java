@@ -1,8 +1,10 @@
 package com.theoddseagulls.segapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -35,6 +37,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Recoit le type de l'activité precendente
         welcomeType.setText(getIntent().getStringExtra("TYPE"));
+
+    }
+
+    public void continuebtnClick(View view) {
+
+        // Ouvre l'activite
+
+            Intent intent = new Intent(getApplicationContext(), configuration.class);
+            startActivityForResult (intent,0);
+
 
     }
 }

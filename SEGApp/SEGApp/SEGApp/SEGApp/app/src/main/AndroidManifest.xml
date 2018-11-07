@@ -22,7 +22,9 @@
         <activity android:name=".config_activity" />
         <activity android:name=".configuration" />
         <activity android:name=".servicelist" />
-        <activity android:name=".addSevice"></activity>
+        <activity android:name=".addSevice" />
+        <activity android:name=".ModifySErvice" />
+        <activity android:name=".DeleteService"></activity>
     </application>
 
 </manifest>

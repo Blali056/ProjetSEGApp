@@ -23,16 +23,20 @@ public class AdminAccount extends Account {
 
          }
      return theaccount;}
-     public void addService(String service,double rate){
+    public static  AdminAccount getTheaccount(){
+        return theaccount;
+
+    }     public void addService(String service,double rate){
         servicesList.add(new Service(service,rate));
      }
-     public void removeService(Service service){
+     public void removeService(String service){
         servicesList.remove(service);
      }
-     public void changeServiceRate(Service service, double newRate){
+     public void changeServiceRate(String service, double newRate){
         servicesList.get(servicesList.indexOf(service)).setRate(newRate);
      }
 
-
-
+    public List<Service> getServicesList() {
+        return servicesList;
+    }
 }
