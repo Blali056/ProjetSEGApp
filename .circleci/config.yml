@@ -15,7 +15,7 @@ jobs:
           paths:
             - echo-output      
   build:
-    working_directory: ~/ProjetSEGApp/SEGApp
+    working_directory: C:\Users\Brian\GitHome\ProjetSEGApp\SEGApp
     docker:
       - image: circleci/android:api-25-alpha
     environment:
