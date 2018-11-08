@@ -1,7 +1,7 @@
 version: 2
 jobs:    
   build:
-    working_directory: ~/SEGApp
+    working_directory: ~/ProjetSEGApp/SEGApp
     docker:
       - image: circleci/android:api-25-alpha
     environment:
