@@ -38,7 +38,7 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeUsername.setText("Bienvenue " + getIntent().getStringExtra("USERNAME"));
 
         // Recoit le type de l'activité precendente
-        welcomeType.setText(type);
+        welcomeType.setText(getIntent().getStringExtra("TYPE"));
 
     }
 
