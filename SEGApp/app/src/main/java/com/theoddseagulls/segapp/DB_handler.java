@@ -9,6 +9,7 @@ import android.database.Cursor;
 
 public class DB_handler extends SQLiteOpenHelper{
 
+	//Fait par Mouna
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
