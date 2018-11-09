@@ -10,10 +10,6 @@ import android.widget.Toast;
 public class ModifySErvice extends AppCompatActivity {
     private EditText serviceName;
     private EditText newrate;
-    private String service;
-    private double rate;
-    private static  DB_handler mydatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +17,6 @@ public class ModifySErvice extends AppCompatActivity {
         setContentView(R.layout.activity_modify_service);
         serviceName = (EditText) findViewById(R.id.servicemodifytv);
         newrate = (EditText) findViewById(R.id.newrateEt);
-        mydatabase = new DB_handler(this);
-
     }
     public boolean serviceExist () {
         boolean exist = true;
@@ -43,11 +37,9 @@ public class ModifySErvice extends AppCompatActivity {
             serviceName.setError("Service inexistant");
         }
         else{
-            service=serviceName.getText().toString();
-            rate=Double.parseDouble(newrate.getText().toString());
-            mydatabase.modifyService(service,rate);
+            AdminAccount.getTheaccount().changeServiceRate(serviceName.getText().toString(),Double.parseDouble(newrate.getText().toString()));
             Context context = getApplicationContext();
-            Toast.makeText(context, "Service modifier",
+            Toast.makeText(context, "Service ajouter",
                     Toast.LENGTH_LONG).show();
         }
 

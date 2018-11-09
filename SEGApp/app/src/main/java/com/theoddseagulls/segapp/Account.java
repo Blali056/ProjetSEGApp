@@ -11,15 +11,15 @@ public class Account {
     public Account(){
 
     }
-    public Account(String email,String pass,String type){
-        this.email = email;
-        this.password = pass;
-        this.type = type ;
+    public Account(String e,String p,String t){
+        email = e;
+        password = p;
+        type = t ;
     }
 
-    public Account(String email,String pass){
-        this.email = email;
-        this.password = pass;
+    public Account(String e,String p){
+        email = e;
+        password = p;
     }
 
 

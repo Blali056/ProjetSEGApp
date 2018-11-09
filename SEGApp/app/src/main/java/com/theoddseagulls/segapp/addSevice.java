@@ -10,8 +10,6 @@ import android.widget.Toast;
 public class addSevice extends AppCompatActivity {
     private EditText serviceName;
     private EditText rate;
-    private Service service;
-    private static  DB_handler mydatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,33 +17,28 @@ public class addSevice extends AppCompatActivity {
         setContentView(R.layout.activity_add_sevice);
         serviceName = (EditText) findViewById(R.id.serviceaddEt);
         rate = (EditText) findViewById(R.id.rateAddEt);
-        service= new Service();
-        mydatabase = new DB_handler(this);
-
 
     }
     public boolean serviceExist (){
-        boolean exist = true;
-        Service serviceInList = mydatabase.findService(serviceName.getText().toString());
+        boolean isValid = true;
+        Service serviceInList = AdminAccount.getTheaccount().getServicesList().get(AdminAccount.getTheaccount().getServicesList().indexOf(serviceName.getText().toString()));
         if(serviceInList == null)
-            return !exist;
-        return exist;
+            return isValid;
+        return !isValid;
 
     }
     public void addClick(View view){
-        if( serviceName.getText().length() == 0 ){
+        if( serviceName.getText().length() == 0 ){       // Si aucun email n'est entré
             serviceName.setError("Entrez un service" );
         }
-        if( rate.getText().length() == 0 ){
+        if( rate.getText().length() == 0 ){       // Si aucun email n'est entré
             rate.setError("Entrez un rate" );
         }
-        else if(serviceExist() == true ){       // Si l'email et le mot de passe sont invalides
+        else if(serviceExist() == false ){       // Si l'email et le mot de passe sont invalides
             serviceName.setError("Service Existant");
         }
         else{
-            service.setService(serviceName.getText().toString());
-            service.setRate(Double.parseDouble(rate.getText().toString()));
-            mydatabase.addService(service);
+            AdminAccount.getTheaccount().addService(serviceName.getText().toString(),Double.parseDouble(rate.getText().toString()));
             Context context = getApplicationContext();
             Toast.makeText(context, "Service ajouter",
                     Toast.LENGTH_LONG).show();
