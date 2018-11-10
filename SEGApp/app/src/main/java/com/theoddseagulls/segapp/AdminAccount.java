@@ -1,12 +1,9 @@
 package com.theoddseagulls.segapp;
 
-import java.util.List;
 
 public class AdminAccount extends Account {
 
     private static final String type = "Administrateur";
-    private List<Service> servicesList;
-
 
     public AdminAccount(){
         super();
@@ -25,20 +22,10 @@ public class AdminAccount extends Account {
 
          }
      return theaccount;}
+
     public static  AdminAccount getTheaccount(){
         return theaccount;
 
-    }     public void addService(String service,double rate){
-        servicesList.add(new Service(service,rate));
-     }
-     public void removeService(String service){
-        servicesList.remove(service);
-     }
-     public void changeServiceRate(String service, double newRate){
-        servicesList.get(servicesList.indexOf(service)).setTauxHoraire(newRate);
-     }
-
-    public List<Service> getServicesList() {
-        return servicesList;
     }
+
 }
