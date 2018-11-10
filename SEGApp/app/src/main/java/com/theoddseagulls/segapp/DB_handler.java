@@ -7,25 +7,25 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 
-public class DB_handler extends SQLiteOpenHelper{
+public class DB_handler extends SQLiteOpenHelper {
 
-	//Fait par Mouna
+    //Fait par Mouna
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_EMAIL= "email";
+    public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_TYPE = "type";
 
 
-    public DB_handler(Context context){
+    public DB_handler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
 
         String CREATE_ACCOUNTS_TABLE = "CREATE TABLE " +
                 TABLE_ACCOUNTS + "("
@@ -44,7 +44,7 @@ public class DB_handler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void addUser(UserAccount user){
+    public void addUser(UserAccount user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -56,7 +56,8 @@ public class DB_handler extends SQLiteOpenHelper{
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
     }
-    public void addProvider(ProviderAccount provider){
+
+    public void addProvider(ProviderAccount provider) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -68,7 +69,8 @@ public class DB_handler extends SQLiteOpenHelper{
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
     }
-    public void addAdmin(AdminAccount admin){
+
+    public void addAdmin(AdminAccount admin) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -81,7 +83,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
     }
 
-    public Account findAccount(String email){
+    public Account findAccount(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "Select * FROM "
@@ -90,13 +92,12 @@ public class DB_handler extends SQLiteOpenHelper{
                 + COLUMN_EMAIL
                 + " = \""
                 + email
-                + "\""
-                ;
+                + "\"";
 
         Cursor cursor = db.rawQuery(query, null);
         Account account = new Account();
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             account.setId(Integer.parseInt(cursor.getString(0)));
             account.setEmail(cursor.getString(1));
             account.setPassword(cursor.getString(2));
@@ -112,7 +113,7 @@ public class DB_handler extends SQLiteOpenHelper{
     }
 
 
-    public String findEmail(String email){
+    public String findEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "Select * FROM "
@@ -121,13 +122,12 @@ public class DB_handler extends SQLiteOpenHelper{
                 + COLUMN_EMAIL
                 + " = \""
                 + email
-                + "\""
-                ;
+                + "\"";
 
         Cursor cursor = db.rawQuery(query, null);
         String emailFound = new String();
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             emailFound = cursor.getString(1);
 
             cursor.close();
@@ -139,7 +139,7 @@ public class DB_handler extends SQLiteOpenHelper{
     }
 
 
-    public String findUsername(String username){
+    public String findUsername(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "Select * FROM "
@@ -148,13 +148,12 @@ public class DB_handler extends SQLiteOpenHelper{
                 + COLUMN_USERNAME
                 + " = \""
                 + username
-                + "\""
-                ;
+                + "\"";
 
         Cursor cursor = db.rawQuery(query, null);
         String usernameFound = new String();
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             usernameFound = cursor.getString(3);
 
             cursor.close();
@@ -166,8 +165,7 @@ public class DB_handler extends SQLiteOpenHelper{
     }
 
 
-
-    public boolean deleteAccount(String email){
+    public boolean deleteAccount(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result = false;
         String query = "SELECT * FROM "
@@ -176,11 +174,10 @@ public class DB_handler extends SQLiteOpenHelper{
                 + COLUMN_EMAIL
                 + " = \""
                 + email
-                + "\""
-                ;
+                + "\"";
         Cursor cursor = db.rawQuery(query, null);
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             String idStr = cursor.getString(0);
             db.delete(TABLE_ACCOUNTS, COLUMN_ID + " = " + idStr, null);
             cursor.close();
@@ -189,8 +186,8 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
         return result;
     }
-    
-    public boolean modifyService(String service,double rate){
+
+    public boolean modifyService(String service, double rate) {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result = false;
         String query = "SELECT * FROM "
@@ -199,13 +196,12 @@ public class DB_handler extends SQLiteOpenHelper{
                 + COLUMN_SERVICE
                 + " = \""
                 + service
-                + "\""
-                ;
+                + "\"";
         Cursor cursor = db.rawQuery(query, null);
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             String idStr = cursor.getString(0);
-            String sql = "UPDATE TABLE_SERVICE SET COLUMN_RATE = "+rate +" , "
-                    + "WHERE id = "+idStr;
+            String sql = "UPDATE TABLE_SERVICE SET COLUMN_RATE = " + rate + " , "
+                    + "WHERE id = " + idStr;
             db.execSQL(sql);
             cursor.close();
             result = true;
@@ -214,7 +210,5 @@ public class DB_handler extends SQLiteOpenHelper{
         return result;
 
 
-    }}
-=======
+    }
 }
->>>>>>> efc336af68a5086e625ce8de7b40caa8465f13f8
