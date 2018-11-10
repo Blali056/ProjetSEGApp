@@ -9,33 +9,40 @@ import android.widget.Toast;
 
 public class DeleteService extends AppCompatActivity {
     private EditText serviceToDelete;
+    private static  DB_handler mydatabase;
+    private String service;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_service);
+
         serviceToDelete = (EditText) findViewById(R.id.servicedeleteET);
+        mydatabase = new DB_handler(this);
 
     }
+
     public boolean serviceExist (){
         boolean exist = true;
-        Service serviceInList = AdminAccount.getTheaccount().getServicesList().get(AdminAccount.getTheaccount().getServicesList().indexOf(serviceToDelete.getText().toString()));
+        Service serviceInList = mydatabase.findService(serviceToDelete.getText().toString());
         if(serviceInList == null)
-            return !exist;
+            exist = false;
         return exist;
-
     }
+
     public void deleteClick(View view){
-        if( serviceToDelete.getText().length() == 0 ){       // Si aucun email n'est entré
+        if( serviceToDelete.getText().length() == 0 ){       // Si aucun service n'est entré
             serviceToDelete.setError("Entrez un service" );
         }
         else if(serviceExist() == false ){       // Si l'email et le mot de passe sont invalides
-            serviceToDelete.setError("Service InExistant");
+            serviceToDelete.setError("Service Inexistant");
         }
         else{
-            AdminAccount.getTheaccount().removeService(serviceToDelete.getText().toString());
+            service= serviceToDelete.getText().toString();
+            mydatabase.deleteService(service);
             Context context = getApplicationContext();
-            Toast.makeText(context, "Service Supprimer",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Service supprimé",
+                    Toast.LENGTH_SHORT).show();
         }
 
     }

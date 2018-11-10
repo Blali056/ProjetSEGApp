@@ -7,40 +7,51 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ModifySErvice extends AppCompatActivity {
+public class ModifyService extends AppCompatActivity {
+
     private EditText serviceName;
-    private EditText newrate;
+    private EditText newTauxHoraire;
+    private String service;
+    private double tauxHoraire;
+    private static  DB_handler mydatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_service);
+
         serviceName = (EditText) findViewById(R.id.servicemodifytv);
-        newrate = (EditText) findViewById(R.id.newrateEt);
+        newTauxHoraire = (EditText) findViewById(R.id.newrateEt);
+        mydatabase = new DB_handler(this);
+
     }
-    public boolean serviceExist () {
+
+    public boolean serviceExist (){
         boolean exist = true;
-        Service serviceInList = AdminAccount.getTheaccount().getServicesList().get(AdminAccount.getTheaccount().getServicesList().indexOf(serviceName.getText().toString()));
-        if (serviceInList == null)
-            return !exist;
+        Service serviceInList = mydatabase.findService(serviceName.getText().toString());
+        if(serviceInList == null)
+            exist = false;
         return exist;
     }
 
     public void modifyClick(View view){
-        if( serviceName.getText().length() == 0 ){       // Si aucun email n'est entré
+        if( serviceName.getText().length() == 0 ){       // Si aucun service n'est entré
             serviceName.setError("Entrez un service" );
         }
-        if( newrate.getText().length() == 0 ){       // Si aucun email n'est entré
-            newrate.setError("Entrez un rate" );
+        if( newTauxHoraire.getText().length() == 0 ){       // Si aucun taux horaire n'est entré
+            newTauxHoraire.setError("Entrez un taux horaire" );
         }
-        else if(serviceExist() == false ){       // Si l'email et le mot de passe sont invalides
+        else if(serviceExist() == false ){       // Si le service n'existe pas
             serviceName.setError("Service inexistant");
         }
         else{
-            AdminAccount.getTheaccount().changeServiceRate(serviceName.getText().toString(),Double.parseDouble(newrate.getText().toString()));
+            service=serviceName.getText().toString();
+            tauxHoraire=Double.parseDouble(newTauxHoraire.getText().toString());
+            mydatabase.modifyService(service,tauxHoraire);
             Context context = getApplicationContext();
-            Toast.makeText(context, "Service ajouter",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Service modifié",
+                    Toast.LENGTH_SHORT).show();
         }
 
     }

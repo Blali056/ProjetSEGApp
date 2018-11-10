@@ -1,28 +1,43 @@
 package com.theoddseagulls.segapp;
-import java.util.List;
 
 public class Service {
-    private String service;
-    private double rate;
-    public  Service(String service, double rate){
-        this.service=service;
-        this.rate=rate;
 
+    private String service;
+    private double tauxHoraire;
+    private int id;
+
+    public  Service(String service, double tauxHoraire) {
+        this.service=service;
+        this.tauxHoraire = tauxHoraire;
     }
 
-    public double getRate() {
-        return rate;
+    public Service(){}
+
+    public Service(String service){
+        this.service=service;
+    }
+
+    public double getTauxHoraire() {
+        return tauxHoraire;
+    }
+
+    public void setTauxHoraire(double tauxHoraire) {
+        this.tauxHoraire = tauxHoraire;
     }
 
     public String getService() {
         return service;
     }
 
-    public void setRate(double rate) {
-        this.rate = rate;
-    }
-
     public void setService(String service) {
         this.service = service;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public int getId(){
+        return id;
     }
 }

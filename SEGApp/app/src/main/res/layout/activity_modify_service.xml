@@ -4,59 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModifySErvice">
+    tools:context=".ModifyService">
 
     <android.widget.RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        tools:context=".addSevice">
+        tools:context=".AddService">
 
         <TextView
-            android:id="@+id/connexion3"
+            android:id="@+id/title3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="67dp"
-            android:layout_marginLeft="67dp"
-            android:layout_marginTop="230dp"
-            android:text="Entrer le nouveau rate: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/connexion2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/logoImage3"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="-11dp"
-            android:layout_marginTop="110dp"
-            android:text="Entrez le nom du service:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
-            android:textColor="@color/blackGrey" />
-
-        <ImageView
-            android:id="@+id/logoImage3"
-            android:layout_width="249dp"
-            android:layout_height="51dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="22dp"
-            app:srcCompat="@drawable/logo"
-            tools:ignore="VectorDrawableCompat" />
+            android:layout_marginTop="49dp"
+            android:text="Modification de service"
+            android:textColor="@color/blackGrey"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/connexion6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Nouveau taux horaire du service :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/connexion5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/servicemodifytv"
+            android:layout_alignStart="@+id/servicemodifytv"
+            android:layout_marginBottom="-159dp"
+            android:text="Nom du service :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
+            android:textColor="@color/blackGrey" />
 
         <EditText
             android:id="@+id/servicemodifytv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/logoImage3"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="-9dp"
-            android:layout_marginTop="160dp"
+            android:layout_alignStart="@+id/newrateEt"
+            android:layout_marginTop="159dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -64,8 +59,8 @@
             android:id="@+id/newrateEt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/backgroundColor13"
-            android:layout_alignStart="@+id/connexion2"
+            android:layout_alignStart="@+id/connexion6"
+            android:layout_below="@+id/connexion6"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -73,12 +68,10 @@
             android:id="@+id/modifyMOdbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="133dp"
-            android:layout_marginLeft="133dp"
-            android:layout_marginBottom="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="78dp"
+            android:onClick="modifyClick"
             android:text="Modifier" />
 
     </android.widget.RelativeLayout>

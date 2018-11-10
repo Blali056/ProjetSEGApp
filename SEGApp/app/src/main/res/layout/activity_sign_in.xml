@@ -12,28 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="137dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        app:srcCompat="@color/blackGrey"
-        android:layout_alignParentLeft="true" />
+        android:background="#323335" />
 
     <ImageView
         android:id="@+id/backgroundColor2"
         android:layout_width="match_parent"
         android:layout_height="99dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@color/blackGrey"
-        android:layout_alignParentLeft="true" />
+        android:background="#323335" />
 
     <ImageView
         android:id="@+id/backgroundColor3"
         android:layout_width="55dp"
         android:layout_height="279dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="96dp"
-        app:srcCompat="@color/blackGrey"
-        android:layout_alignParentLeft="true" />
+        android:background="#323335" />
 
     <ImageView
         android:id="@+id/backgroundColor4"
@@ -41,8 +41,8 @@
         android:layout_height="279dp"
         android:layout_above="@+id/backgroundColor1"
         android:layout_alignParentEnd="true"
-        app:srcCompat="@color/blackGrey"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:background="#323335" />
 
     <ImageView
         android:id="@+id/logoImage1"
