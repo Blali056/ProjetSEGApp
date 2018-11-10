@@ -273,7 +273,7 @@ public class DB_handler extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){
             String idStr = cursor.getString(0);
-            String sql = "UPDATE TABLE_SERVICE SET COLUMN_SERVICE = "+rate +" , "
+            String sql = "UPDATE TABLE_SERVICE SET COLUMN_RATE = "+rate +" , "
                     + "WHERE id = "+idStr;
             db.execSQL(sql);
             cursor.close();
