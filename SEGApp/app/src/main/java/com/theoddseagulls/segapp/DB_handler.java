@@ -9,7 +9,7 @@ import android.database.Cursor;
 
 public class DB_handler extends SQLiteOpenHelper{
 
-	//Fait par Mouna
+
     private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
@@ -279,9 +279,10 @@ public class DB_handler extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){
             String idStr = cursor.getString(0);
-            String sql = "UPDATE TABLE_SERVICE SET COLUMN_SERVICE = "+rate +" , "
-                    + "WHERE id = "+idStr;
-            db.execSQL(sql);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_TAUXHORAIRE,rate);
+                db.update(TABLE_SERVICE,contentValues,COLUMN_ACCOUNT_ID + " = " + idStr,null);
+
             cursor.close();
             result = true;
         }
