@@ -189,7 +189,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
         return result;
     }
-<<<<<<< HEAD
+    
     public boolean modifyService(String service,double rate){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result = false;
