@@ -7,21 +7,19 @@ public class AdminAccount extends Account {
     private static final String type = "Administrateur";
     private List<Service> servicesList;
 
-
-    public AdminAccount(){
+    private AdminAccount(){
         super();
         super.setType(type);
     }
+    private AdminAccount(String e,String p){
 
-    private AdminAccount(String email,String pass){
-
-        super(email, pass);
+        super(e,p);
         super.setType(type);
     }
     private static  AdminAccount theaccount;
-    public static  AdminAccount getTheaccount(String email,String pass){
+    public static  AdminAccount getTheaccount(String e,String p){
          if(theaccount==null){
-             theaccount= new AdminAccount(email, pass);
+             return new AdminAccount( e, p);
 
          }
      return theaccount;}

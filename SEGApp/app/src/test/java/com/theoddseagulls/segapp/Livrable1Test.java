@@ -1,19 +1,19 @@
 package com.theoddseagulls.segapp;
-import static org.junit.Assert.*;
+
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
 public class Livrable1Test {
-
     @Test
-    public void checkAdminEmail() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the account", "test@email.com",  anAdminAccount.getEmail());
+    public void checkUserEmail() {
+        UserAccount user = new UserAccount("emailTest","passwordTest");
+        assertEquals("check email de l'utilisateur" ,"emailTest",user.getEmail());
     }
-
-    /*
-    Ajoute ton code ici Lamya
-     */
-
 
 }

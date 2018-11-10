@@ -5,6 +5,8 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -13,8 +15,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView welcomeUsername;
     private TextView welcomeType;
     private TextView welcome;
-    String type=getIntent().getStringExtra("TYPE");
-
 
     private Typeface typeFace;       //Pour changer le font
 
@@ -23,6 +23,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        Button Btn = (Button) findViewById(R.id.continuebtn);
+        Btn.setOnClickListener(new OnClickListener(){
+            public void onClick(View v){
+                startActivity(new Intent(getApplicationContext(), configuration.class));
+            }
+        });
         welcomeUsername = (TextView) findViewById(R.id.welcomeUsername);
         welcomeType = (TextView) findViewById(R.id.welcomeType);
         welcome = (TextView) findViewById(R.id.phrase);
@@ -42,13 +48,4 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
-    public void continuebtnClick(View view) {
-
-        // Ouvre l'activite
-            if(type=="Administrateur") {
-                Intent intent = new Intent(getApplicationContext(), configuration.class);
-                startActivityForResult(intent, 0);
-            }
-
-    }
 }

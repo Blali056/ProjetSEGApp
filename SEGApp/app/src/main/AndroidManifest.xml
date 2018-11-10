@@ -19,7 +19,6 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".config_activity" />
         <activity android:name=".configuration" />
         <activity android:name=".servicelist" />
         <activity android:name=".addSevice" />
