@@ -15,5 +15,16 @@ public class Livrable1Test {
         UserAccount user = new UserAccount("emailTest","passwordTest");
         assertEquals("check email de l'utilisateur" ,"emailTest",user.getEmail());
     }
+    @Test
+    public void checkUsersetId() {
+        UserAccount user = new UserAccount("emailTest2","passwordTest2");
+        user.setId(12);
+        assertEquals("check id de l'utilisateur" ,12 ,user.getId());
+    }
+    @Test
+    public void checkUsergetPassword() {
+        UserAccount user = new UserAccount("emailTest","passwordTest");
+        assertEquals("check le mot de passe de l'utilisateur" ,"emailTest",user.getPassword());
+    }
 
 }

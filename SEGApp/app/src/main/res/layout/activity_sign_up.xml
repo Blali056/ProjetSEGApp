@@ -17,35 +17,6 @@
         app:srcCompat="@color/blackGrey" />
 
     <ImageView
-        android:id="@+id/backgroundColor6"
-        android:layout_width="match_parent"
-        android:layout_height="99dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@color/blackGrey"
-        android:layout_alignParentLeft="true" />
-
-    <ImageView
-        android:id="@+id/backgroundColor7"
-        android:layout_width="13dp"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/backgroundColor5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="-16dp"
-        app:srcCompat="@color/blackGrey" />
-
-    <ImageView
-        android:id="@+id/backgroundColor8"
-        android:layout_width="13dp"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/backgroundColor5"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="-16dp"
-        app:srcCompat="@color/blackGrey" />
-
-    <ImageView
         android:id="@+id/logoImage2"
         android:layout_width="249dp"
         android:layout_height="51dp"
