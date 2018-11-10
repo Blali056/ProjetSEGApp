@@ -15,14 +15,14 @@ jobs:
          command: sudo chmod +x ./SEGApp/gradlew
       - run:
           name: Download Dependencies
-          command: ./SEGApp/gradlew androidDependencies
+          command: ./SEGApp/gradlew SEGApp/androidDependencies
       - save_cache:
           paths:
             - ~/SEGApp/.gradle
           key: jars-{{ checksum "SEGApp/build.gradle" }}-{{ checksum  "SEGApp/app/build.gradle" }}
       - run:
           name: Run UnitTest
-          command: ./SEGApp/gradlew test
+          command: ./SEGApp/gradlew SEGApp/test
       - store_artifacts:
           path: SEGApp/app/build/outputs/apk/debug/
           destination: apks/
