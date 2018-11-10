@@ -189,4 +189,32 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
         return result;
     }
+<<<<<<< HEAD
+    public boolean modifyService(String service,double rate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_SERVICE
+                + " WHERE "
+                + COLUMN_SERVICE
+                + " = \""
+                + service
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            String sql = "UPDATE TABLE_SERVICE SET COLUMN_RATE = "+rate +" , "
+                    + "WHERE id = "+idStr;
+            db.execSQL(sql);
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+
+
+    }}
+=======
 }
+>>>>>>> efc336af68a5086e625ce8de7b40caa8465f13f8

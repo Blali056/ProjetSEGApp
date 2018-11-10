@@ -12,17 +12,17 @@ jobs:
           key: jars-{{ checksum "SEGApp/build.gradle" }}-{{ checksum  "SEGApp/app/build.gradle" }}
       - run:
          name: Chmod permissions  
-         command: sudo chmod +x ./gradlew
+         command: cd SEGApp; sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: cd SEGApp; ./gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "SEGApp/build.gradle" }}-{{ checksum  "SEGApp/app/build.gradle" }}
       - run:
           name: Run UnitTest
-          command: ./gradlew test
+          command: cd SEGApp; ./gradlew test
       - store_artifacts:
           path: SEGApp/app/build/outputs/apk/debug/
           destination: apks/
