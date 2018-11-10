@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/ProjetSEGApp
+    working_directory: ~/ProjetSEGApp/SEGApp
     docker:
       - image: circleci/android:api-28-alpha
     environment:
@@ -15,14 +15,14 @@ jobs:
          command: sudo chmod +x ./SEGApp/gradlew
       - run:
           name: Download Dependencies
-          command: ./SEGApp/gradlew SEGApp/androidDependencies
+          command: ./SEGApp/gradlew androidDependencies
       - save_cache:
           paths:
             - ~/SEGApp/.gradle
           key: jars-{{ checksum "SEGApp/build.gradle" }}-{{ checksum  "SEGApp/app/build.gradle" }}
       - run:
           name: Run UnitTest
-          command: ./SEGApp/gradlew SEGApp/test
+          command: ./SEGApp/gradlew test
       - store_artifacts:
           path: SEGApp/app/build/outputs/apk/debug/
           destination: apks/
