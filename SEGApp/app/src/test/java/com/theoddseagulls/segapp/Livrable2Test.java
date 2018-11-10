@@ -4,10 +4,6 @@ import org.junit.Test;
 
 public class Livrable2Test {
 
-    /*
-    Je vais m'occuper des tests du livrable 2
-                                -Brian
-     */
 
     @Test
     public void checkAdminEmail() {
