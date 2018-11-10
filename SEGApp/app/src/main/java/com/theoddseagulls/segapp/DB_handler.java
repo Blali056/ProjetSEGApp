@@ -18,6 +18,8 @@ public class DB_handler extends SQLiteOpenHelper {
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_USERNAME = "username";
     public static final String COLUMN_TYPE = "type";
+    public static final String TABLE_SERVICE = "";
+    public static final String COLUMN_SERVICE = "";
 
 
     public DB_handler(Context context) {
