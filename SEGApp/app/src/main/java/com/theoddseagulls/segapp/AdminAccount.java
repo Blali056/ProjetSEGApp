@@ -19,7 +19,7 @@ public class AdminAccount extends Account {
     private static  AdminAccount theaccount;
     public static  AdminAccount getTheaccount(String e,String p){
          if(theaccount==null){
-             return new AdminAccount( e, p);
+             theaccount = new AdminAccount( e, p);
 
          }
      return theaccount;}
