@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ModifyService extends AppCompatActivity {
+public class ModifySErvice extends AppCompatActivity {
 
     private EditText serviceName;
     private EditText newTauxHoraire;

@@ -21,9 +21,9 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".config_activity" />
         <activity android:name=".configuration" />
-        <activity android:name=".ServiceList" />
+        <activity android:name=".servicelist" />
         <activity android:name=".AddService" />
-        <activity android:name=".ModifyService" />
+        <activity android:name=".ModifySErvice" />
         <activity android:name=".DeleteService" />
     </application>
 

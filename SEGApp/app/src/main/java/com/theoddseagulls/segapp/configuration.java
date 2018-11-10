@@ -30,14 +30,14 @@ public class configuration extends AppCompatActivity {
     public void modifyServiceBtnClick(View view) {
 
         // Ouvre l'activite pour modifier un service
-        Intent intent = new Intent(getApplicationContext(), ModifyService.class);
+        Intent intent = new Intent(getApplicationContext(), ModifySErvice.class);
         startActivityForResult (intent,0);
     }
     
     public void viewServiceBtnClick(View view) {
 
         // Ouvre l'activite pour voir la liste de service
-        Intent intent = new Intent(getApplicationContext(), ServiceList.class);
+        Intent intent = new Intent(getApplicationContext(), servicelist.class);
         startActivityForResult (intent,0);
     }
 }

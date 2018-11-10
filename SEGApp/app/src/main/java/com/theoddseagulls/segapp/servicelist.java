@@ -11,7 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Currency;
 
-public class ServiceList extends AppCompatActivity {
+public class servicelist extends AppCompatActivity {
 
     private DB_handler my_database;
 
