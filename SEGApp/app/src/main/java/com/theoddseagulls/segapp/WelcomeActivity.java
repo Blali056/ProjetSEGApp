@@ -28,10 +28,14 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeType = (TextView) findViewById(R.id.welcomeType);
         welcome = (TextView) findViewById(R.id.phrase);
 
+        type = getIntent().getStringExtra("TYPE");
+
         Button btn = (Button) findViewById(R.id.continuebtn);
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(),configuration.class ));
+               if(type.equals("Administrateur")){
+                   startActivity(new Intent(getApplicationContext(),configuration.class ));
+               }
             }
         });
 
