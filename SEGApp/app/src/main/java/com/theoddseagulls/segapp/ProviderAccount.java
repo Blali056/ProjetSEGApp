@@ -11,9 +11,9 @@ public class ProviderAccount extends Account {
         super.setType(type);
     }
 
-    public ProviderAccount(String e,String p){
+    public ProviderAccount(String email,String pass){
 
-        super(e,p);
+        super(email,pass);
 
         super.setType(type);
     }
