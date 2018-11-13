@@ -24,7 +24,8 @@
         <activity android:name=".AddService" />
         <activity android:name=".ModifySErvice" />
         <activity android:name=".DeleteService" />
-        <activity android:name=".ProviderProfil"></activity>
+        <activity android:name=".ProviderProfil" />
+        <activity android:name=".EditProviderProfil"></activity>
     </application>
 
 </manifest>
