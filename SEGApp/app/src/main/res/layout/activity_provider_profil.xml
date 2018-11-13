@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProviderProfil">
+
+    <TextView
+        android:id="@+id/profilTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Votre profil"
+        android:textColor="@color/blackGrey"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="86dp"
+        android:text="Email :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/providerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/providerPhone"
+        android:layout_alignTop="@+id/email"
+        android:text="TextView"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/email"
+        android:layout_marginTop="120dp"
+        android:text="Adresse :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/providerAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/providerEmail"
+        android:layout_alignTop="@+id/address"
+        android:text="TextView"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/email"
+        android:layout_marginTop="151dp"
+        android:text="Téléphone :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/providerPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/providerCompany"
+        android:layout_alignTop="@+id/phone"
+        android:text="TextView"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/email"
+        android:layout_marginTop="182dp"
+        android:text="Compagnie : "
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/providerCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/company"
+        android:layout_marginStart="123dp"
+        android:text="TextView"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/email"
+        android:layout_marginTop="212dp"
+        android:text="License :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/providerLicense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/providerCompany"
+        android:layout_alignTop="@+id/license"
+        android:text="TextView"
+        android:textColor="@color/blackGrey" />
+
+    <TextView
+        android:id="@+id/providerServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/email"
+        android:layout_marginBottom="229dp"
+        android:text="Services Offerts"
+        android:textColor="@color/blackGrey"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/providerAvailablilities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/providerServicesList"
+        android:layout_marginBottom="229dp"
+        android:layout_toEndOf="@+id/editProfil"
+        android:text="Disponibilités"
+        android:textColor="@color/blackGrey"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/editProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Modifier" />
+
+    <ListView
+        android:id="@+id/providerServicesList"
+        android:layout_width="166dp"
+        android:layout_height="191dp"
+        android:layout_alignEnd="@+id/providerLicense"
+        android:layout_below="@+id/providerServices"
+        android:layout_marginTop="-229dp" />
+
+    <ListView
+        android:id="@+id/availabilitiesList"
+        android:layout_width="165dp"
+        android:layout_height="189dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/providerServicesList"
+        android:layout_marginEnd="11dp" />
+
+</android.widget.RelativeLayout>

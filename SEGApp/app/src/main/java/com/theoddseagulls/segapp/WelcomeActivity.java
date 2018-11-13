@@ -36,6 +36,10 @@ public class WelcomeActivity extends AppCompatActivity {
                if(type.equals("Administrateur")){
                    startActivity(new Intent(getApplicationContext(),configuration.class ));
                }
+
+                if(type.equals("Fournisseur")){
+                    startActivity(new Intent(getApplicationContext(),ProviderProfil.class ));
+                }
             }
         });
 
