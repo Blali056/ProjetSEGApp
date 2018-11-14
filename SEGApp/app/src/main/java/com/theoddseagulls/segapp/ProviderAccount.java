@@ -7,14 +7,12 @@ public class ProviderAccount extends Account {
     public ProviderAccount(){
 
         super();
-
         super.setType(type);
     }
 
     public ProviderAccount(String email,String pass){
 
-        super(email,pass);
-
+        super(email, pass);
         super.setType(type);
     }
 
