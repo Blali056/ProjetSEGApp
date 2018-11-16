@@ -163,7 +163,7 @@
         android:layout_alignEnd="@+id/providerLicense" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewProvince"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -176,7 +176,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/textViewProvince"
         android:layout_marginBottom="193dp"
         android:text="Mardi        10h00-12h00" />
 
@@ -185,7 +185,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/textViewProvince"
         android:layout_marginBottom="165dp"
         android:text="Mercredi   10h00-12h00" />
 
@@ -194,7 +194,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/textViewProvince"
         android:layout_marginBottom="136dp"
         android:text="Jeudi         10h00-12h00" />
 
@@ -203,7 +203,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/textViewProvince"
         android:layout_marginBottom="106dp"
         android:text="Vendredi   10h00-12h00" />
 
@@ -212,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/textViewProvince"
         android:layout_marginBottom="76dp"
         android:text="Samedi      10h00-12h00" />
 
@@ -221,7 +221,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editProfil"
-        android:layout_alignStart="@+id/textView"
+        android:layout_alignStart="@+id/textViewProvince"
         android:text="Dimanche  10h00-12h00" />
 
 </android.widget.RelativeLayout>

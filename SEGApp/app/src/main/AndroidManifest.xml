@@ -25,7 +25,10 @@
         <activity android:name=".ModifySErvice" />
         <activity android:name=".DeleteService" />
         <activity android:name=".ProviderProfil" />
-        <activity android:name=".EditProviderProfil"></activity>
+        <activity
+            android:name=".EditProviderProfil"
+            android:label="@string/title_activity_edit_provider_profil"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
