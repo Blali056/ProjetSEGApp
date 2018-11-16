@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".EditProviderProfil">
 
+<<<<<<< HEAD
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -276,3 +277,13 @@
         </RelativeLayout>
     </ScrollView>
 </android.widget.RelativeLayout>
+=======
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="37dp" />
+</android.support.constraint.ConstraintLayout>
+>>>>>>> 6ad81520090a46ed0b3bb4e38d249fcfac264c39
