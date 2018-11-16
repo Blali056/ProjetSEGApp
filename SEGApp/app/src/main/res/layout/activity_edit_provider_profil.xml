@@ -263,6 +263,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/deleteService"
                 android:layout_toEndOf="@+id/email"
+                android:onClick="addClick"
                 android:text="AJOUT" />
 
             <Button
