@@ -14,6 +14,7 @@ public class DB_handler extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
+    public static final String TABLE_PROVIDERSERVICE = "ProviderService";
 
     public static final String COLUMN_ACCOUNT_ID = "_id";
     public static final String COLUMN_EMAIL= "email";
@@ -23,6 +24,8 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_SERVICE = "Service";
     public static final String COLUMN_TAUXHORAIRE = "Taux_Horaire";
+    public static final String COLUMN_PROVIDEUSERRNAME = "ProviderUserName";
+    public static final String COLUMN_SERVICENAME = "ServiceName";
 
     public static final String CREATE_ACCOUNTS_TABLE = "CREATE TABLE " +
             TABLE_ACCOUNTS + "("
@@ -38,6 +41,10 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_SERVICE + " TEXT," +
             COLUMN_TAUXHORAIRE + " TEXT" + ")";
 
+    public static final String CREATE_PROVIDERSERVICE_TABLE = "CREATE TABLE " +
+            TABLE_PROVIDERSERVICE + " ("
+            + COLUMN_PROVIDEUSERRNAME  + " INTEGER PRIMARY KEY," +
+            COLUMN_SERVICENAME + " TEXT" + ")";
 
     public DB_handler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,12 +55,14 @@ public class DB_handler extends SQLiteOpenHelper{
 
         db.execSQL(CREATE_ACCOUNTS_TABLE);
         db.execSQL(CREATE_USERS_TABLE);
+        db.execSQL(CREATE_PROVIDERSERVICE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_SERVICE);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDERSERVICE);
         onCreate(db);
     }
 
@@ -63,6 +72,14 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_SERVICE, service.getService());
         values.put(COLUMN_TAUXHORAIRE, service.getTauxHoraire());
         db.insert(TABLE_SERVICE, null, values);
+        db.close();
+    }
+    public void addProviderService(String providerUserName , String serviceName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROVIDEUSERRNAME, providerUserName);
+        values.put(COLUMN_SERVICENAME , serviceName);
+        db.insert(TABLE_PROVIDERSERVICE, null, values);
         db.close();
     }
 
