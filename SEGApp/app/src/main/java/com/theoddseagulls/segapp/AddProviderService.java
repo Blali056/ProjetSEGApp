@@ -30,7 +30,7 @@ public class AddProviderService extends AppCompatActivity {
         return exist;
     }
     public void addClick(View view){
-        if( serviceName.getText().length() == 0 ){
+        if( serviceName.getText().toString().length() == 0 ){
             serviceName.setError("Entrez un service" );
         }
         else if(serviceExist() == true ){       // Si le service existe deja

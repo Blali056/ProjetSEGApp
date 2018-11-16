@@ -29,7 +29,9 @@
             android:name=".EditProviderProfil"
             android:label="@string/title_activity_edit_provider_profil"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProviderSetUp"></activity>
+        <activity android:name=".AddProviderService"></activity>
+
+
     </application>
 
 </manifest>
