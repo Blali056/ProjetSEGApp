@@ -36,11 +36,11 @@ public class ProviderProfil extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.providerServicesList);
         myDataBase = new DB_handler(this);
         ArrayList<String> serviceList = new ArrayList<>();
-        Cursor providerservice = myDataBase.getListContents();
+        Cursor providerservice = myDataBase.getProviderListContents();
         if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
             while(providerservice.moveToNext()) {
-                if(providerservice.getString(1) == providerUsername){
-                    serviceList.add("                              " + providerservice.getString(2)+"$/heure");
+                if(providerservice.getString(1).equals(providerUsername)){
+                    serviceList.add(providerservice.getString(2));
                     ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,serviceList);
                     listView.setAdapter(listAdapter);
                 }

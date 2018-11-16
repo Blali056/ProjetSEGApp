@@ -10,7 +10,7 @@ import android.database.Cursor;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
@@ -82,7 +82,6 @@ public class DB_handler extends SQLiteOpenHelper{
         db.insert(TABLE_PROVIDERSERVICE, null, values);
         db.close();
     }
-
 
     public void addUser(UserAccount user){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -365,10 +364,16 @@ public class DB_handler extends SQLiteOpenHelper{
         return result;
     }
 
-    // Gets content from the db
+    // Gets content from the db de la table des services d'admin
     public Cursor getListContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_SERVICE, null);
+        return cursor;
+    }
+
+    public Cursor getProviderListContents(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_PROVIDERSERVICE, null);
         return cursor;
     }
 

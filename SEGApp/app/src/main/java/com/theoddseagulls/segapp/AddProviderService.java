@@ -33,10 +33,11 @@ public class AddProviderService extends AppCompatActivity {
         if( serviceName.getText().length() == 0 ){
             serviceName.setError("Entrez un service" );
         }
-        else if(serviceExist() == true ){       // Si le service existe deja
-            serviceName.setError("Service existant");
+        if(serviceExist() == false ){
+            serviceName.setError("Service inexistant");
+
         }
-        else{
+        else if(serviceExist() == true ){
             String service = serviceName.getText().toString();;
             mydatabase.addProviderService(provider.getUsername(),service);
             Context context = getApplicationContext();
