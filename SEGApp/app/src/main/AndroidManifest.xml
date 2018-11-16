@@ -30,8 +30,11 @@
             android:label="@string/title_activity_edit_provider_profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddProviderService"></activity>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> aa2585caca15846b8862994e25fd7909bd8f20bb
     </application>
 
 </manifest>

@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/serviceNameAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
