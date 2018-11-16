@@ -162,19 +162,20 @@
         android:layout_above="@+id/editProfil"
         android:layout_alignEnd="@+id/providerLicense" />
 
-<<<<<<< HEAD
     <TextView
         android:id="@+id/textViewProvince"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-=======
-    <ListView
-        android:layout_width="168dp"
-        android:layout_height="182dp"
->>>>>>> 6ad81520090a46ed0b3bb4e38d249fcfac264c39
         android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/providerServicesList"
+        android:layout_marginEnd="27dp"
+        android:text="Lundi        10h00-12h00" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-<<<<<<< HEAD
         android:layout_alignStart="@+id/textViewProvince"
         android:layout_marginBottom="193dp"
         android:text="Mardi        10h00-12h00" />
@@ -222,9 +223,5 @@
         android:layout_above="@+id/editProfil"
         android:layout_alignStart="@+id/textViewProvince"
         android:text="Dimanche  10h00-12h00" />
-=======
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="56dp" />
->>>>>>> 6ad81520090a46ed0b3bb4e38d249fcfac264c39
 
 </android.widget.RelativeLayout>

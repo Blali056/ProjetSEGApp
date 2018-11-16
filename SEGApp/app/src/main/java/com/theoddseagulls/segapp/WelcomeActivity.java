@@ -42,7 +42,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                     // Passe le username à la prochaine activité
                     String accountUsername = getIntent().getStringExtra("USERNAME");
-                    intent.putExtra("ACCOUNTUSERNAME", getIntent().getStringExtra("USERNAME"));
+                    intent.putExtra("ACCOUNTUSERNAME", accountUsername);
 
                     startActivityForResult(intent, 0);
                 }

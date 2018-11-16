@@ -164,35 +164,6 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
         return account;
     }
-    public ProviderAccount findProviderAccount(String email){
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        String query = "Select * FROM "
-                + TABLE_ACCOUNTS
-                + " WHERE "
-                + COLUMN_EMAIL
-                + " = \""
-                + email
-                + "\""
-                ;
-
-        Cursor cursor = db.rawQuery(query, null);
-        ProviderAccount account = new ProviderAccount();
-
-        if(cursor.moveToFirst()){
-            account.setId(Integer.parseInt(cursor.getString(0)));
-            account.setEmail(cursor.getString(1));
-            account.setPassword(cursor.getString(2));
-            account.setUsername(cursor.getString(3));
-            account.setType(cursor.getString(4));
-
-            cursor.close();
-        } else {
-            account = null;
-        }
-        db.close();
-        return account;
-    }
 
     public Account findUsernameAccount(String username){
         SQLiteDatabase db = this.getReadableDatabase();
