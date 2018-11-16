@@ -38,8 +38,9 @@ public class AddProviderService extends AppCompatActivity {
 
         }
         else if(serviceExist() == true ){
-            String service = serviceName.getText().toString();;
-            mydatabase.addProviderService(provider.getUsername(),service);
+            String service = serviceName.getText().toString();
+            ProviderService providerService = new ProviderService(provider.getUsername() , service);
+            mydatabase.addProviderService(providerService);
             Context context = getApplicationContext();
             Toast.makeText(context, "Service ajouté",
                     Toast.LENGTH_SHORT).show();

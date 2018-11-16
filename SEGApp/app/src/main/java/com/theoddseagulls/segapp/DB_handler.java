@@ -24,6 +24,7 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_SERVICE = "Service";
     public static final String COLUMN_TAUXHORAIRE = "Taux_Horaire";
+    public static final String COLUMN_PROVIDERSERVICE_ID = "_id";
     public static final String COLUMN_PROVIDEUSERRNAME = "ProviderUserName";
     public static final String COLUMN_SERVICENAME = "ServiceName";
 
@@ -42,8 +43,8 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_TAUXHORAIRE + " TEXT" + ")";
 
     public static final String CREATE_PROVIDERSERVICE_TABLE = "CREATE TABLE " +
-            TABLE_PROVIDERSERVICE + " ("
-            + COLUMN_PROVIDEUSERRNAME  + " INTEGER PRIMARY KEY," +
+            TABLE_PROVIDERSERVICE + " (" + COLUMN_PROVIDERSERVICE_ID + " INTEGER PRIMARY KEY," +
+            COLUMN_PROVIDEUSERRNAME  + "TEXT," +
             COLUMN_SERVICENAME + " TEXT" + ")";
 
     public DB_handler(Context context){
@@ -74,11 +75,12 @@ public class DB_handler extends SQLiteOpenHelper{
         db.insert(TABLE_SERVICE, null, values);
         db.close();
     }
-    public void addProviderService(String providerUserName , String serviceName){
+    public void addProviderService(ProviderService ps){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PROVIDEUSERRNAME, providerUserName);
-        values.put(COLUMN_SERVICENAME , serviceName);
+        values.put(COLUMN_PROVIDEUSERRNAME, ps.getProviderName());
+        values.put(COLUMN_SERVICENAME , ps.getServiceName());
+
         db.insert(TABLE_PROVIDERSERVICE, null, values);
         db.close();
     }
