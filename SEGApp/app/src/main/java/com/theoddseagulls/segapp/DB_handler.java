@@ -10,10 +10,11 @@ import android.database.Cursor;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
+    public static final String TABLE_PROVIDERSERVICE = "ProviderService";
 
     public static final String COLUMN_ACCOUNT_ID = "_id";
     public static final String COLUMN_EMAIL= "email";
@@ -23,6 +24,9 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_SERVICE = "Service";
     public static final String COLUMN_TAUXHORAIRE = "Taux_Horaire";
+    public static final String COLUMN_PROVIDERSERVICE_ID = "_id";
+    public static final String COLUMN_PROVIDEUSERRNAME = "ProviderUserName";
+    public static final String COLUMN_SERVICENAME = "ServiceName";
 
     public static final String CREATE_ACCOUNTS_TABLE = "CREATE TABLE " +
             TABLE_ACCOUNTS + "("
@@ -38,6 +42,10 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_SERVICE + " TEXT," +
             COLUMN_TAUXHORAIRE + " TEXT" + ")";
 
+    public static final String CREATE_PROVIDERSERVICE_TABLE = "CREATE TABLE " +
+            TABLE_PROVIDERSERVICE + " (" + COLUMN_PROVIDERSERVICE_ID + " INTEGER PRIMARY KEY," +
+            COLUMN_PROVIDEUSERRNAME  + "TEXT," +
+            COLUMN_SERVICENAME + " TEXT" + ")";
 
     public DB_handler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,12 +56,14 @@ public class DB_handler extends SQLiteOpenHelper{
 
         db.execSQL(CREATE_ACCOUNTS_TABLE);
         db.execSQL(CREATE_USERS_TABLE);
+        db.execSQL(CREATE_PROVIDERSERVICE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_SERVICE);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDERSERVICE);
         onCreate(db);
     }
 
@@ -65,7 +75,15 @@ public class DB_handler extends SQLiteOpenHelper{
         db.insert(TABLE_SERVICE, null, values);
         db.close();
     }
+    public void addProviderService(ProviderService ps){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROVIDEUSERRNAME, ps.getProviderName());
+        values.put(COLUMN_SERVICENAME , ps.getServiceName());
 
+        db.insert(TABLE_PROVIDERSERVICE, null, values);
+        db.close();
+    }
 
     public void addUser(UserAccount user){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -144,6 +162,64 @@ public class DB_handler extends SQLiteOpenHelper{
                 + COLUMN_EMAIL
                 + " = \""
                 + email
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        Account account = new Account();
+
+        if(cursor.moveToFirst()){
+            account.setId(Integer.parseInt(cursor.getString(0)));
+            account.setEmail(cursor.getString(1));
+            account.setPassword(cursor.getString(2));
+            account.setUsername(cursor.getString(3));
+            account.setType(cursor.getString(4));
+
+            cursor.close();
+        } else {
+            account = null;
+        }
+        db.close();
+        return account;
+    }
+    public ProviderAccount findProviderAccount(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_EMAIL
+                + " = \""
+                + email
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        ProviderAccount account = new ProviderAccount();
+
+        if(cursor.moveToFirst()){
+            account.setId(Integer.parseInt(cursor.getString(0)));
+            account.setEmail(cursor.getString(1));
+            account.setPassword(cursor.getString(2));
+            account.setUsername(cursor.getString(3));
+            account.setType(cursor.getString(4));
+
+            cursor.close();
+        } else {
+            account = null;
+        }
+        db.close();
+        return account;
+    }
+    public Account findUsernameAccount(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
                 + "\""
                 ;
 
@@ -290,10 +366,16 @@ public class DB_handler extends SQLiteOpenHelper{
         return result;
     }
 
-    // Gets content from the db
+    // Gets content from the db de la table des services d'admin
     public Cursor getListContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_SERVICE, null);
+        return cursor;
+    }
+
+    public Cursor getProviderListContents(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_PROVIDERSERVICE, null);
         return cursor;
     }
 

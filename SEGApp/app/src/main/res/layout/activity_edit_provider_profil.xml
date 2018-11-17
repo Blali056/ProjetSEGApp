@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProviderProfil">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="850dp">
+
+            <Button
+                android:id="@+id/deleteService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/serviceTitle"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/phoneNumber"
+                android:text="SUPPRESSION" />
+
+            <TextView
+                android:id="@+id/serviceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_below="@+id/savePersonalInfo"
+                android:layout_marginTop="20dp"
+                android:text="SERVICES"
+                android:textColor="@color/blackGrey"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/availablilitiesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_below="@+id/addService"
+                android:layout_marginTop="30dp"
+                android:text="DISPONIBILITÉS"
+                android:textColor="@color/blackGrey"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/province"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_below="@+id/city"
+                android:layout_marginTop="18dp"
+                android:ems="10"
+                android:hint="Province"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewProvince"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_below="@+id/city"
+                android:layout_marginTop="9dp"
+                android:text="Province :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="457dp"
+                android:ems="10"
+                android:hint="Ville"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="448dp"
+                android:text="Ville :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/postalCode"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="395dp"
+                android:ems="10"
+                android:hint="Code postale"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp"
+                android:text="Modifications"
+                android:textColor="@color/blackGrey"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/personalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="76dp"
+                android:text="INFORMATIONS PERSONNELLES"
+                android:textColor="@color/blackGrey"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="108dp"
+                android:text="Email :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/providerEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_below="@+id/email"
+                android:text="TextView"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="164dp"
+                android:text="Téléphone :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="173dp"
+                android:ems="10"
+                android:hint="Téléphone"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/titleAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="232dp"
+                android:text="Adresse :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewStreetNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="263dp"
+                android:text="Numéro :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/streetNumber"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="273dp"
+                android:ems="10"
+                android:hint="Numero"
+                android:inputType="number"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewPostalCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="386dp"
+                android:text="Code postale :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewStreetName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/streetName"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginBottom="-343dp"
+                android:text="Nom de rue :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/streetName"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="334dp"
+                android:ems="10"
+                android:hint="Nom de rue"
+                android:inputType="textPersonName"
+                android:text="TESTING"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/savePersonalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/province"
+                android:layout_marginEnd="39dp"
+                android:text="Enregistrer" />
+
+            <Button
+                android:id="@+id/addService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/deleteService"
+                android:layout_toEndOf="@+id/email"
+                android:onClick="addClick"
+                android:text="AJOUT" />
+
+            <Button
+                android:id="@+id/editAvailabilities"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/availablilitiesTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Modifier" />
+
+        </RelativeLayout>
+    </ScrollView>
+</android.widget.RelativeLayout>

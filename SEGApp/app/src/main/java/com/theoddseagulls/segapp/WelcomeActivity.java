@@ -36,10 +36,18 @@ public class WelcomeActivity extends AppCompatActivity {
                if(type.equals("Administrateur")){
                    startActivity(new Intent(getApplicationContext(),configuration.class ));
                }
+
+                if(type.equals("Fournisseur")){
+                    Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
+
+                    // Passe le username à la prochaine activité
+                    String accountUsername = getIntent().getStringExtra("USERNAME");
+                    intent.putExtra("ACCOUNTUSERNAME", accountUsername);
+
+                    startActivityForResult(intent, 0);
+                }
             }
         });
-
-
 
         // change le font de welcomeUsername, welcomeType et la phrase
         typeFace = Typeface.createFromAsset(getAssets(), "fonts/CabinRegular.ttf");
