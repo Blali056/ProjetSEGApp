@@ -126,18 +126,6 @@ public class EditProviderProfil extends AppCompatActivity {
         ArrayAdapter<String> cityAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,city_options);
         city.setAdapter(cityAdapter);
 
-        city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         ArrayAdapter<String> stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,province_options);
         province.setAdapter(stateAdapter);
 
@@ -145,7 +133,6 @@ public class EditProviderProfil extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
-                ((TextView) arg0.getChildAt(0)).setTextColor(Color.BLACK);
                 resetCity();
             }
 
@@ -291,28 +278,6 @@ public class EditProviderProfil extends AppCompatActivity {
 
             startActivityForResult(intent, 0);
         }
-    }
-
-    public void addServiceClick (View view){
-
-        Intent intent = new Intent(getApplicationContext(), AddProviderService.class);
-
-        intent.putExtra("EMAIL", provider.getEmail());
-
-        startActivityForResult(intent, 0);
-
-    }
-
-    public void deleteServiceClick (View view){
-
-        startActivity( new Intent(getApplicationContext(), DeleteProviderService.class));
-
-    }
-
-    public void availabilitiesClick (View view){
-
-        startActivity( new Intent(getApplicationContext(), Availibilities.class));
-
     }
 
 }

@@ -83,4 +83,26 @@ public class ProviderProfil extends AppCompatActivity {
 
     }
 
+    public void addServiceClick (View view){
+
+        Intent intent = new Intent(getApplicationContext(), AddProviderService.class);
+
+        intent.putExtra("EMAIL", provider.getEmail());
+
+        startActivityForResult(intent, 0);
+
+    }
+
+    public void deleteServiceClick (View view){
+
+        startActivity( new Intent(getApplicationContext(), DeleteProviderService.class));
+
+    }
+
+    public void availabilitiesClick (View view){
+
+        startActivity( new Intent(getApplicationContext(), Availibilities.class));
+
+    }
+
 }

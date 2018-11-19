@@ -1,16 +1,23 @@
 package com.theoddseagulls.segapp;
 
-public class ProviderService {
+public class ProviderService extends Service{
+
     private String providerName;
-    private String serviceName;
+
+    public ProviderService(){
+
+    }
+
     public ProviderService(String s1 , String s2){
-            providerName = s1;
-            serviceName = s2;
+        super(s2);
+        providerName = s1;
     }
     public String getProviderName(){
         return providerName;
     }
-    public String getServiceName(){
-        return serviceName;
+
+    public void setProviderName(String providerName){
+        this.providerName = providerName;
     }
+
 }

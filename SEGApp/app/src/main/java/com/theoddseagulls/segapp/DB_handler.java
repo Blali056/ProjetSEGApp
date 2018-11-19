@@ -10,12 +10,13 @@ import android.database.Cursor;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 14;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
     public static final String TABLE_PROVIDERSERVICE = "ProviderService";
 
+    // Table Accounts
     public static final String COLUMN_ACCOUNT_ID = "_id";
     public static final String COLUMN_EMAIL= "email";
     public static final String COLUMN_PASSWORD = "password";
@@ -25,11 +26,13 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_COMPANY = "company";
     public static final String COLUMN_LICENCE = "licence";
 
+    // Table Services
     public static final String COLUMN_SERVICE_ID = "_id";
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_SERVICE = "Service";
     public static final String COLUMN_TAUXHORAIRE = "Taux_Horaire";
 
+    // Table ProviderService
     public static final String COLUMN_PROVIDERSERVICE_ID = "_id";
     public static final String COLUMN_PROVIDEUSERRNAME = "ProviderUserName";
     public static final String COLUMN_SERVICENAME = "ServiceName";
@@ -54,7 +57,7 @@ public class DB_handler extends SQLiteOpenHelper{
 
     public static final String CREATE_PROVIDERSERVICE_TABLE = "CREATE TABLE " +
             TABLE_PROVIDERSERVICE + " (" + COLUMN_PROVIDERSERVICE_ID + " INTEGER PRIMARY KEY," +
-            COLUMN_PROVIDEUSERRNAME  + "TEXT," +
+            COLUMN_PROVIDEUSERRNAME  + " TEXT," +
             COLUMN_SERVICENAME + " TEXT" + ")";
 
     public DB_handler(Context context){
@@ -85,12 +88,12 @@ public class DB_handler extends SQLiteOpenHelper{
         db.insert(TABLE_SERVICE, null, values);
         db.close();
     }
+
     public void addProviderService(ProviderService ps){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PROVIDEUSERRNAME, ps.getProviderName());
-        values.put(COLUMN_SERVICENAME , ps.getServiceName());
-
+        values.put(COLUMN_SERVICENAME , ps.getService());
         db.insert(TABLE_PROVIDERSERVICE, null, values);
         db.close();
     }
@@ -159,6 +162,31 @@ public class DB_handler extends SQLiteOpenHelper{
             services.setId(Integer.parseInt(cursor.getString(0)));
             services.setService(cursor.getString(1));
             services.setTauxHoraire(Double.parseDouble(cursor.getString(2)));
+
+        }
+        else {
+            services = null;
+        }
+        db.close();
+        return services;
+    }
+
+    public ProviderService findProviderService(String service){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * FROM "
+                + TABLE_PROVIDERSERVICE
+                + " WHERE "
+                + COLUMN_SERVICENAME
+                + " = \""
+                + service
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        ProviderService services = new ProviderService();
+        if(cursor.moveToFirst()){
+            services.setId(Integer.parseInt(cursor.getString(0)));
+            services.setProviderName(cursor.getString(1));
+            services.setService(cursor.getString(2));
 
         }
         else {
@@ -370,6 +398,28 @@ public class DB_handler extends SQLiteOpenHelper{
         if(cursor.moveToFirst()){
             String idStr = cursor.getString(0);
             db.delete(TABLE_SERVICE, COLUMN_SERVICE_ID + " = " + idStr, null);
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean deleteProviderService(String service){
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "Select * FROM "
+                + TABLE_PROVIDERSERVICE
+                + " WHERE "
+                + COLUMN_SERVICENAME
+                + " = \""
+                + service
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            db.delete(TABLE_PROVIDERSERVICE, COLUMN_PROVIDERSERVICE_ID + " = " + idStr, null);
             cursor.close();
             result = true;
         }
