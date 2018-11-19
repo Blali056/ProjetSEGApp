@@ -39,7 +39,7 @@ public class AddProviderService extends AppCompatActivity {
             }
         }
 
-        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,service_options);
+        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,service_options);
         serviceName.setAdapter(Adapter);
 
         String providerEmail = getIntent().getStringExtra("EMAIL");

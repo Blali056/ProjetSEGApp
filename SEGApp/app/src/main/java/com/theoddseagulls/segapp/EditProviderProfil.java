@@ -123,10 +123,10 @@ public class EditProviderProfil extends AppCompatActivity {
 
         city_options.add("Ville");
 
-        ArrayAdapter<String> cityAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,city_options);
+        ArrayAdapter<String> cityAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,city_options);
         city.setAdapter(cityAdapter);
 
-        ArrayAdapter<String> stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,province_options);
+        ArrayAdapter<String> stateAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,province_options);
         province.setAdapter(stateAdapter);
 
         province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -179,7 +179,7 @@ public class EditProviderProfil extends AppCompatActivity {
             city_options.add("Aucune");
         }
 
-        ArrayAdapter<String> cityAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,city_options);
+        ArrayAdapter<String> cityAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,city_options);
         city.setAdapter(cityAdapter);
         city.setSelection(getIndex(city, address_city));
 
