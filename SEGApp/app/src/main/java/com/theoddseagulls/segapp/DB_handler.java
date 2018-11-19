@@ -10,7 +10,7 @@ import android.database.Cursor;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 10;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
@@ -20,10 +20,16 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_EMAIL= "email";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_USERNAME = "username";
+    public static final String COLUMN_ADDRESS = "address";
+    public static final String COLUMN_PHONE = "phone";
+    public static final String COLUMN_COMPANY = "company";
+    public static final String COLUMN_LICENCE = "licence";
+
     public static final String COLUMN_SERVICE_ID = "_id";
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_SERVICE = "Service";
     public static final String COLUMN_TAUXHORAIRE = "Taux_Horaire";
+
     public static final String COLUMN_PROVIDERSERVICE_ID = "_id";
     public static final String COLUMN_PROVIDEUSERRNAME = "ProviderUserName";
     public static final String COLUMN_SERVICENAME = "ServiceName";
@@ -34,7 +40,11 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_EMAIL + " TEXT," +
             COLUMN_PASSWORD + " TEXT," +
             COLUMN_USERNAME + " TEXT," +
-            COLUMN_TYPE + " TEXT" + ")";
+            COLUMN_TYPE + " TEXT," +
+            COLUMN_ADDRESS + " TEXT," +
+            COLUMN_PHONE + " TEXT," +
+            COLUMN_COMPANY + " TEXT," +
+            COLUMN_LICENCE + " TEXT" + ")";
 
     public static final String CREATE_USERS_TABLE = "CREATE TABLE " +
             TABLE_SERVICE + " ("
@@ -93,6 +103,8 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_PASSWORD, user.getPassword());
         values.put(COLUMN_USERNAME, user.getUsername());
         values.put(COLUMN_TYPE, user.getType());
+        values.put(COLUMN_ADDRESS, user.getAddress());
+        values.put(COLUMN_PHONE, user.getPhone());
 
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
@@ -107,6 +119,10 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_PASSWORD, provider.getPassword());
         values.put(COLUMN_USERNAME, provider.getUsername());
         values.put(COLUMN_TYPE, provider.getType());
+        values.put(COLUMN_ADDRESS, provider.getAddress());
+        values.put(COLUMN_PHONE, provider.getPhone());
+        values.put(COLUMN_COMPANY, provider.getCompany());
+        values.put(COLUMN_LICENCE, provider.getLicence());
 
         db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
@@ -174,6 +190,8 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
             account.setType(cursor.getString(4));
+            account.setAddress(cursor.getString(5));
+            account.setPhone(cursor.getString(6));
 
             cursor.close();
         } else {
@@ -203,6 +221,10 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
             account.setType(cursor.getString(4));
+            account.setAddress(cursor.getString(5));
+            account.setPhone(cursor.getString(6));
+            account.setCompany(cursor.getString(7));
+            account.setLicence(cursor.getString(8));
 
             cursor.close();
         } else {
@@ -232,6 +254,44 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
             account.setType(cursor.getString(4));
+            account.setAddress(cursor.getString(5));
+            account.setPhone(cursor.getString(6));
+
+
+            cursor.close();
+        } else {
+            account = null;
+        }
+        db.close();
+        return account;
+    }
+
+
+    public ProviderAccount findUsernameProviderAccount(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        ProviderAccount account = new ProviderAccount();
+
+        if(cursor.moveToFirst()){
+            account.setId(Integer.parseInt(cursor.getString(0)));
+            account.setEmail(cursor.getString(1));
+            account.setPassword(cursor.getString(2));
+            account.setUsername(cursor.getString(3));
+            account.setType(cursor.getString(4));
+            account.setAddress(cursor.getString(5));
+            account.setPhone(cursor.getString(6));
+            account.setCompany(cursor.getString(7));
+            account.setLicence(cursor.getString(8));
 
             cursor.close();
         } else {
@@ -377,6 +437,110 @@ public class DB_handler extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_PROVIDERSERVICE, null);
         return cursor;
+    }
+
+    public boolean updateAddress(String email, String newAddress){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_EMAIL
+                + " = \""
+                + email
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_ADDRESS,newAddress);
+            db.update(TABLE_ACCOUNTS,contentValues,COLUMN_ACCOUNT_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updatePhone(String email, String newPhone){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_EMAIL
+                + " = \""
+                + email
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_PHONE,newPhone);
+            db.update(TABLE_ACCOUNTS,contentValues,COLUMN_ACCOUNT_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateCompany(String email, String newCompany){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_EMAIL
+                + " = \""
+                + email
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_COMPANY,newCompany);
+            db.update(TABLE_ACCOUNTS,contentValues,COLUMN_ACCOUNT_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateLicence(String email, String newLicence){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_EMAIL
+                + " = \""
+                + email
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_LICENCE,newLicence);
+            db.update(TABLE_ACCOUNTS,contentValues,COLUMN_ACCOUNT_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
     }
 
 }

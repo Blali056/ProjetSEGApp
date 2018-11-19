@@ -1,8 +1,10 @@
 package com.theoddseagulls.segapp;
 
+        import android.content.Intent;
         import android.support.annotation.NonNull;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.view.View;
         import android.widget.CalendarView;
         import android.widget.TextView;
 
@@ -28,8 +30,13 @@ public class Availibilities extends AppCompatActivity {
             }
         })  ;
 
+    }
 
 
+    public void saveClick(View view){
+
+        Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
+        startActivityForResult(intent, 0);
     }
 }
 

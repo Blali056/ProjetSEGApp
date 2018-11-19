@@ -34,15 +34,17 @@
 
 
     </LinearLayout>
+
     <Button
-        android:background="@drawable/bg_btn"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="34dp"
-        android:text="Save my date "
-        android:textColor="#FFF"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:id="@+id/saveAvailabilities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/bg_btn"
+        android:onClick="saveClick"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Enregistrer"
+        android:textColor="#FFF" />
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.theoddseagulls.segapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+
 import java.util.ArrayList;
 
-public class EditProviderProfil extends AppCompatActivity {
+public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.OnItemSelectedListener*/ {
 
-    private TextView email;
     private EditText phone;
     private EditText streetNumber;
     private EditText streetName;
@@ -37,19 +40,16 @@ public class EditProviderProfil extends AppCompatActivity {
     private ArrayList<String> city_options;
 
     private static DB_handler myDataBase;
-    private ProviderAccount provider;
 
-    private String address_city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_provider_profil);
+        setContentView(R.layout.activity_provider_set_up);
 
-        email = findViewById(R.id.providerEmail);
-        phone = findViewById(R.id.phone);
-        streetNumber = findViewById(R.id.streetNumber);
-        streetName = findViewById(R.id.streetName);
+        phone = findViewById(R.id.phone2);
+        streetNumber = findViewById(R.id.streetNumber2);
+        streetName = findViewById(R.id.streetName2);
 
         pc1 = findViewById(R.id.pc1);
         pc2 = findViewById(R.id.pc2);
@@ -58,61 +58,15 @@ public class EditProviderProfil extends AppCompatActivity {
         pc5 = findViewById(R.id.pc5);
         pc6 = findViewById(R.id.pc6);
 
-        company = findViewById(R.id.company);
+        company = findViewById(R.id.company2);
 
         yesLicence = findViewById(R.id.yesLicence);
         noLicence = findViewById(R.id.noLicence);
 
         myDataBase = new DB_handler(this);
 
-
-        provider = myDataBase.findProviderAccount( getIntent().getStringExtra("EMAIL"));
-        email.setText( getIntent().getStringExtra("EMAIL") );
-
-        String phoneNum = provider.getPhone();
-        phone.setText(phoneNum.substring(0,3) + phoneNum.substring(4,7) + phoneNum.substring(8,12) );
-        company.setText(provider.getCompany());
-
-        String address = provider.getAddress();
-
-        address_city = "";
-
-        String[] parts = address.split(" ");
-        String stNumber = parts[0];
-        String stName = parts[1].substring(0,(parts[1].length()) - 1);
-        address_city = parts[2];
-        String address_province = parts[3].substring(1,(parts[3].length()) - 1);
-        String address_pc1 = parts[4].substring(0);
-        String address_pc2 = parts[4].substring(1);
-        String address_pc3 = parts[4].substring(2);
-        String address_pc4 = parts[5].substring(0);
-        String address_pc5 = parts[5].substring(1);
-        String address_pc6 = parts[5].substring(2);
-
-        streetNumber.setText(stNumber);
-        streetName.setText(stName);
-
-        pc1.setText(address_pc1);
-        pc2.setText(address_pc2);
-        pc3.setText(address_pc3);
-        pc4.setText(address_pc4);
-        pc5.setText(address_pc5);
-        pc6.setText(address_pc6);
-
-        if( provider.getLicence() == null){
-            yesLicence.setChecked(false);
-            noLicence.setChecked(false);
-        } else if((provider.getLicence()).equals("Oui")){
-            yesLicence.setChecked(true);
-            noLicence.setChecked(false);
-        } else if((provider.getLicence()).equals("Non")){
-            yesLicence.setChecked(false);
-            noLicence.setChecked(true);
-        }
-
-
-        province = findViewById(R.id.province);
-        city = findViewById(R.id.city);
+        province = findViewById(R.id.province2);
+        city = findViewById(R.id.city2);
 
         province_options=new ArrayList<String>();
         city_options=new ArrayList<String>();
@@ -155,32 +109,16 @@ public class EditProviderProfil extends AppCompatActivity {
             }
         });
 
-        province.setSelection(getIndex(province, address_province));
-
-
-
-    }
-
-
-    //Pour set le choix de province et city
-    private int getIndex(Spinner spinner, String myString){
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
-                return i;
-            }
-        }
-
-        return -1;
     }
 
     public void resetCity() {
 
         city_options.removeAll(city_options);
-
         if( (province.getSelectedItem().toString()).equals("ON")) {
             city_options.add("Choisir une ville");
             city_options.add("Ottawa");
             city_options.add("Toronto");
+
         }
         else if((province.getSelectedItem().toString()).equals("QC")) {
             city_options.add("Choisir une ville");
@@ -194,11 +132,10 @@ public class EditProviderProfil extends AppCompatActivity {
 
         ArrayAdapter<String> cityAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,city_options);
         city.setAdapter(cityAdapter);
-        city.setSelection(getIndex(city, address_city));
 
     }
 
-    public void personalInfoClick ( View view){
+    public void infoClick ( View view){
 
         if( phone.getText().length() == 0 ){
             phone.setError("Entrez un numéro de téléphone" );
@@ -257,7 +194,8 @@ public class EditProviderProfil extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
 
             // Passe le username à la prochaine activité
-            intent.putExtra("ACCOUNTUSERNAME", provider.getUsername());
+            String accountUsername = getIntent().getStringExtra("ACCOUNTUSERNAME");
+            intent.putExtra("ACCOUNTUSERNAME", accountUsername);
 
             //  Modifie l'adresse du provider
             String adNumber = streetNumber.getText().toString();
@@ -266,6 +204,7 @@ public class EditProviderProfil extends AppCompatActivity {
             String adCity = city.getSelectedItem().toString();
             String adProvince = province.getSelectedItem().toString();
 
+            ProviderAccount provider = myDataBase.findUsernameProviderAccount( getIntent().getStringExtra("ACCOUNTUSERNAME"));
             String address = adNumber + " " + adName + ", " + adCity + " (" + adProvince + ") " + adCode ;
             myDataBase.updateAddress(provider.getEmail(), address);
             provider.setAddress(address);
@@ -291,28 +230,8 @@ public class EditProviderProfil extends AppCompatActivity {
 
             startActivityForResult(intent, 0);
         }
-    }
 
-    public void addServiceClick (View view){
 
-        Intent intent = new Intent(getApplicationContext(), AddProviderService.class);
-
-        intent.putExtra("EMAIL", provider.getEmail());
-
-        startActivityForResult(intent, 0);
 
     }
-
-    public void deleteServiceClick (View view){
-
-        startActivity( new Intent(getApplicationContext(), DeleteProviderService.class));
-
-    }
-
-    public void availabilitiesClick (View view){
-
-        startActivity( new Intent(getApplicationContext(), Availibilities.class));
-
-    }
-
 }

@@ -31,6 +31,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddProviderService" />
         <activity android:name=".Availibilities"></activity>
+        <activity android:name=".ProviderSetUp"></activity>
     </application>
 
 </manifest>
