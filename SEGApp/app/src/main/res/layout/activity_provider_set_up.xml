@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProviderSetUp">
+
+    <EditText
+        android:id="@+id/pc6"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPostalCode2"
+        android:layout_toEndOf="@+id/province2"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/pc5"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPostalCode2"
+        android:layout_alignEnd="@+id/province2"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="1"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/pc4"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPostalCode2"
+        android:layout_toEndOf="@+id/pc3"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/pc3"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPostalCode2"
+        android:layout_toEndOf="@+id/pc2"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="1"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/pc2"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPostalCode2"
+        android:layout_toEndOf="@+id/pc1"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="15sp" />
+
+    <Spinner
+        android:id="@+id/city2"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/textViewCity2"
+        android:layout_marginStart="79dp" />
+
+    <Button
+        android:id="@+id/saveInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="23dp"
+        android:onClick="infoClick"
+        android:text="Enregistrer" />
+
+    <RadioGroup
+        android:id="@+id/licenceChoices"
+        android:layout_width="78dp"
+        android:layout_height="81dp"
+        android:layout_alignTop="@+id/textViewLicence2"
+        android:layout_toEndOf="@+id/textViewPhone2">
+
+        <RadioButton
+            android:id="@+id/yesLicence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Oui" />
+
+        <RadioButton
+            android:id="@+id/noLicence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Non" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewLicence2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textViewPhone2"
+        android:layout_marginBottom="113dp"
+        android:text="Licence :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/company2"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewCompany3"
+        android:layout_alignStart="@+id/streetName2"
+        android:ems="10"
+        android:hint="Compagnie"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/province2"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/licenceChoices"
+        android:layout_alignTop="@+id/textViewProvince2" />
+
+
+    <TextView
+        android:id="@+id/textViewCompany3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textViewPhone2"
+        android:layout_marginBottom="158dp"
+        android:text="Compagnie :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewProvince2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textViewLicence2"
+        android:layout_marginBottom="234dp"
+        android:text="Province :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewCity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textViewLicence2"
+        android:layout_marginBottom="200dp"
+        android:text="Ville :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewPostalCode2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewLicence2"
+        android:layout_below="@+id/textViewStreetName2"
+        android:layout_marginTop="15dp"
+        android:text="Code postale :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/streetName2"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewStreetName2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="81dp"
+        android:ems="10"
+        android:hint="Nom de rue"
+        android:inputType="textPersonName"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewStreetName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewPhone2"
+        android:layout_below="@+id/streetNumber2"
+        android:text="Nom de rue :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/streetNumber2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/titleAddress2"
+        android:layout_marginStart="97dp"
+        android:ems="10"
+        android:hint="Numero"
+        android:inputType="number"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewStreetNumber2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textViewPhone2"
+        android:layout_marginTop="155dp"
+        android:text="Numéro :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/titleAddress2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textViewPhone2"
+        android:layout_marginTop="123dp"
+        android:text="Adresse :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/phone2"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPhone2"
+        android:layout_toEndOf="@+id/textViewPhone2"
+        android:ems="10"
+        android:hint="Téléphone"
+        android:inputType="number"
+        android:maxLength="10"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textViewPhone2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="76dp"
+        android:text="Téléphone :"
+        android:textColor="@color/blackGrey"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/personalInfo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="INFORMATIONS PERSONNELLES"
+        android:textColor="@color/blackGrey"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/pc1"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPostalCode2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="130dp"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="1"
+        android:textSize="15sp" />
+</android.widget.RelativeLayout>

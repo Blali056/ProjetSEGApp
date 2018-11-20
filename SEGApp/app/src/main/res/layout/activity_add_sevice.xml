@@ -33,15 +33,15 @@
         android:id="@+id/connexion2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/serviceNameAdded"
-        android:layout_alignStart="@+id/serviceNameAdded"
+        android:layout_above="@+id/serviceToDelete"
+        android:layout_alignStart="@+id/serviceToDelete"
         android:layout_marginBottom="-159dp"
         android:text="Nom du service :"
         android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
         android:textColor="@color/blackGrey" />
 
     <EditText
-        android:id="@+id/serviceNameAdded"
+        android:id="@+id/serviceToDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

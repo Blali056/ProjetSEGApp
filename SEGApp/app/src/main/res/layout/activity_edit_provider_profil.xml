@@ -11,103 +11,100 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp">
+        android:layout_alignParentLeft="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="850dp">
+            android:layout_height="700dp">
 
-            <Button
-                android:id="@+id/deleteService"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/city"
+                android:layout_width="185dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/serviceTitle"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/phoneNumber"
-                android:text="SUPPRESSION" />
-
-            <TextView
-                android:id="@+id/serviceTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/savePersonalInfo"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_marginTop="20dp"
-                android:text="SERVICES"
-                android:textColor="@color/blackGrey"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/availablilitiesTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/addService"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_marginTop="30dp"
-                android:text="DISPONIBILITÉS"
-                android:textColor="@color/blackGrey"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_alignStart="@+id/phone"
+                android:layout_below="@+id/textViewCity" />
 
             <EditText
-                android:id="@+id/province"
+                android:id="@+id/phone"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
+                android:layout_marginTop="174dp"
+                android:ems="10"
+                android:hint="Téléphone"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/company"
                 android:layout_width="166dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/city"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_marginTop="18dp"
+                android:layout_alignStart="@+id/textViewLicence"
+                android:layout_below="@+id/textViewCompany"
+                android:layout_marginTop="-10dp"
                 android:ems="10"
-                android:hint="Province"
+                android:hint="Compagnie"
                 android:inputType="textPersonName"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewLicence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/serviceTitle"
+                android:layout_alignStart="@+id/serviceTitle"
+                android:layout_below="@+id/company"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="22dp"
+                android:text="Licence :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/serviceTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/serviceTitle"
+                android:layout_marginTop="574dp"
+                android:layout_marginStart="22dp"
+                android:text="Compagnie :"
+                android:textColor="@color/blackGrey"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/province"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/phone"
+                android:layout_below="@+id/textViewProvince" />
 
             <TextView
                 android:id="@+id/textViewProvince"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/city"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_marginTop="9dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/phone"
+                android:layout_marginTop="450dp"
                 android:text="Province :"
                 android:textColor="@color/blackGrey"
                 android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="457dp"
-                android:ems="10"
-                android:hint="Ville"
-                android:inputType="textPersonName"
-                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="448dp"
+                android:layout_alignStart="@+id/phone"
+                android:layout_below="@+id/province"
+                android:layout_marginTop="15dp"
                 android:text="Ville :"
                 android:textColor="@color/blackGrey"
                 android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/postalCode"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="395dp"
-                android:ems="10"
-                android:hint="Code postale"
-                android:inputType="textPersonName"
-                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/title"
@@ -125,8 +122,10 @@
                 android:id="@+id/personalInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginLeft="22dp"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="76dp"
                 android:text="INFORMATIONS PERSONNELLES"
@@ -138,8 +137,9 @@
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="108dp"
                 android:text="Email :"
                 android:textColor="@color/blackGrey"
@@ -150,42 +150,33 @@
                 android:id="@+id/providerEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/email"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignStart="@+id/personalInfo"
+                android:layout_below="@+id/email"
                 android:text="TextView"
                 android:textColor="@color/blackGrey"
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/phone"
+                android:id="@+id/textViewPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="164dp"
                 android:text="Téléphone :"
                 android:textColor="@color/blackGrey"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/phoneNumber"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="173dp"
-                android:ems="10"
-                android:hint="Téléphone"
-                android:inputType="textPersonName"
-                android:textSize="16sp" />
-
             <TextView
                 android:id="@+id/titleAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="232dp"
                 android:text="Adresse :"
                 android:textColor="@color/blackGrey"
@@ -196,8 +187,9 @@
                 android:id="@+id/textViewStreetNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="263dp"
                 android:text="Numéro :"
                 android:textColor="@color/blackGrey"
@@ -207,8 +199,9 @@
                 android:id="@+id/streetNumber"
                 android:layout_width="158dp"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="273dp"
                 android:ems="10"
                 android:hint="Numero"
@@ -219,8 +212,9 @@
                 android:id="@+id/textViewPostalCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="386dp"
                 android:text="Code postale :"
                 android:textColor="@color/blackGrey"
@@ -231,6 +225,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/streetName"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginBottom="-343dp"
                 android:text="Nom de rue :"
@@ -241,41 +236,120 @@
                 android:id="@+id/streetName"
                 android:layout_width="166dp"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/personalInfo"
+                android:layout_alignLeft="@+id/personalInfo"
                 android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/personalInfo"
                 android:layout_marginTop="334dp"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:ems="10"
                 android:hint="Nom de rue"
                 android:inputType="textPersonName"
-                android:text="TESTING"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/savePersonalInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/province"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="39dp"
+                android:layout_below="@+id/licenceChoices"
+                android:layout_marginEnd="41dp"
+                android:onClick="personalInfoClick"
                 android:text="Enregistrer" />
 
-            <Button
-                android:id="@+id/addService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/deleteService"
-                android:layout_toEndOf="@+id/email"
-                android:onClick="addClick"
-                android:text="AJOUT" />
+            <RadioGroup
+                android:id="@+id/licenceChoices"
+                android:layout_width="167dp"
+                android:layout_height="81dp"
+                android:layout_below="@+id/textViewLicence"
+                android:layout_toEndOf="@+id/textViewProvince"
+                android:layout_toRightOf="@+id/textViewProvince">
 
-            <Button
-                android:id="@+id/editAvailabilities"
-                android:layout_width="157dp"
+                <RadioButton
+                    android:id="@+id/yesLicence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Oui" />
+
+                <RadioButton
+                    android:id="@+id/noLicence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Non" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/pc6"
+                android:layout_width="38dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/availablilitiesTitle"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
-                android:text="Modifier" />
+                android:layout_alignTop="@+id/pc5"
+                android:layout_toEndOf="@+id/province"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/pc5"
+                android:layout_width="43dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/pc4"
+                android:layout_toEndOf="@+id/company"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:maxLength="1"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/pc4"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/phone"
+                android:layout_alignTop="@+id/pc3"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/pc3"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/pc2"
+                android:layout_marginStart="-7dp"
+                android:layout_toEndOf="@+id/textViewCompany"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:maxLength="1"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/pc2"
+                android:layout_width="38dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/pc1"
+                android:layout_toEndOf="@+id/textViewCity"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/pc1"
+                android:layout_width="41dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/phone"
+                android:layout_marginStart="-3dp"
+                android:layout_marginTop="396dp"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:maxLength="1"
+                android:textSize="15sp" />
+
 
         </RelativeLayout>
     </ScrollView>

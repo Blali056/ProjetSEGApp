@@ -7,6 +7,10 @@ public class Account {
     private String password;
     private String username;
     private String type;
+    private String address;
+    private String phone;
+    public String company;
+    public String licence;
 
     public Account(){
 
@@ -39,6 +43,22 @@ public class Account {
         username = u;
     }
 
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setPhone(String phone){
+        this.phone = phone;
+    }
+
+    public void setCompany(String company){
+        this.company = company;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
+    }
+
     public String getEmail(){
         return email;
     }
@@ -53,6 +73,22 @@ public class Account {
 
     public String getUsername(){
         return username;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public String getPhone(){ 
+        return phone; 
+    }
+
+    public String getCompany() { 
+        return company; 
+    }
+
+    public String getLicence() { 
+        return licence; 
     }
 
     public void setId(int id){

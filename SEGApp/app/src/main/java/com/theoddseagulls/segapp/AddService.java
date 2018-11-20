@@ -19,7 +19,7 @@ public class AddService extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sevice);
 
-        serviceName = (EditText) findViewById(R.id.serviceNameAdded);
+        serviceName = (EditText) findViewById(R.id.serviceToDelete);
         tauxHoraire = (EditText) findViewById(R.id.tauxHoraireAdded);
         service= new Service();
         mydatabase = new DB_handler(this);
