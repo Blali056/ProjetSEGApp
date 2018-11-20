@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -57,6 +58,10 @@ public class EditProviderProfil extends AppCompatActivity {
         pc4 = findViewById(R.id.pc4);
         pc5 = findViewById(R.id.pc5);
         pc6 = findViewById(R.id.pc6);
+
+        pc1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1), new InputFilter.AllCaps()});
+        pc3.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1), new InputFilter.AllCaps()});
+        pc5.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1), new InputFilter.AllCaps()});
 
         company = findViewById(R.id.company);
 

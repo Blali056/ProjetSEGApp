@@ -23,10 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewPostalCode2"
         android:layout_alignEnd="@+id/province2"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:inputType="textPersonName"
-        android:maxLength="1"
         android:textSize="15sp" />
 
     <EditText
@@ -46,10 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewPostalCode2"
         android:layout_toEndOf="@+id/pc2"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:inputType="textPersonName"
-        android:maxLength="1"
         android:textSize="15sp" />
 
     <EditText
@@ -282,9 +280,8 @@
         android:layout_alignBaseline="@+id/textViewPostalCode2"
         android:layout_alignParentStart="true"
         android:layout_marginStart="130dp"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:inputType="textPersonName"
-        android:maxLength="1"
         android:textSize="15sp" />
 </android.widget.RelativeLayout>

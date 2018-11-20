@@ -36,6 +36,8 @@ public class DeleteProviderService extends AppCompatActivity {
             while (service.moveToNext()) {
                 service_options.add(service.getString(2));
             }
+        }else {
+            service_options.add("Aucun service");
         }
 
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,service_options);

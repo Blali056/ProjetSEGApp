@@ -296,10 +296,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/pc4"
                 android:layout_toEndOf="@+id/company"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:maxLength="1"
                 android:textSize="15sp" />
 
             <EditText
@@ -320,9 +319,9 @@
                 android:layout_alignTop="@+id/pc2"
                 android:layout_marginStart="-7dp"
                 android:layout_toEndOf="@+id/textViewCompany"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:maxLength="1"
                 android:textSize="15sp" />
 
             <EditText
@@ -344,10 +343,9 @@
                 android:layout_alignStart="@+id/phone"
                 android:layout_marginStart="-3dp"
                 android:layout_marginTop="396dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:maxLength="1"
                 android:textSize="15sp" />
 
 
