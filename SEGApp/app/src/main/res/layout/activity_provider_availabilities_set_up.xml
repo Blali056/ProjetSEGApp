@@ -57,7 +57,7 @@
                 android:layout_width="27dp"
                 android:layout_height="34dp"
                 android:layout_alignStart="@+id/samError"
-                android:layout_alignTop="@+id/marTo"
+                android:layout_alignTop="@+id/marTo2"
                 android:textColor="@color/blackGrey"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +68,7 @@
                 android:layout_width="27dp"
                 android:layout_height="34dp"
                 android:layout_alignStart="@+id/samError"
-                android:layout_alignTop="@+id/lunTo"
+                android:layout_alignTop="@+id/lunTo2"
                 android:textColor="@color/blackGrey"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,7 @@
                 android:layout_width="27dp"
                 android:layout_height="34dp"
                 android:layout_alignStart="@+id/samError"
-                android:layout_alignTop="@+id/dimTo"
+                android:layout_alignTop="@+id/dimTo2"
                 android:textColor="@color/blackGrey"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +89,7 @@
                 android:id="@+id/samError"
                 android:layout_width="80dp"
                 android:layout_height="34dp"
-                android:layout_alignBottom="@+id/samTo"
+                android:layout_alignBottom="@+id/samTo2"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="1dp"
                 android:textColor="@color/blackGrey"
@@ -98,135 +98,135 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
-                android:id="@+id/saveAv"
+                android:id="@+id/saveAv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/venFrom"
+                android:layout_below="@+id/venFrom2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:onClick="saveClick"
+                android:onClick="savEClick"
                 android:text="Enregistrer" />
 
             <Button
-                android:id="@+id/venTo"
+                android:id="@+id/venTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/marTo"
-                android:layout_below="@+id/jeuTo"
+                android:layout_alignStart="@+id/marTo2"
+                android:layout_below="@+id/jeuTo2"
                 android:layout_marginTop="23dp"
                 android:onClick="venToClick"
                 android:text="À" />
 
             <Button
-                android:id="@+id/venFrom"
+                android:id="@+id/venFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/marFrom"
-                android:layout_below="@+id/jeuFrom"
+                android:layout_alignStart="@+id/marFrom2"
+                android:layout_below="@+id/jeuFrom2"
                 android:layout_marginTop="23dp"
                 android:onClick="venFromClick"
                 android:text="DE" />
 
             <Button
-                android:id="@+id/jeuTo"
+                android:id="@+id/jeuTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/marTo"
-                android:layout_below="@+id/merTo"
+                android:layout_alignStart="@+id/marTo2"
+                android:layout_below="@+id/merTo2"
                 android:layout_marginTop="23dp"
                 android:onClick="jeuToClick"
                 android:text="À" />
 
             <Button
-                android:id="@+id/jeuFrom"
+                android:id="@+id/jeuFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/marFrom"
-                android:layout_below="@+id/merFrom"
+                android:layout_alignStart="@+id/marFrom2"
+                android:layout_below="@+id/merFrom2"
                 android:layout_marginTop="23dp"
                 android:onClick="jeuFromClick"
                 android:text="DE" />
 
             <Button
-                android:id="@+id/merFrom"
+                android:id="@+id/merFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/marFrom"
-                android:layout_below="@+id/marFrom"
+                android:layout_alignStart="@+id/marFrom2"
+                android:layout_below="@+id/marFrom2"
                 android:layout_marginTop="23dp"
                 android:onClick="merFromClick"
                 android:text="DE" />
 
             <Button
-                android:id="@+id/merTo"
+                android:id="@+id/merTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/marTo"
-                android:layout_below="@+id/marTo"
+                android:layout_alignStart="@+id/marTo2"
+                android:layout_below="@+id/marTo2"
                 android:layout_marginTop="23dp"
                 android:onClick="merToClick"
                 android:text="À" />
 
             <Button
-                android:id="@+id/marTo"
+                android:id="@+id/marTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/lunTo"
-                android:layout_alignTop="@+id/marFrom"
+                android:layout_alignStart="@+id/lunTo2"
+                android:layout_alignTop="@+id/marFrom2"
                 android:onClick="marToClick"
                 android:text="À" />
 
             <Button
-                android:id="@+id/marFrom"
+                android:id="@+id/marFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/lunFrom"
-                android:layout_below="@+id/lunFrom"
+                android:layout_alignStart="@+id/lunFrom2"
+                android:layout_below="@+id/lunFrom2"
                 android:layout_marginTop="23dp"
                 android:onClick="marFromClick"
                 android:text="DE" />
 
             <Button
-                android:id="@+id/lunTo"
+                android:id="@+id/lunTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/samTo"
-                android:layout_below="@+id/dimTo"
+                android:layout_alignStart="@+id/samTo2"
+                android:layout_below="@+id/dimTo2"
                 android:layout_marginTop="23dp"
                 android:onClick="lunToClick"
                 android:text="À" />
 
             <Button
-                android:id="@+id/lunFrom"
+                android:id="@+id/lunFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/samFrom"
-                android:layout_below="@+id/dimFrom"
+                android:layout_alignStart="@+id/samFrom2"
+                android:layout_below="@+id/dimFrom2"
                 android:layout_marginTop="23dp"
                 android:onClick="lunFromClick"
                 android:text="DE" />
 
             <Button
-                android:id="@+id/dimTo"
+                android:id="@+id/dimTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_alignBaseline="@+id/dimanche"
-                android:layout_alignStart="@+id/marTo"
-                android:layout_below="@+id/samTo"
+                android:layout_alignStart="@+id/marTo2"
+                android:layout_below="@+id/samTo2"
                 android:onClick="dimToClick"
                 android:text="À" />
 
             <Button
-                android:id="@+id/dimFrom"
+                android:id="@+id/dimFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignTop="@+id/dimTo"
+                android:layout_alignTop="@+id/dimTo2"
                 android:layout_toEndOf="@+id/dimanche"
                 android:onClick="dimFromClick"
                 android:text="DE" />
 
             <Button
-                android:id="@+id/samTo"
+                android:id="@+id/samTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_alignParentEnd="true"
@@ -254,7 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/samedi"
-                android:layout_below="@id/samFrom"
+                android:layout_below="@id/samFrom2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:text="Dimanche :"
@@ -268,7 +268,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/samedi"
-                android:layout_below="@+id/jeuFrom"
+                android:layout_below="@+id/jeuFrom2"
                 android:layout_marginBottom="48dp"
                 android:layout_marginTop="30dp"
                 android:text="Vendredi :"
@@ -282,7 +282,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/samedi"
-                android:layout_below="@+id/merFrom"
+                android:layout_below="@+id/merFrom2"
                 android:layout_marginBottom="96dp"
                 android:layout_marginTop="30dp"
                 android:text="Jeudi :"
@@ -296,7 +296,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/samedi"
-                android:layout_below="@+id/marFrom"
+                android:layout_below="@+id/marFrom2"
                 android:layout_marginBottom="127dp"
                 android:layout_marginTop="30dp"
                 android:text="Mercredi :"
@@ -310,7 +310,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:layout_alignStart="@+id/samedi"
-                android:layout_below="@+id/lunFrom"
+                android:layout_below="@+id/lunFrom2"
                 android:layout_marginTop="30dp"
                 android:text="Mardi :"
                 android:textColor="@color/blackGrey"
@@ -322,7 +322,7 @@
                 android:id="@+id/lundi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/dimFrom"
+                android:layout_below="@+id/dimFrom2"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="30dp"
                 android:text="Lundi : "
@@ -347,11 +347,11 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/samFrom"
+                android:id="@+id/samFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/dimFrom"
-                android:layout_alignTop="@+id/samTo"
+                android:layout_alignStart="@+id/dimFrom2"
+                android:layout_alignTop="@+id/samTo2"
                 android:onClick="samFromClick"
                 android:text="DE" />
 

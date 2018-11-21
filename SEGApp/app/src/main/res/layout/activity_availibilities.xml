@@ -89,7 +89,7 @@
                 android:id="@+id/samError"
                 android:layout_width="80dp"
                 android:layout_height="34dp"
-                android:layout_alignBottom="@+id/samTo"
+                android:layout_alignBottom="@+id/samTo2"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="1dp"
                 android:textColor="@color/blackGrey"
@@ -190,7 +190,7 @@
                 android:id="@+id/lunTo"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/samTo"
+                android:layout_alignStart="@+id/samTo2"
                 android:layout_below="@+id/dimTo"
                 android:layout_marginTop="23dp"
                 android:onClick="lunToClick"
@@ -200,7 +200,7 @@
                 android:id="@+id/lunFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_alignStart="@+id/samFrom"
+                android:layout_alignStart="@+id/samFrom2"
                 android:layout_below="@+id/dimFrom"
                 android:layout_marginTop="23dp"
                 android:onClick="lunFromClick"
@@ -212,7 +212,7 @@
                 android:layout_height="36dp"
                 android:layout_alignBaseline="@+id/dimanche"
                 android:layout_alignStart="@+id/marTo"
-                android:layout_below="@+id/samTo"
+                android:layout_below="@+id/samTo2"
                 android:onClick="dimToClick"
                 android:text="À" />
 
@@ -226,7 +226,7 @@
                 android:text="DE" />
 
             <Button
-                android:id="@+id/samTo"
+                android:id="@+id/samTo2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_alignParentEnd="true"
@@ -254,7 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/samedi"
-                android:layout_below="@id/samFrom"
+                android:layout_below="@id/samFrom2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:text="Dimanche :"
@@ -347,11 +347,11 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/samFrom"
+                android:id="@+id/samFrom2"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_alignStart="@+id/dimFrom"
-                android:layout_alignTop="@+id/samTo"
+                android:layout_alignTop="@+id/samTo2"
                 android:onClick="samFromClick"
                 android:text="DE" />
 

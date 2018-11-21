@@ -26,14 +26,6 @@ public class ProviderProfil extends AppCompatActivity {
     private String providerUsername;
     private ProviderAccount provider;
 
-   /* private TextView samedi;
-    private TextView dimanche;
-    private TextView lundi;
-    private TextView mardi;
-    private TextView mercredi;
-    private TextView jeudi;
-    private TextView vendredi;*/
-
     private ListView availabilities;
 
 
@@ -85,39 +77,39 @@ public class ProviderProfil extends AppCompatActivity {
         availabilities = (ListView) findViewById(R.id.availabilities);
         ArrayList<String> availabilitiesList = new ArrayList<>();
 
-        String samedi = provider.getSamedi();
-        String dimanche = provider.getDimanche();
-        String lundi = provider.getLundi();
-        String mardi = provider.getMardi();
-        String mercredi = provider.getMercredi();
-        String jeudi = provider.getJeudi();
-        String vendredi = provider.getVendredi();
+        String samedi = getIntent().getStringExtra("SAMEDI");
+        String dimanche = getIntent().getStringExtra("DIMANCHE");
+        String lundi = getIntent().getStringExtra("LUNDI");
+        String mardi = getIntent().getStringExtra("MARDI");
+        String mercredi = getIntent().getStringExtra("MERCREDI");
+        String jeudi = getIntent().getStringExtra("JEUDI");
+        String vendredi = getIntent().getStringExtra("VENDREDI");
 
-        if(! samedi.equals("Samedi : DE - À")) {
+        if( samedi.indexOf("DE") <0 && samedi.indexOf("À") <0) {
             availabilitiesList.add(samedi);
         }
 
-        if(! dimanche.equals("Dimanche : DE - À")) {
+        if(dimanche.indexOf("DE") <0 && dimanche.indexOf("À") <0) {
             availabilitiesList.add(dimanche);
         }
 
-        if(! lundi.equals("Lundi : DE - À")) {
+        if(lundi.indexOf("DE") <0 && lundi.indexOf("À") <0) {
             availabilitiesList.add(lundi);
         }
 
-        if(! mardi.equals("Mardi : DE - À")) {
+        if(mardi.indexOf("DE") <0 && mardi.indexOf("À") <0) {
             availabilitiesList.add(mardi);
         }
 
-        if(! mercredi.equals("Mercredi : DE - À")) {
+        if(mercredi.indexOf("DE") <0 && mercredi.indexOf("À") <0) {
             availabilitiesList.add(mercredi);
         }
 
-        if(! jeudi.equals("Jeudi : DE - À")) {
+        if(jeudi.indexOf("DE") <0 && jeudi.indexOf("À") <0) {
             availabilitiesList.add(jeudi);
         }
 
-        if(! vendredi.equals("Vendredi : DE - À")) {
+        if(vendredi.indexOf("DE") <0 && vendredi.indexOf("À") <0) {
             availabilitiesList.add(vendredi);
         }
 
@@ -210,6 +202,16 @@ public class ProviderProfil extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Availibilities.class);
 
         intent.putExtra("USERNAME", provider.getUsername());
+
+        intent.putExtra("SAMEDI",getIntent().getStringExtra("SAMEDI") );
+        intent.putExtra("DIMANCHE",getIntent().getStringExtra("DIMANCHE") );
+        intent.putExtra("LUNDI",getIntent().getStringExtra("LUNDI") );
+        intent.putExtra("MARDI",getIntent().getStringExtra("MARDI") );
+        intent.putExtra("MERCREDI",getIntent().getStringExtra("MERCREDI") );
+        intent.putExtra("JEUDI",getIntent().getStringExtra("JEUDI") );
+        intent.putExtra("VENDREDI",getIntent().getStringExtra("VENDREDI") );
+
+
 
         startActivityForResult(intent, 0);
 
