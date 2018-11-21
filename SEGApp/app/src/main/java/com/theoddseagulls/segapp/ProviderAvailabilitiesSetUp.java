@@ -1,19 +1,19 @@
 package com.theoddseagulls.segapp;
 
-import android.app.TimePickerDialog;
+        import android.app.TimePickerDialog;
         import android.content.Intent;
         import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
+        import android.support.v4.app.DialogFragment;
+        import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.view.View;
-import android.widget.Button;
-import android.widget.CalendarView;
+        import android.widget.Button;
+        import android.widget.CalendarView;
         import android.widget.TextView;
         import android.widget.TimePicker;
 
 
-public class Availibilities extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class ProviderAvailabilitiesSetUp extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
 
     private String pressed;
@@ -47,7 +47,7 @@ public class Availibilities extends AppCompatActivity implements TimePickerDialo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_availibilities);
+        setContentView(R.layout.activity_provider_availabilities_set_up);
 
         pressed = " ";
 
@@ -265,38 +265,47 @@ public class Availibilities extends AppCompatActivity implements TimePickerDialo
         else if ( (!samFrom.equals("DE") && !samTo.equals("À")) || (!dimFrom.equals("DE") && !dimTo.equals("À")) || (!lunFrom.equals("DE") && !lunTo.equals("À")) || (!marFrom.equals("DE") && !marTo.equals("À")) || (!merFrom.equals("DE") && !merTo.equals("À")) || (!jeuFrom.equals("DE") && !jeuTo.equals("À")) || (!venFrom.equals("DE") && !venTo.equals("À")) || (samFrom.equals("DE") && samTo.equals("À")) || (dimFrom.equals("DE") && dimTo.equals("À")) || (lunFrom.equals("DE") && lunTo.equals("À")) || (marFrom.equals("DE") && marTo.equals("À")) || (merFrom.equals("DE") && merTo.equals("À")) || (jeuFrom.equals("DE") && jeuTo.equals("À")) || (venFrom.equals("DE") && venTo.equals("À"))){
             Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
 
-            intent.putExtra("ACCOUNTUSERNAME",getIntent().getStringExtra("USERNAME") );
+            ProviderAccount provider = mydatabase.findUsernameProviderAccount(getIntent().getStringExtra("ACCOUNTUSERNAME"));
+
+            intent.putExtra("ACCOUNTUSERNAME", provider.getUsername() );
 
             String samedi = "Samedi : " + samFrom.getText() + " - "  + samTo.getText();
             intent.putExtra("SAMEDI", samedi);
-            mydatabase.updateSamedi(getIntent().getStringExtra("USERNAME"), samedi);
+            provider.setSamedi(samedi);
+          //  mydatabase.updateSamedi(provider.getUsername(), samedi);
 
             String dimanche = "Dimanche : " + dimFrom.getText() + " - "  + dimTo.getText();
             intent.putExtra("DIMANCHE", dimanche);
-            mydatabase.updateDimanche(getIntent().getStringExtra("USERNAME"), dimanche);
+            provider.setDimanche(dimanche);
+         //   mydatabase.updateDimanche(provider.getUsername(), dimanche);
 
             String lundi = "Lundi : " + lunFrom.getText() + " - "  + lunTo.getText();
             intent.putExtra("LUNDI", lundi);
-            mydatabase.updateLundi(getIntent().getStringExtra("USERNAME"), lundi);
+            provider.setLundi(lundi);
+          //  mydatabase.updateLundi(provider.getUsername(), lundi);
 
             String mardi = "Mardi : " + marFrom.getText() + " - "  + marTo.getText();
             intent.putExtra("MARDI", mardi);
-            mydatabase.updateMardi(getIntent().getStringExtra("USERNAME"), mardi);
+            provider.setMardi(mardi);
+          //  mydatabase.updateMardi(provider.getUsername(), mardi);
 
             String mercredi = "Mercredi : " + merFrom.getText() + " - "  + merTo.getText();
             intent.putExtra("MERCREDI", mercredi);
-            mydatabase.updateMercredi(getIntent().getStringExtra("USERNAME"), mercredi);
+            provider.setMercredi(mercredi);
+           // mydatabase.updateMercredi(provider.getUsername(), mercredi);
 
             String jeudi = "Jeudi : " + jeuFrom.getText() + " - "  + jeuTo.getText();
             intent.putExtra("JEUDI", jeudi);
-            mydatabase.updateJeudi(getIntent().getStringExtra("USERNAME"), jeudi);
+            provider.setJeudi(jeudi);
+          //  mydatabase.updateJeudi(provider.getUsername(), jeudi);
 
             String vendredi = "Vendredi : " + venFrom.getText() + " - "  + venTo.getText();
             intent.putExtra("VENDREDI", vendredi);
-            mydatabase.updateVendredi(getIntent().getStringExtra("USERNAME"), vendredi);
+            provider.setVendredi(vendredi);
+        //    mydatabase.updateVendredi(provider.getUsername(), vendredi);
 
+            mydatabase.addProviderAvailabilities(provider);
             startActivityForResult(intent, 0);
-
 
         }
 

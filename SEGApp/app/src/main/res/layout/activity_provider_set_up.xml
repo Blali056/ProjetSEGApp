@@ -268,7 +268,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="INFORMATIONS PERSONNELLES"
+        android:text="DÉFINIR VOS INFORMATIONS PERSONNELLES"
         android:textColor="@color/blackGrey"
         android:textSize="16sp"
         android:textStyle="bold" />

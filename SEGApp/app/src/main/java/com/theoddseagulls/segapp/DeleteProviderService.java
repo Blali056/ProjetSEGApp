@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -54,22 +55,31 @@ public class DeleteProviderService extends AppCompatActivity {
 
     public void deleteClick(View view){
 
-        service= serviceToDelete.getSelectedItem().toString();
+        if((serviceToDelete.getSelectedItem().toString()).equals("Aucun service")){
+            ((TextView)serviceToDelete.getChildAt(0)).setError("Aucun service à supprimé");
+        }
 
-        ProviderService providerService = mydatabase.findProviderService(service);
-        ProviderAccount provider = mydatabase.findUsernameProviderAccount(providerService.getProviderName());
+        else {
+            service= serviceToDelete.getSelectedItem().toString();
 
-        Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
+            ProviderService providerService = mydatabase.findProviderService(service);
+            ProviderAccount provider = mydatabase.findUsernameProviderAccount(providerService.getProviderName());
 
-        // Passe le username à la prochaine activité
-        intent.putExtra("ACCOUNTUSERNAME", provider.getUsername());
+            Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
 
-        mydatabase.deleteProviderService(service);
-        Context context = getApplicationContext();
-        Toast.makeText(context, "Service supprimé",
-                Toast.LENGTH_SHORT).show();
+            // Passe le username à la prochaine activité
+            intent.putExtra("ACCOUNTUSERNAME", provider.getUsername());
 
-        startActivityForResult (intent,0);
+            mydatabase.deleteProviderService(service);
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Service supprimé",
+                    Toast.LENGTH_SHORT).show();
+
+            startActivityForResult (intent,0);
+
+        }
+
+
 
 
     }

@@ -30,9 +30,10 @@
             android:label="@string/title_activity_edit_provider_profil"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddProviderService" />
-        <activity android:name=".Availibilities"></activity>
-        <activity android:name=".ProviderSetUp"></activity>
-        <activity android:name=".DeleteProviderService"></activity>
+        <activity android:name=".Availibilities" />
+        <activity android:name=".ProviderSetUp" />
+        <activity android:name=".DeleteProviderService" />
+        <activity android:name=".ProviderAvailabilitiesSetUp"></activity>
     </application>
 
 </manifest>

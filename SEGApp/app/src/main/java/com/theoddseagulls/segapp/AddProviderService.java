@@ -61,11 +61,15 @@ public class AddProviderService extends AppCompatActivity {
     public void addClick(View view){
 
 
+        if((serviceName.getSelectedItem().toString()).equals("Aucun service")){
+            ((TextView)serviceName.getChildAt(0)).setError("Aucun service à ajouté");
+        }
+
         if(providerServiceExist() == true){
             ((TextView)serviceName.getChildAt(0)).setError("Service existant");
         }
 
-        else if(providerServiceExist() == false){
+        else if(providerServiceExist() == false && !((serviceName.getSelectedItem().toString()).equals("Aucun service"))){
             String service = serviceName.getSelectedItem().toString();
             ProviderService providerService = new ProviderService(provider.getUsername() , service);
             mydatabase.addProviderService(providerService);

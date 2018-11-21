@@ -195,7 +195,7 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
 
         else if ( !(province.getSelectedItem().toString()).equals("Choisir une province") && !(city.getSelectedItem().toString()).equals("Choisir une ville") && ! (city.getSelectedItem().toString()).equals("Aucune") && phone.getText().length() == 10){
 
-            Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
+            Intent intent = new Intent(getApplicationContext(), ProviderAvailabilitiesSetUp.class);
 
             // Passe le username à la prochaine activité
             String accountUsername = getIntent().getStringExtra("ACCOUNTUSERNAME");

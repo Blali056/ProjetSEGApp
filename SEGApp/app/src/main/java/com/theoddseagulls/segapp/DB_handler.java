@@ -10,11 +10,12 @@ import android.database.Cursor;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 17;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
     public static final String TABLE_PROVIDERSERVICE = "ProviderService";
+    public static final String TABLE_PROVIDER_AVAILABILITIES = "ProviderAvailabilities";
 
     // Table Accounts
     public static final String COLUMN_ACCOUNT_ID = "_id";
@@ -36,6 +37,19 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_PROVIDERSERVICE_ID = "_id";
     public static final String COLUMN_PROVIDEUSERRNAME = "ProviderUserName";
     public static final String COLUMN_SERVICENAME = "ServiceName";
+
+    // Table ProviderAvailabilities
+    public static final String COLUMN_PROVIDER_AVAILABILITIES_ID = "_id";
+    public static final String COLUMN_PROVIDER_USERNAME = "Username";
+    public static final String COLUMN_SAMEDI = "Samedi";
+    public static final String COLUMN_DIMANCHE = "Dimanche";
+    public static final String COLUMN_LUNDI = "Lundi";
+    public static final String COLUMN_MARDI = "Mardi";
+    public static final String COLUMN_MERCREDI = "Mercredi";
+    public static final String COLUMN_JEUDI = "Jeudi";
+    public static final String COLUMN_VENDREDI = "Vendredi";
+
+
 
     public static final String CREATE_ACCOUNTS_TABLE = "CREATE TABLE " +
             TABLE_ACCOUNTS + "("
@@ -60,6 +74,19 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_PROVIDEUSERRNAME  + " TEXT," +
             COLUMN_SERVICENAME + " TEXT" + ")";
 
+    public static final String CREATE_PROVIDER_AVAILABILITIES_TABLE = "CREATE TABLE " +
+            TABLE_PROVIDER_AVAILABILITIES + "("
+            + COLUMN_PROVIDER_AVAILABILITIES_ID + " INTEGER PRIMARY KEY," +
+            COLUMN_PROVIDER_USERNAME + " TEXT," +
+            COLUMN_SAMEDI + " TEXT," +
+            COLUMN_DIMANCHE + " TEXT," +
+            COLUMN_LUNDI + " TEXT," +
+            COLUMN_MARDI + " TEXT," +
+            COLUMN_MERCREDI + " TEXT," +
+            COLUMN_JEUDI + " TEXT," +
+            COLUMN_VENDREDI + " TEXT" + ")";
+
+
     public DB_handler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -70,6 +97,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL(CREATE_ACCOUNTS_TABLE);
         db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_PROVIDERSERVICE_TABLE);
+        db.execSQL(CREATE_PROVIDER_AVAILABILITIES_TABLE);
     }
 
     @Override
@@ -77,6 +105,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_SERVICE);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDERSERVICE);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_AVAILABILITIES);
         onCreate(db);
     }
 
@@ -592,5 +621,209 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
         return result;
     }
+
+
+    public void addProviderAvailabilities(ProviderAccount provider){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROVIDER_USERNAME, provider.getUsername());
+        values.put(COLUMN_SAMEDI, provider.getSamedi());
+        values.put(COLUMN_DIMANCHE, provider.getDimanche());
+        values.put(COLUMN_LUNDI, provider.getLundi());
+        values.put(COLUMN_MARDI, provider.getMardi());
+        values.put(COLUMN_MERCREDI, provider.getMercredi());
+        values.put(COLUMN_JEUDI, provider.getJeudi());
+        values.put(COLUMN_VENDREDI, provider.getVendredi());
+
+        db.insert(TABLE_PROVIDER_AVAILABILITIES, null, values);
+        db.close();
+    }
+
+
+    public boolean updateSamedi(String username, String samedi){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_SAMEDI,samedi);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateDimanche(String username, String dimanche){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_DIMANCHE,dimanche);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateLundi(String username, String lundi){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_LUNDI,lundi);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateMardi(String username, String mardi){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_MARDI,mardi);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateMercredi(String username, String mercredi){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_MERCREDI,mercredi);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateJeudi(String username, String jeudi){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_JEUDI,jeudi);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean updateVendredi(String username, String vendredi){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result = false;
+        String query = "SELECT * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            ContentValues contentValues= new ContentValues();
+            contentValues.put(COLUMN_VENDREDI,vendredi);
+            db.update(TABLE_PROVIDER_AVAILABILITIES,contentValues,COLUMN_PROVIDER_AVAILABILITIES_ID + " = " + idStr,null);
+
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+
+
 
 }
