@@ -17,13 +17,21 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="800dp">
+            android:layout_height="900dp">
+
+
+            <ListView
+                android:id="@+id/availabilities"
+                android:layout_width="337dp"
+                android:layout_height="182dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/providerAvailablilities" />
 
             <Button
                 android:id="@+id/editAvailabilities2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/availabilities"
                 android:layout_centerHorizontal="true"
                 android:onClick="availabilitiesClick"
                 android:text="Modifier les disponibilités" />
@@ -183,8 +191,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/addService2"
-                android:layout_marginTop="25dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
                 android:text="Disponibilités"
                 android:textColor="@color/blackGrey"
                 android:textSize="17sp"

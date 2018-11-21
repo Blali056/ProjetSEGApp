@@ -26,6 +26,17 @@ public class ProviderProfil extends AppCompatActivity {
     private String providerUsername;
     private ProviderAccount provider;
 
+   /* private TextView samedi;
+    private TextView dimanche;
+    private TextView lundi;
+    private TextView mardi;
+    private TextView mercredi;
+    private TextView jeudi;
+    private TextView vendredi;*/
+
+    private ListView availabilities;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +67,7 @@ public class ProviderProfil extends AppCompatActivity {
         }
 
 
-        ListView listView = (ListView) findViewById(R.id.providerServicesList);
-        myDataBase = new DB_handler(this);
+        ListView services = (ListView) findViewById(R.id.providerServicesList);
         ArrayList<String> serviceList = new ArrayList<>();
         Cursor providerservice = myDataBase.getProviderListContents();
         if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
@@ -65,12 +75,58 @@ public class ProviderProfil extends AppCompatActivity {
                 if(providerservice.getString(1).equals(providerUsername)){
                     serviceList.add(providerservice.getString(2));
                     ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,serviceList);
-                    listView.setAdapter(listAdapter);
+                    services.setAdapter(listAdapter);
                 }
             }
         }
 
-        listView.setOnTouchListener(new ListView.OnTouchListener() {
+        // Availabilities
+
+        availabilities = (ListView) findViewById(R.id.availabilities);
+        ArrayList<String> availabilitiesList = new ArrayList<>();
+
+        String samedi = provider.getSamedi();
+        String dimanche = provider.getDimanche();
+        String lundi = provider.getLundi();
+        String mardi = provider.getMardi();
+        String mercredi = provider.getMercredi();
+        String jeudi = provider.getJeudi();
+        String vendredi = provider.getVendredi();
+
+        if(! samedi.equals("Samedi : DE - À")) {
+            availabilitiesList.add(samedi);
+        }
+
+        if(! dimanche.equals("Dimanche : DE - À")) {
+            availabilitiesList.add(dimanche);
+        }
+
+        if(! lundi.equals("Lundi : DE - À")) {
+            availabilitiesList.add(lundi);
+        }
+
+        if(! mardi.equals("Mardi : DE - À")) {
+            availabilitiesList.add(mardi);
+        }
+
+        if(! mercredi.equals("Mercredi : DE - À")) {
+            availabilitiesList.add(mercredi);
+        }
+
+        if(! jeudi.equals("Jeudi : DE - À")) {
+            availabilitiesList.add(jeudi);
+        }
+
+        if(! vendredi.equals("Vendredi : DE - À")) {
+            availabilitiesList.add(vendredi);
+        }
+
+
+        ListAdapter listAdapter1 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,availabilitiesList);
+        availabilities.setAdapter(listAdapter1);
+
+
+        services.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
@@ -91,6 +147,33 @@ public class ProviderProfil extends AppCompatActivity {
                 return true;
             }
         });
+
+
+
+        availabilities.setOnTouchListener(new ListView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+
+
+
 
     }
 
@@ -124,7 +207,11 @@ public class ProviderProfil extends AppCompatActivity {
 
     public void availabilitiesClick (View view){
 
-        startActivity( new Intent(getApplicationContext(), Availibilities.class));
+        Intent intent = new Intent(getApplicationContext(), Availibilities.class);
+
+        intent.putExtra("USERNAME", provider.getUsername());
+
+        startActivityForResult(intent, 0);
 
     }
 

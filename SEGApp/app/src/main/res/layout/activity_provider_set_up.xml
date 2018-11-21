@@ -23,10 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewPostalCode2"
         android:layout_alignEnd="@+id/province2"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:inputType="textPersonName"
-        android:maxLength="1"
         android:textSize="15sp" />
 
     <EditText
@@ -46,10 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewPostalCode2"
         android:layout_toEndOf="@+id/pc2"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:inputType="textPersonName"
-        android:maxLength="1"
         android:textSize="15sp" />
 
     <EditText
@@ -270,7 +268,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="INFORMATIONS PERSONNELLES"
+        android:text="DÉFINIR VOS INFORMATIONS PERSONNELLES"
         android:textColor="@color/blackGrey"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -282,9 +280,8 @@
         android:layout_alignBaseline="@+id/textViewPostalCode2"
         android:layout_alignParentStart="true"
         android:layout_marginStart="130dp"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:inputType="textPersonName"
-        android:maxLength="1"
         android:textSize="15sp" />
 </android.widget.RelativeLayout>

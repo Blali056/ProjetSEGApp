@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,6 +59,10 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
         pc5 = findViewById(R.id.pc5);
         pc6 = findViewById(R.id.pc6);
 
+        pc1.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1), new InputFilter.AllCaps()});
+        pc3.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1), new InputFilter.AllCaps()});
+        pc5.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1), new InputFilter.AllCaps()});
+
         company = findViewById(R.id.company2);
 
         yesLicence = findViewById(R.id.yesLicence);
@@ -99,7 +104,6 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
-                ((TextView) arg0.getChildAt(0)).setTextColor(Color.BLACK);
                 resetCity();
             }
 
@@ -191,7 +195,7 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
 
         else if ( !(province.getSelectedItem().toString()).equals("Choisir une province") && !(city.getSelectedItem().toString()).equals("Choisir une ville") && ! (city.getSelectedItem().toString()).equals("Aucune") && phone.getText().length() == 10){
 
-            Intent intent = new Intent(getApplicationContext(), ProviderProfil.class);
+            Intent intent = new Intent(getApplicationContext(), ProviderAvailabilitiesSetUp.class);
 
             // Passe le username à la prochaine activité
             String accountUsername = getIntent().getStringExtra("ACCOUNTUSERNAME");
