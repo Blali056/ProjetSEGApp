@@ -37,8 +37,6 @@ public class DeleteProviderService extends AppCompatActivity {
             while (service.moveToNext()) {
                 service_options.add(service.getString(2));
             }
-        }else {
-            service_options.add("Aucun service");
         }
 
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,service_options);
@@ -55,11 +53,7 @@ public class DeleteProviderService extends AppCompatActivity {
 
     public void deleteClick(View view){
 
-        if((serviceToDelete.getSelectedItem().toString()).equals("Aucun service")){
-            ((TextView)serviceToDelete.getChildAt(0)).setError("Aucun service à supprimé");
-        }
 
-        else {
             service= serviceToDelete.getSelectedItem().toString();
 
             ProviderService providerService = mydatabase.findProviderService(service);
@@ -75,9 +69,18 @@ public class DeleteProviderService extends AppCompatActivity {
             Toast.makeText(context, "Service supprimé",
                     Toast.LENGTH_SHORT).show();
 
-            startActivityForResult (intent,0);
+        intent.putExtra("SAMEDI",getIntent().getStringExtra("SAMEDI") );
+        intent.putExtra("DIMANCHE",getIntent().getStringExtra("DIMANCHE") );
+        intent.putExtra("LUNDI",getIntent().getStringExtra("LUNDI") );
+        intent.putExtra("MARDI",getIntent().getStringExtra("MARDI") );
+        intent.putExtra("MERCREDI",getIntent().getStringExtra("MERCREDI") );
+        intent.putExtra("JEUDI",getIntent().getStringExtra("JEUDI") );
+        intent.putExtra("VENDREDI",getIntent().getStringExtra("VENDREDI") );
 
-        }
+
+        startActivityForResult (intent,0);
+
+
 
 
 

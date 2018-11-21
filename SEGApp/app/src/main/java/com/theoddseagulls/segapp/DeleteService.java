@@ -20,7 +20,6 @@ public class DeleteService extends AppCompatActivity {
 
         serviceToDelete = (EditText) findViewById(R.id.servicedeleteET);
         mydatabase = new DB_handler(this);
-
     }
 
     public boolean serviceExist (){
