@@ -1,4 +1,6 @@
 # ProjetSEGApp
+Build Status
+[![Build Status](https://circleci.com/gh/Blali056/ProjetSEGApp.png?branch=master)](https://circleci.com/gh/Blali056/ProjetSEGApp)
 
 **Groupe :** The Odd Seagulls
 
