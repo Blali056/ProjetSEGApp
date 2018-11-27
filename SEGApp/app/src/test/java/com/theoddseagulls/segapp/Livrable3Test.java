@@ -12,14 +12,8 @@ public class Livrable3Test {
         assertEquals("Check the type of the Provider", "Fournisseur",  providerAccount.getType());
     }
     @Test
-    public void checkAddProviderAvailabilities() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "test@email.com",  anAdminAccount.getEmail());
-    }
-    @Test
-    public void checkProviderMandatoryFields() {
+    public void checkProviderPassword() {
         ProviderAccount providerAccount = new ProviderAccount("test@provider.com", "secret");
-        assertEquals("Check the type of the Provider", "Fournisseur",  providerAccount.getType());
+        assertEquals("Check the password of the Provider", "secret",  providerAccount.getPassword());
     }
 }
