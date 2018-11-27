@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 21;
+    private static final int DATABASE_VERSION = 22;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
@@ -25,6 +25,8 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_EMAIL= "email";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_USERNAME = "username";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_LASTNAME = "lastname";
     public static final String COLUMN_ADDRESS = "address";
     public static final String COLUMN_PHONE = "phone";
     public static final String COLUMN_COMPANY = "company";
@@ -71,6 +73,8 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_EMAIL + " TEXT," +
             COLUMN_PASSWORD + " TEXT," +
             COLUMN_USERNAME + " TEXT," +
+            COLUMN_NAME + " TEXT," +
+            COLUMN_LASTNAME + " TEXT," +
             COLUMN_TYPE + " TEXT," +
             COLUMN_ADDRESS + " TEXT," +
             COLUMN_PHONE + " TEXT," +
@@ -164,6 +168,8 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_EMAIL, user.getEmail());
         values.put(COLUMN_PASSWORD, user.getPassword());
         values.put(COLUMN_USERNAME, user.getUsername());
+        values.put(COLUMN_NAME, user.getName());
+        values.put(COLUMN_LASTNAME, user.getLastName());
         values.put(COLUMN_TYPE, user.getType());
         values.put(COLUMN_ADDRESS, user.getAddress());
         values.put(COLUMN_PHONE, user.getPhone());
@@ -180,6 +186,8 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_EMAIL, provider.getEmail());
         values.put(COLUMN_PASSWORD, provider.getPassword());
         values.put(COLUMN_USERNAME, provider.getUsername());
+        values.put(COLUMN_NAME, provider.getName());
+        values.put(COLUMN_LASTNAME, provider.getLastName());
         values.put(COLUMN_TYPE, provider.getType());
         values.put(COLUMN_ADDRESS, provider.getAddress());
         values.put(COLUMN_PHONE, provider.getPhone());
@@ -198,6 +206,8 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_EMAIL, admin.getEmail());
         values.put(COLUMN_PASSWORD, admin.getPassword());
         values.put(COLUMN_USERNAME, admin.getUsername());
+        values.put(COLUMN_NAME, admin.getName());
+        values.put(COLUMN_LASTNAME, admin.getLastName());
         values.put(COLUMN_TYPE, admin.getType());
 
         db.insert(TABLE_ACCOUNTS, null, values);
@@ -276,9 +286,11 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setEmail(cursor.getString(1));
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
-            account.setType(cursor.getString(4));
-            account.setAddress(cursor.getString(5));
-            account.setPhone(cursor.getString(6));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
+            account.setAddress(cursor.getString(7));
+            account.setPhone(cursor.getString(8));
 
             cursor.close();
         } else {
@@ -307,11 +319,13 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setEmail(cursor.getString(1));
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
-            account.setType(cursor.getString(4));
-            account.setAddress(cursor.getString(5));
-            account.setPhone(cursor.getString(6));
-            account.setCompany(cursor.getString(7));
-            account.setLicence(cursor.getString(8));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
+            account.setAddress(cursor.getString(7));
+            account.setPhone(cursor.getString(8));
+            account.setCompany(cursor.getString(9));
+            account.setLicence(cursor.getString(10));
 
             cursor.close();
         } else {
@@ -340,9 +354,14 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setEmail(cursor.getString(1));
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
-            account.setType(cursor.getString(4));
-            account.setAddress(cursor.getString(5));
-            account.setPhone(cursor.getString(6));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
+            account.setAddress(cursor.getString(7));
+            account.setPhone(cursor.getString(8));
+            account.setCompany(cursor.getString(9));
+            account.setLicence(cursor.getString(10));
+
 
 
             cursor.close();
@@ -374,11 +393,13 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setEmail(cursor.getString(1));
             account.setPassword(cursor.getString(2));
             account.setUsername(cursor.getString(3));
-            account.setType(cursor.getString(4));
-            account.setAddress(cursor.getString(5));
-            account.setPhone(cursor.getString(6));
-            account.setCompany(cursor.getString(7));
-            account.setLicence(cursor.getString(8));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
+            account.setAddress(cursor.getString(7));
+            account.setPhone(cursor.getString(8));
+            account.setCompany(cursor.getString(9));
+            account.setLicence(cursor.getString(10));
 
             cursor.close();
         } else {
