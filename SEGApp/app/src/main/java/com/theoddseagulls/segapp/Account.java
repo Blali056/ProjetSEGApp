@@ -9,8 +9,10 @@ public class Account {
     private String type;
     private String address;
     private String phone;
-    public String company;
-    public String licence;
+    private String company;
+    private String licence;
+    private String name;
+    private String lastName;
 
     public Account(){
 
@@ -97,5 +99,21 @@ public class Account {
 
     public int getId(){
         return id;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

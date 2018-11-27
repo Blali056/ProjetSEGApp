@@ -34,7 +34,14 @@
         <activity android:name=".ProviderSetUp" />
         <activity android:name=".DeleteProviderService" />
         <activity android:name=".ProviderAvailabilitiesSetUp" />
-        <activity android:name=".select_service"></activity>
+        <activity android:name=".select_service" />
+        <activity android:name=".UserProfil" />
+        <activity android:name=".SearchByService" />
+        <activity android:name=".SearchByProvider" />
+        <activity android:name=".SearchByRating" />
+        <activity android:name=".SearchByTime" />
+        <activity android:name=".ListOfService" />
+        <activity android:name=".FournisseurProfil"></activity>
     </application>
 
 </manifest>

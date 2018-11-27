@@ -75,6 +75,10 @@ public class WelcomeActivity extends AppCompatActivity {
                     }
 
                 }
+
+                if(type.equals("Utilisateur")){
+                    startActivity(new Intent(getApplicationContext(),UserProfil.class ));
+                }
             }
         });
 

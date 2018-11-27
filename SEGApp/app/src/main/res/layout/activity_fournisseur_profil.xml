@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProviderProfil">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FournisseurProfil"
+    android:id="@+id/drawerLayout">
 
 
 
@@ -20,6 +20,17 @@
             android:layout_height="900dp">
 
 
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_centerHorizontal="true"
+                android:text="TextView"
+                android:textColor="@color/blackGrey"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <ListView
                 android:id="@+id/availabilities"
                 android:layout_width="337dp"
@@ -27,45 +38,16 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/providerAvailablilities" />
 
-            <Button
-                android:id="@+id/editAvailabilities2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/availabilities"
-                android:layout_centerHorizontal="true"
-                android:onClick="availabilitiesClick"
-                android:text="Modifier les disponibilités" />
-
-            <Button
-                android:id="@+id/deleteService2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/servicesList"
-                android:layout_marginEnd="53dp"
-                android:onClick="deleteServiceClick"
-                android:text="SUPPRIMER" />
-
-            <Button
-                android:id="@+id/addService2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/servicesList"
-                android:layout_marginStart="62dp"
-                android:onClick="addServiceClick"
-                android:text="AJOUT" />
 
             <TextView
-                android:id="@+id/profilTitle"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="14dp"
-                android:text="Votre profil"
+                android:text="Profil du fournisseur"
                 android:textColor="@color/blackGrey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -180,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="296dp"
+                android:layout_marginTop="270dp"
                 android:text="Services Offerts"
                 android:textColor="@color/blackGrey"
                 android:textSize="17dp"
@@ -190,23 +172,14 @@
                 android:id="@+id/providerAvailablilities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/addService2"
+                android:layout_below="@+id/servicesList"
+                android:layout_marginTop="40dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
                 android:text="Disponibilités"
                 android:textColor="@color/blackGrey"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/editProfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="222dp"
-                android:onClick="editProfilClick"
-                android:text="Modifier le profil" />
 
             <ListView
                 android:id="@+id/servicesList"
@@ -219,4 +192,13 @@
         </RelativeLayout>
     </ScrollView>
 
-</android.widget.RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>
