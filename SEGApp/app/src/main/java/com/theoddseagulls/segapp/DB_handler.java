@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import java.util.ArrayList;
+
 
 
 public class DB_handler extends SQLiteOpenHelper{
@@ -16,6 +18,7 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String TABLE_SERVICE = "Services";
     public static final String TABLE_PROVIDERSERVICE = "ProviderService";
     public static final String TABLE_PROVIDER_AVAILABILITIES = "ProviderAvailabilities";
+    public static final String TABLE_PROVIDER_RATING ="ProviderRating ";
 
     // Table Accounts
     public static final String COLUMN_ACCOUNT_ID = "_id";
@@ -48,6 +51,17 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_MERCREDI = "Mercredi";
     public static final String COLUMN_JEUDI = "Jeudi";
     public static final String COLUMN_VENDREDI = "Vendredi";
+
+
+    // Table Provider Rating
+
+    // faire une table  Provide--- Rate
+    // add rate remove rate modify rate
+    public static final String COLUMN_PROVIDER_RATE_ID= "_id";
+    public static final String COLUMN_PROVIDER = "ProviderUserName";
+    public static final String COLUMN_RATE = "rate";
+
+
 
 
 
@@ -85,6 +99,11 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_MERCREDI + " TEXT," +
             COLUMN_JEUDI + " TEXT," +
             COLUMN_VENDREDI + " TEXT" + ")";
+    public static final String CREATE_PROVIDER_RATING_TABLE="CREATE TABLE "+
+            TABLE_PROVIDER_RATING + "("
+            + COLUMN_PROVIDER_RATE_ID+ " INTEGER PRIMARY KEY,"+ COLUMN_PROVIDER +"TEXT,"+
+            COLUMN_RATE+"DOUBLE"+")";
+
 
 
     public DB_handler(Context context){
@@ -98,6 +117,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_PROVIDERSERVICE_TABLE);
         db.execSQL(CREATE_PROVIDER_AVAILABILITIES_TABLE);
+        db.execSQL(CREATE_PROVIDER_RATING_TABLE);
     }
 
     @Override
@@ -106,9 +126,19 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_SERVICE);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDERSERVICE);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_AVAILABILITIES);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_RATING);
+
         onCreate(db);
     }
 
+    public void addProvider_rate(String provider,double rate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PROVIDER, provider);
+        values.put(COLUMN_RATE, rate);
+        db.insert(TABLE_PROVIDER_RATING,null ,values);
+
+    }
     public void addService(Service service){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -385,7 +415,31 @@ public class DB_handler extends SQLiteOpenHelper{
         return emailFound;
     }
 
+    // calculate the rate of a provider
+    
+    public Double find_provider_rate(String provider){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select  * FROM"
+                +TABLE_PROVIDER_RATING
+                +"WHERE"
+                +COLUMN_PROVIDER
+                + " = \""
+                +provider
+                +"\""
+                ;
+        Cursor cursor = db.rawQuery(query, null);
+        Double rate=0.0;
+        int count=0;
+        while(cursor.moveToFirst()){
+            rate=rate+cursor.getDouble(3);
+            count++;
+        }
+        if(count!=0){
+            rate=rate/count;
 
+        }
+        return rate;
+    }
     public String findUsername(String username){
         SQLiteDatabase db = this.getReadableDatabase();
 

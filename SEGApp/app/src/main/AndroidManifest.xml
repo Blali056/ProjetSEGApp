@@ -33,7 +33,8 @@
         <activity android:name=".Availibilities" />
         <activity android:name=".ProviderSetUp" />
         <activity android:name=".DeleteProviderService" />
-        <activity android:name=".ProviderAvailabilitiesSetUp"></activity>
+        <activity android:name=".ProviderAvailabilitiesSetUp" />
+        <activity android:name=".select_service"></activity>
     </application>
 
 </manifest>
