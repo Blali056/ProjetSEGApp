@@ -37,6 +37,8 @@ public class AddProviderService extends AppCompatActivity {
             while (service.moveToNext()) {
                 service_options.add(service.getString(1) + " - " + service.getString(2) + "$/heure");
             }
+        } else {
+            service_options.add("Aucun service");
         }
 
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,service_options);
@@ -58,11 +60,15 @@ public class AddProviderService extends AppCompatActivity {
 
     public void addClick(View view){
 
-        if(providerServiceExist() == true){
+        if(serviceName.getSelectedItem().toString().equals("Aucun service")){
+            ((TextView)serviceName.getChildAt(0)).setError("Aucun service");
+        }
+
+        else if(providerServiceExist() == true){
             ((TextView)serviceName.getChildAt(0)).setError("Service existant");
         }
 
-        else if(providerServiceExist() == false ){
+        else if(providerServiceExist() == false && !(serviceName.getSelectedItem().toString().equals("Aucun service"))){
             String service = serviceName.getSelectedItem().toString();
             ProviderService providerService = new ProviderService(provider.getUsername() , service);
             mydatabase.addProviderService(providerService);
@@ -75,14 +81,6 @@ public class AddProviderService extends AppCompatActivity {
 
             Toast.makeText(context, "Service ajouté",
                     Toast.LENGTH_SHORT).show();
-
-            intent.putExtra("SAMEDI",getIntent().getStringExtra("SAMEDI") );
-            intent.putExtra("DIMANCHE",getIntent().getStringExtra("DIMANCHE") );
-            intent.putExtra("LUNDI",getIntent().getStringExtra("LUNDI") );
-            intent.putExtra("MARDI",getIntent().getStringExtra("MARDI") );
-            intent.putExtra("MERCREDI",getIntent().getStringExtra("MERCREDI") );
-            intent.putExtra("JEUDI",getIntent().getStringExtra("JEUDI") );
-            intent.putExtra("VENDREDI",getIntent().getStringExtra("VENDREDI") );
 
             startActivityForResult(intent, 0);
 

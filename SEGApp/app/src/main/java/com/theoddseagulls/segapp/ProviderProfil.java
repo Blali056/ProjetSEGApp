@@ -28,7 +28,13 @@ public class ProviderProfil extends AppCompatActivity {
 
     private ListView availabilities;
 
-
+    private String samedi;
+    private String dimanche;
+    private String lundi;
+    private String mardi;
+    private String mercredi;
+    private String jeudi;
+    private String vendredi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +83,14 @@ public class ProviderProfil extends AppCompatActivity {
         availabilities = (ListView) findViewById(R.id.availabilities);
         ArrayList<String> availabilitiesList = new ArrayList<>();
 
-        String samedi = getIntent().getStringExtra("SAMEDI");
-        String dimanche = getIntent().getStringExtra("DIMANCHE");
-        String lundi = getIntent().getStringExtra("LUNDI");
-        String mardi = getIntent().getStringExtra("MARDI");
-        String mercredi = getIntent().getStringExtra("MERCREDI");
-        String jeudi = getIntent().getStringExtra("JEUDI");
-        String vendredi = getIntent().getStringExtra("VENDREDI");
+        samedi = myDataBase.findSamedi(providerUsername);
+        dimanche =  myDataBase.findDimanche(providerUsername);
+        lundi =  myDataBase.findLundi(providerUsername);
+        mardi = myDataBase.findMardi(providerUsername);
+        mercredi =  myDataBase.findMercredi(providerUsername);
+        jeudi =  myDataBase.findJeudi(providerUsername);
+        vendredi = myDataBase.findVendredi(providerUsername);
+
 
         if( samedi.indexOf("DE") <0 && samedi.indexOf("À") <0) {
             availabilitiesList.add(samedi);
@@ -203,15 +210,13 @@ public class ProviderProfil extends AppCompatActivity {
 
         intent.putExtra("USERNAME", provider.getUsername());
 
-        intent.putExtra("SAMEDI",getIntent().getStringExtra("SAMEDI") );
-        intent.putExtra("DIMANCHE",getIntent().getStringExtra("DIMANCHE") );
-        intent.putExtra("LUNDI",getIntent().getStringExtra("LUNDI") );
-        intent.putExtra("MARDI",getIntent().getStringExtra("MARDI") );
-        intent.putExtra("MERCREDI",getIntent().getStringExtra("MERCREDI") );
-        intent.putExtra("JEUDI",getIntent().getStringExtra("JEUDI") );
-        intent.putExtra("VENDREDI",getIntent().getStringExtra("VENDREDI") );
-
-
+        intent.putExtra("SAMEDI",samedi );
+        intent.putExtra("DIMANCHE",dimanche );
+        intent.putExtra("LUNDI",lundi);
+        intent.putExtra("MARDI",mardi);
+        intent.putExtra("MERCREDI",mercredi );
+        intent.putExtra("JEUDI",jeudi);
+        intent.putExtra("VENDREDI",vendredi);
 
         startActivityForResult(intent, 0);
 

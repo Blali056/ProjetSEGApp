@@ -7,7 +7,6 @@ package com.theoddseagulls.segapp;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
-        import android.widget.TextView;
         import android.widget.TimePicker;
 
 
@@ -30,15 +29,6 @@ public class ProviderAvailabilitiesSetUp extends AppCompatActivity implements Ti
     private Button jeuTo;
     private Button venFrom;
     private Button venTo;
-
-    private TextView samError;
-    private TextView dimError;
-    private TextView lunError;
-    private TextView marError;
-    private TextView merError;
-    private TextView jeuError;
-    private TextView venError;
-
 
     private static  DB_handler mydatabase;
 
@@ -72,14 +62,6 @@ public class ProviderAvailabilitiesSetUp extends AppCompatActivity implements Ti
 
         venFrom = findViewById(R.id.venFrom2);
         venTo = findViewById(R.id.venTo2);
-
-        samError = findViewById(R.id.samError);
-        dimError = findViewById(R.id.dimError);
-        lunError = findViewById(R.id.lunError);
-        marError = findViewById(R.id.marError);
-        merError = findViewById(R.id.merError);
-        jeuError = findViewById(R.id.jeuError);
-        venError = findViewById(R.id.venError);
 
     }
 
@@ -249,30 +231,37 @@ public class ProviderAvailabilitiesSetUp extends AppCompatActivity implements Ti
             String samedi = "Samedi : " + samFrom.getText() + " - " + samTo.getText();
             intent.putExtra("SAMEDI", samedi);
             provider.setSamedi(samedi);
+            mydatabase.updateSamedi(getIntent().getStringExtra("USERNAME"), samedi);
 
             String dimanche = "Dimanche : " + dimFrom.getText() + " - " + dimTo.getText();
             intent.putExtra("DIMANCHE", dimanche);
             provider.setDimanche(dimanche);
+            mydatabase.updateDimanche(getIntent().getStringExtra("USERNAME"), dimanche);
 
             String lundi = "Lundi : " + lunFrom.getText() + " - " + lunTo.getText();
             intent.putExtra("LUNDI", lundi);
             provider.setLundi(lundi);
+            mydatabase.updateLundi(getIntent().getStringExtra("USERNAME"), lundi);
 
             String mardi = "Mardi : " + marFrom.getText() + " - " + marTo.getText();
             intent.putExtra("MARDI", mardi);
             provider.setMardi(mardi);
+            mydatabase.updateMardi(getIntent().getStringExtra("USERNAME"), mardi);
 
             String mercredi = "Mercredi : " + merFrom.getText() + " - " + merTo.getText();
             intent.putExtra("MERCREDI", mercredi);
             provider.setMercredi(mercredi);
+            mydatabase.updateMercredi(getIntent().getStringExtra("USERNAME"), mercredi);
 
             String jeudi = "Jeudi : " + jeuFrom.getText() + " - " + jeuTo.getText();
             intent.putExtra("JEUDI", jeudi);
             provider.setJeudi(jeudi);
+            mydatabase.updateJeudi(getIntent().getStringExtra("USERNAME"), jeudi);
 
             String vendredi = "Vendredi : " + venFrom.getText() + " - " + venTo.getText();
             intent.putExtra("VENDREDI", vendredi);
             provider.setVendredi(vendredi);
+            mydatabase.updateVendredi(getIntent().getStringExtra("USERNAME"), vendredi);
 
             mydatabase.addProviderAvailabilities(provider);
 

@@ -10,7 +10,7 @@ import android.database.Cursor;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 18;
+    private static final int DATABASE_VERSION = 21;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
@@ -823,6 +823,190 @@ public class DB_handler extends SQLiteOpenHelper{
         return result;
     }
 
+
+    public String findSamedi(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String samedi = new String();
+
+        if(cursor.moveToFirst()){
+            samedi = cursor.getString(2);
+
+            cursor.close();
+        } else {
+            samedi = null;
+        }
+        db.close();
+        return samedi;
+    }
+
+    public String findDimanche(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String dimanche = new String();
+
+        if(cursor.moveToFirst()){
+            dimanche = cursor.getString(3);
+
+            cursor.close();
+        } else {
+            dimanche = null;
+        }
+        db.close();
+        return dimanche;
+    }
+
+    public String findLundi(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String lundi = new String();
+
+        if(cursor.moveToFirst()){
+            lundi = cursor.getString(4);
+
+            cursor.close();
+        } else {
+            lundi = null;
+        }
+        db.close();
+        return lundi;
+    }
+
+    public String findMardi(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String mardi = new String();
+
+        if(cursor.moveToFirst()){
+            mardi = cursor.getString(5);
+
+            cursor.close();
+        } else {
+            mardi = null;
+        }
+        db.close();
+        return mardi;
+    }
+
+
+    public String findMercredi(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String mercredi = new String();
+
+        if(cursor.moveToFirst()){
+            mercredi = cursor.getString(6);
+
+            cursor.close();
+        } else {
+            mercredi = null;
+        }
+        db.close();
+        return mercredi;
+    }
+
+
+    public String findJeudi(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String jeudi = new String();
+
+        if(cursor.moveToFirst()){
+            jeudi = cursor.getString(7);
+
+            cursor.close();
+        } else {
+            jeudi = null;
+        }
+        db.close();
+        return jeudi;
+    }
+
+    public String findVendredi(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_PROVIDER_AVAILABILITIES
+                + " WHERE "
+                + COLUMN_PROVIDER_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        String vendredi = new String();
+
+        if(cursor.moveToFirst()){
+            vendredi = cursor.getString(8);
+
+            cursor.close();
+        } else {
+            vendredi = null;
+        }
+        db.close();
+        return vendredi;
+    }
 
 
 
