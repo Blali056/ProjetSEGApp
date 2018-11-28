@@ -38,7 +38,8 @@
         android:layout_marginBottom="-159dp"
         android:text="Nom du service :"
         android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
-        android:textColor="@color/blackGrey" />
+        android:textColor="@color/blackGrey"
+        android:layout_alignLeft="@+id/serviceToDelete" />
 
     <EditText
         android:id="@+id/serviceToDelete"

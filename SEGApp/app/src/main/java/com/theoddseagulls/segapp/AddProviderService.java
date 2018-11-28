@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +39,8 @@ public class AddProviderService extends AppCompatActivity {
             while (service.moveToNext()) {
                 service_options.add(service.getString(1) + " - " + service.getString(2) + "$/heure");
             }
+        } else {
+            service_options.add("Aucun service");
         }
 
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,service_options);
@@ -49,20 +53,35 @@ public class AddProviderService extends AppCompatActivity {
 
 
     public boolean providerServiceExist(){
-        boolean exist = true;
-        ProviderService serviceInList = mydatabase.findProviderService(serviceName.getSelectedItem().toString());
-        if(serviceInList == null)
-            exist = false;
+        boolean exist = false;
+
+        Cursor providerservice = mydatabase.getProviderListContents();
+        if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
+            while(providerservice.moveToNext()) {
+                if((providerservice.getString(1).equals(provider.getUsername())) && (providerservice.getString(2).equals(serviceName.getSelectedItem().toString()))){
+                    exist = true;
+                    break;
+                }
+            }
+        }
+
         return exist;
+
+
+
     }
 
     public void addClick(View view){
 
-        if(providerServiceExist() == true){
+        if(serviceName.getSelectedItem().toString().equals("Aucun service")){
+            ((TextView)serviceName.getChildAt(0)).setError("Aucun service");
+        }
+
+        else if(providerServiceExist() == true){
             ((TextView)serviceName.getChildAt(0)).setError("Service existant");
         }
 
-        else if(providerServiceExist() == false ){
+        else if(providerServiceExist() == false && !(serviceName.getSelectedItem().toString().equals("Aucun service"))){
             String service = serviceName.getSelectedItem().toString();
             ProviderService providerService = new ProviderService(provider.getUsername() , service);
             mydatabase.addProviderService(providerService);
@@ -75,14 +94,6 @@ public class AddProviderService extends AppCompatActivity {
 
             Toast.makeText(context, "Service ajouté",
                     Toast.LENGTH_SHORT).show();
-
-            intent.putExtra("SAMEDI",getIntent().getStringExtra("SAMEDI") );
-            intent.putExtra("DIMANCHE",getIntent().getStringExtra("DIMANCHE") );
-            intent.putExtra("LUNDI",getIntent().getStringExtra("LUNDI") );
-            intent.putExtra("MARDI",getIntent().getStringExtra("MARDI") );
-            intent.putExtra("MERCREDI",getIntent().getStringExtra("MERCREDI") );
-            intent.putExtra("JEUDI",getIntent().getStringExtra("JEUDI") );
-            intent.putExtra("VENDREDI",getIntent().getStringExtra("VENDREDI") );
 
             startActivityForResult(intent, 0);
 

@@ -71,17 +71,13 @@ public class WelcomeActivity extends AppCompatActivity {
                         String accountUsername = getIntent().getStringExtra("USERNAME");
                         intent.putExtra("ACCOUNTUSERNAME", accountUsername);
 
-                        intent.putExtra("SAMEDI", " " );
-                        intent.putExtra("DIMANCHE"," " );
-                        intent.putExtra("LUNDI"," " );
-                        intent.putExtra("MARDI","" );
-                        intent.putExtra("MERCREDI","" );
-                        intent.putExtra("JEUDI", "" );
-                        intent.putExtra("VENDREDI","" );
-
                         startActivityForResult(intent, 0);
                     }
 
+                }
+
+                if(type.equals("Utilisateur")){
+                    startActivity(new Intent(getApplicationContext(),UserProfil.class ));
                 }
             }
         });

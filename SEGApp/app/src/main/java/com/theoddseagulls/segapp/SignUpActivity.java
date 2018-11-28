@@ -154,6 +154,8 @@ public class SignUpActivity extends AppCompatActivity {
 
             // Ouvre l'activite de bienvenu après l'inscription
             if (userBtn.isChecked()) {
+                user.setName(name.getText().toString());
+                user.setLastName(lastName.getText().toString());
                 user.setEmail(email.getText().toString());
                 user.setPassword(password.getText().toString());
                 user.setUsername(username.getText().toString());
@@ -161,6 +163,8 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             else if(providerBtn.isChecked()){
+                provider.setName(name.getText().toString());
+                provider.setLastName(lastName.getText().toString());
                 provider.setEmail(email.getText().toString());
                 provider.setPassword(password.getText().toString());
                 provider.setUsername(username.getText().toString());
@@ -169,7 +173,8 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             else if(adminNumberAccount == 0 && adminBtn.isChecked()){
-
+                    admin.setName(name.getText().toString());
+                    admin.setLastName(lastName.getText().toString());
                     admin.setEmail(email.getText().toString());
                     admin.setPassword(password.getText().toString());
                     admin.setUsername(username.getText().toString());
