@@ -11,6 +11,7 @@ public class ProviderAccount extends Account {
     private String mercredi;
     private String jeudi;
     private String vendredi;
+    private int rate;
 
 
     public ProviderAccount(){
@@ -85,5 +86,13 @@ public class ProviderAccount extends Account {
 
     public void setVendredi(String vendredi) {
         this.vendredi = vendredi;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 }

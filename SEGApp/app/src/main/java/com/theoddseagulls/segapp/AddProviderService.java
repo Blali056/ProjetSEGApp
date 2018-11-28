@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,11 +53,22 @@ public class AddProviderService extends AppCompatActivity {
 
 
     public boolean providerServiceExist(){
-        boolean exist = true;
-        ProviderService serviceInList = mydatabase.findProviderService(serviceName.getSelectedItem().toString());
-        if(serviceInList == null)
-            exist = false;
+        boolean exist = false;
+
+        Cursor providerservice = mydatabase.getProviderListContents();
+        if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
+            while(providerservice.moveToNext()) {
+                if((providerservice.getString(1).equals(provider.getUsername())) && (providerservice.getString(2).equals(serviceName.getSelectedItem().toString()))){
+                    exist = true;
+                    break;
+                }
+            }
+        }
+
         return exist;
+
+
+
     }
 
     public void addClick(View view){
