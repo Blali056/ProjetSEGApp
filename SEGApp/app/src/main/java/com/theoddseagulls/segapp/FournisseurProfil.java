@@ -34,6 +34,7 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
     private TextView licence;
     private TextView licenceTitle;
     private TextView title;
+    private TextView rate;
     private ListView availabilities;
 
     private String samedi;
@@ -68,6 +69,7 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
         licence = (TextView) findViewById(R.id.providerLicense);
         licenceTitle = (TextView) findViewById(R.id.license);
         title = (TextView) findViewById(R.id.title1);
+        rate= (TextView) findViewById(R.id.ProviderRating);
 
         mydatabase = new DB_handler(this);
 
@@ -80,6 +82,7 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
         company.setText(provider.getCompany());
         licence.setText(provider.getLicence());
         title.setText(provider.getName() + " " + provider.getLastName());
+        //rate.setText((mydatabase.find_provider_rate(provider.getEmail())));
 
         if(provider.getLicence() == null){
             licence.setAlpha(0.0f);
@@ -238,4 +241,19 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
         }
         return super.onOptionsItemSelected(item);
     }
-}
+    public void bookNowClick (View view){
+        Intent intent = new Intent(getApplicationContext(), book_now.class);
+
+        intent.putExtra("EMAIL", email.getText());
+
+        startActivityForResult(intent, 0);
+
+    }
+    public void  rateClick(View view){
+
+        Intent intent = new Intent(getApplicationContext(), rating.class);
+
+        intent.putExtra("EMAIL", email.getText());
+
+        startActivityForResult(intent, 0);
+    }}

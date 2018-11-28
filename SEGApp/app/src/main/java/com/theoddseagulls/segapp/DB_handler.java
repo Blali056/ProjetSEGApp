@@ -60,7 +60,7 @@ public class DB_handler extends SQLiteOpenHelper{
     // faire une table  Provide--- Rate
     // add rate remove rate modify rate
     public static final String COLUMN_PROVIDER_RATE_ID= "_id";
-    public static final String COLUMN_PROVIDER = "ProviderUserName";
+    public static final String COLUMN_PROVIDER = "ProviderEmail";
     public static final String COLUMN_RATE = "rate";
 
 
@@ -106,7 +106,7 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String CREATE_PROVIDER_RATING_TABLE="CREATE TABLE "+
             TABLE_PROVIDER_RATING + "("
             + COLUMN_PROVIDER_RATE_ID+ " INTEGER PRIMARY KEY,"+ COLUMN_PROVIDER +"TEXT,"+
-            COLUMN_RATE+"DOUBLE"+")";
+            COLUMN_RATE+"TEXT"+")";
 
 
 
@@ -135,12 +135,13 @@ public class DB_handler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void addProvider_rate(String provider,double rate){
+    public void addProvider_rate(String provider,String  rate){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PROVIDER, provider);
         values.put(COLUMN_RATE, rate);
         db.insert(TABLE_PROVIDER_RATING,null ,values);
+        db.close();
 
     }
     public void addService(Service service){
@@ -438,7 +439,7 @@ public class DB_handler extends SQLiteOpenHelper{
 
     // calculate the rate of a provider
     
-    public Double find_provider_rate(String provider){
+    public String find_provider_rate(String provider){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "Select  * FROM"
                 +TABLE_PROVIDER_RATING
@@ -451,15 +452,22 @@ public class DB_handler extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(query, null);
         Double rate=0.0;
         int count=0;
-        while(cursor.moveToFirst()){
-            rate=rate+cursor.getDouble(3);
-            count++;
-        }
-        if(count!=0){
-            rate=rate/count;
+        boolean flag= true;
+        if(cursor.moveToFirst()){
+            while(flag){
+                rate=rate+Double.parseDouble(cursor.getString(2));
+                count++;
+                if(!cursor.moveToNext()){
+                    flag=false;
 
+                }
+            }
         }
-        return rate;
+        else{
+            rate =0.0;
+        }
+
+        return rate.toString();
     }
     public String findUsername(String username){
         SQLiteDatabase db = this.getReadableDatabase();

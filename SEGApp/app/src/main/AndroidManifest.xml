@@ -41,7 +41,9 @@
         <activity android:name=".SearchByRating" />
         <activity android:name=".SearchByTime" />
         <activity android:name=".ListOfService" />
-        <activity android:name=".FournisseurProfil"></activity>
+        <activity android:name=".FournisseurProfil" />
+        <activity android:name=".book_now" />
+        <activity android:name=".rating"></activity>
     </application>
 
 </manifest>
