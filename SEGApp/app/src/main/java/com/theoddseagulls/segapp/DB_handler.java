@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 22;
+    private static final int DATABASE_VERSION = 27;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
@@ -103,10 +103,12 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_MERCREDI + " TEXT," +
             COLUMN_JEUDI + " TEXT," +
             COLUMN_VENDREDI + " TEXT" + ")";
+
     public static final String CREATE_PROVIDER_RATING_TABLE="CREATE TABLE "+
             TABLE_PROVIDER_RATING + "("
-            + COLUMN_PROVIDER_RATE_ID+ " INTEGER PRIMARY KEY,"+ COLUMN_PROVIDER +"TEXT,"+
-            COLUMN_RATE+"TEXT"+")";
+            + COLUMN_PROVIDER_RATE_ID+ " INTEGER PRIMARY KEY," +
+            COLUMN_PROVIDER +" TEXT,"+
+            COLUMN_RATE + " TEXT"+")";
 
 
 
@@ -135,11 +137,11 @@ public class DB_handler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void addProvider_rate(String provider,String  rate){
+    public void addProvider_rate(ProviderAccount provider){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PROVIDER, provider);
-        values.put(COLUMN_RATE, rate);
+        values.put(COLUMN_PROVIDER, provider.getEmail());
+        values.put(COLUMN_RATE, provider.getRate());
         db.insert(TABLE_PROVIDER_RATING,null ,values);
         db.close();
 
@@ -410,6 +412,78 @@ public class DB_handler extends SQLiteOpenHelper{
         return account;
     }
 
+    public ProviderAccount findProviderAccountByName(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_NAME
+                + " = \""
+                + name
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        ProviderAccount account = new ProviderAccount();
+
+        if(cursor.moveToFirst()){
+            account.setId(Integer.parseInt(cursor.getString(0)));
+            account.setEmail(cursor.getString(1));
+            account.setPassword(cursor.getString(2));
+            account.setUsername(cursor.getString(3));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
+            account.setAddress(cursor.getString(7));
+            account.setPhone(cursor.getString(8));
+            account.setCompany(cursor.getString(9));
+            account.setLicence(cursor.getString(10));
+
+            cursor.close();
+        } else {
+            account = null;
+        }
+        db.close();
+        return account;
+    }
+
+    public ProviderAccount findProviderAccountByEmail(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_EMAIL
+                + " = \""
+                + email
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        ProviderAccount account = new ProviderAccount();
+
+        if(cursor.moveToFirst()){
+            account.setId(Integer.parseInt(cursor.getString(0)));
+            account.setEmail(cursor.getString(1));
+            account.setPassword(cursor.getString(2));
+            account.setUsername(cursor.getString(3));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
+            account.setAddress(cursor.getString(7));
+            account.setPhone(cursor.getString(8));
+            account.setCompany(cursor.getString(9));
+            account.setLicence(cursor.getString(10));
+
+            cursor.close();
+        } else {
+            account = null;
+        }
+        db.close();
+        return account;
+    }
+
 
     public String findEmail(String email){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -441,13 +515,13 @@ public class DB_handler extends SQLiteOpenHelper{
     
     public String find_provider_rate(String provider){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "Select  * FROM"
-                +TABLE_PROVIDER_RATING
-                +"WHERE"
-                +COLUMN_PROVIDER
+        String query = "Select  * FROM "
+                + TABLE_PROVIDER_RATING
+                +" WHERE "
+                + COLUMN_PROVIDER
                 + " = \""
-                +provider
-                +"\""
+                + provider
+                + "\""
                 ;
         Cursor cursor = db.rawQuery(query, null);
         Double rate=0.0;
@@ -464,7 +538,7 @@ public class DB_handler extends SQLiteOpenHelper{
             }
         }
         else{
-            rate =0.0;
+            rate = 0.0;
         }
 
         return rate.toString();
@@ -598,6 +672,13 @@ public class DB_handler extends SQLiteOpenHelper{
     public Cursor getProviderListContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_PROVIDERSERVICE, null);
+        return cursor;
+    }
+
+
+    public Cursor getProviderRateContents(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_PROVIDER_RATING, null);
         return cursor;
     }
 

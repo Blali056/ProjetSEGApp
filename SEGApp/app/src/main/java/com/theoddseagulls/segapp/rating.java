@@ -28,18 +28,25 @@ public class rating extends AppCompatActivity {
     public void rateItClick(View view) {
 
         if (rate_it_editText.getText().length() == 0) {
-            rate_it_editText.setError("Entrez une evaluation");
+            rate_it_editText.setError("Entrez une évaluation");
         } else if (Double.parseDouble(rate_it_editText.getText().toString()) < 0 || Double.parseDouble(rate_it_editText.getText().toString()) > 5) {
-            rate_it_editText.setError("Une evaluation est entre 0 et 5");
+            rate_it_editText.setError("Une évaluation est entre 0 et 5");
         } else {
             String providerEmail = getIntent().getStringExtra("EMAIL");
-            provider= providerEmail;
-            rate = rate_it_editText.getText().toString();
-            mydatabase.addProvider_rate(provider, rate);
+            ProviderAccount providerAccount = mydatabase.findProviderAccountByEmail(providerEmail);
+            int rate = Integer.parseInt(rate_it_editText.getText().toString());
+            providerAccount.setRate(rate);
+            mydatabase.addProvider_rate(providerAccount);
             Context context = getApplicationContext();
-            Toast.makeText(context, "rating  ajouté", Toast.LENGTH_SHORT).show();
-           // Intent intent = new Intent(getApplicationContext(), FournisseurProfil.class);
-           // startActivityForResult(intent, 0);
+            Toast.makeText(context, "Évaluation  ajouté", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), FournisseurProfil.class);
+
+            intent.putExtra("USERNAME", providerAccount.getUsername());
+
+            startActivityForResult(intent, 0);
+
+
+
 
 
         }

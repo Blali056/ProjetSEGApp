@@ -82,7 +82,11 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
         company.setText(provider.getCompany());
         licence.setText(provider.getLicence());
         title.setText(provider.getName() + " " + provider.getLastName());
-        //rate.setText((mydatabase.find_provider_rate(provider.getEmail())));
+
+        Cursor providerRate = mydatabase.getProviderRateContents();
+        if(providerRate.getCount() != 0) {       //S'il y a des rates dans la base de donnee
+            rate.setText((mydatabase.find_provider_rate(provider.getEmail())));
+        }
 
         if(provider.getLicence() == null){
             licence.setAlpha(0.0f);

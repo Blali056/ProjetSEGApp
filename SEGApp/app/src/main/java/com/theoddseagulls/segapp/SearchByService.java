@@ -25,6 +25,7 @@ public class SearchByService extends AppCompatActivity implements NavigationView
 
     private Spinner serviceName;
     private static  DB_handler mydatabase;
+    private ListView providersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class SearchByService extends AppCompatActivity implements NavigationView
 
     public void searchClick(View view){
 
-        ListView providers = (ListView) findViewById(R.id.providerList);
+        providersList = (ListView) findViewById(R.id.providerList);
         ArrayList<String> providerList = new ArrayList<>();
         Cursor providerservice = mydatabase.getProviderListContents();
         if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
@@ -115,25 +116,29 @@ public class SearchByService extends AppCompatActivity implements NavigationView
                     ProviderAccount p = mydatabase.findUsernameProviderAccount(providerservice.getString(1));
                     providerList.add(p.getName() + " " + p.getLastName());
                     ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
-                    providers.setAdapter(listAdapter);
+                    providersList.setAdapter(listAdapter);
                 }
             }
         }
 
-        providers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        providersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Intent intent = new Intent(getApplicationContext(), FournisseurProfil.class);
 
-                ProviderService service = mydatabase.findProviderService(serviceName.getSelectedItem().toString());
-                // Passe le username à la prochaine activité
-                String username = (service.getProviderName());
-                intent.putExtra("USERNAME", username);
+                String fullName = (String) providersList.getItemAtPosition(position);
+
+                String[] parts = fullName.split(" ");
+                String name = parts[0];
+
+                ProviderAccount providerSelected = mydatabase.findProviderAccountByName(name);
+
+                intent.putExtra("USERNAME", providerSelected.getUsername());
 
                 startActivityForResult(intent, 0);
             }
         });
+
     }
 
 }
