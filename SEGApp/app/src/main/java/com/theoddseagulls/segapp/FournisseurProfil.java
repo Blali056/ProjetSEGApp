@@ -249,6 +249,9 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
         Intent intent = new Intent(getApplicationContext(), book_now.class);
 
         intent.putExtra("EMAIL", email.getText());
+        String providerUsername = getIntent().getStringExtra("USERNAME");
+
+        intent.putExtra("USERNAME",providerUsername);
 
         startActivityForResult(intent, 0);
 

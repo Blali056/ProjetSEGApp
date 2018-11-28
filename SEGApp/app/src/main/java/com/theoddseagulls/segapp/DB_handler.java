@@ -536,6 +536,7 @@ public class DB_handler extends SQLiteOpenHelper{
 
                 }
             }
+            rate=rate/count;
         }
         else{
             rate = 0.0;
@@ -668,6 +669,7 @@ public class DB_handler extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_SERVICE, null);
         return cursor;
     }
+
 
     public Cursor getProviderListContents(){
         SQLiteDatabase db = this.getWritableDatabase();

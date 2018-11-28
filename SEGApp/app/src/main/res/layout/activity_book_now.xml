@@ -13,9 +13,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginTop="119dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         tools:layout_editor_absoluteX="106dp"
         tools:layout_editor_absoluteY="122dp" />
 
@@ -41,6 +41,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="197dp"
+        android:onClick="bookNow"
         android:text="Book now "
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="241dp" />
