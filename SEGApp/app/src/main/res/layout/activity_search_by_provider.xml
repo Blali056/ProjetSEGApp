@@ -23,6 +23,16 @@
             android:textColor="@color/blackGrey"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/providerList2"
+            android:layout_width="360dp"
+            android:layout_height="259dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="102dp" />
+
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

@@ -1,6 +1,7 @@
 package com.theoddseagulls.segapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,11 +9,18 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class SearchByProvider extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
+    private ListView providers;
+    private static  DB_handler mydatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,17 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
 
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
+
+        providers = (ListView) findViewById(R.id.providerListRate);
+        ArrayList<String> providerList = new ArrayList<>();
+        Cursor providerservice = mydatabase.getProviderListContents();
+        if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
+            while(providerservice.moveToNext()) {
+                providerList.add(providerservice.getString(2));
+                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                providers.setAdapter(listAdapter);}
+
+        }
 
     }
 

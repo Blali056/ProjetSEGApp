@@ -1,6 +1,7 @@
 package com.theoddseagulls.segapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,16 +9,26 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class SearchByRating extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
+    private ListView providers;
+    private static  DB_handler mydatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by_rating);
+
 
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         toggle = new ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close );
@@ -29,6 +40,10 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
 
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
+
+
+
+
 
     }
 
@@ -73,4 +88,22 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
         return super.onOptionsItemSelected(item);
     }
 
-}
+    public void showProviserClick(View view){
+        providers = (ListView) findViewById(R.id.providerList);
+        ArrayList<String> providerList = new ArrayList<>();
+        Cursor providerRate = mydatabase.getProviderRateContents();
+            if(providerRate.getCount() != 0) {
+                while(providerRate.moveToNext()) {
+
+                    ProviderAccount p = mydatabase.findUsernameProviderAccount(providerRate.getString(1));
+                    String rate=  mydatabase.find_provider_rate(p.getUsername());
+                    providerList.add(p.getName() + " " + p.getLastName()+"          "+rate);
+                    ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                    providers.setAdapter(listAdapter);
+                }
+            }//S'il y a des services dans la base de donnee
+
+            }
+    }
+
+

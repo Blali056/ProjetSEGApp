@@ -85,7 +85,7 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
 
         Cursor providerRate = mydatabase.getProviderRateContents();
         if(providerRate.getCount() != 0) {       //S'il y a des rates dans la base de donnee
-            rate.setText((mydatabase.find_provider_rate(provider.getEmail())));
+            rate.setText((mydatabase.find_provider_rate(provider.getUsername())));
         }
 
         if(provider.getLicence() == null){
@@ -261,6 +261,9 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
         Intent intent = new Intent(getApplicationContext(), rating.class);
 
         intent.putExtra("EMAIL", email.getText());
+        String providerUsername = getIntent().getStringExtra("USERNAME");
+
+        intent.putExtra("USERNAME",providerUsername);
 
         startActivityForResult(intent, 0);
     }}

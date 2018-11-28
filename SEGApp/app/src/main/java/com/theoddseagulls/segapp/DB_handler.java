@@ -140,7 +140,7 @@ public class DB_handler extends SQLiteOpenHelper{
     public void addProvider_rate(ProviderAccount provider){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PROVIDER, provider.getEmail());
+        values.put(COLUMN_PROVIDER, provider.getUsername());
         values.put(COLUMN_RATE, provider.getRate());
         db.insert(TABLE_PROVIDER_RATING,null ,values);
         db.close();
