@@ -102,24 +102,30 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
         ArrayList<String> providerList = new ArrayList<>();
         Cursor provider = mydatabase.getProviderListContents();
         double rate ;
+        ArrayList<String> providerUserName = new ArrayList<>();
 
 
-     if(provider.getCount()!=0){
+
+        if(provider.getCount()!=0){
             while(provider.moveToNext()){
 
                 ProviderAccount p = mydatabase.findUsernameProviderAccount(provider.getString(1));
-                if(mydatabase.find_provider_rate(p.getUsername())!=null){
-                    rate=Double.parseDouble(mydatabase.find_provider_rate(p.getUsername()));
-                    providerList.add(p.getUsername() + "          rate: "+ rate);
+                if(providerUserName.indexOf(p.getUsername())==-1){
+                    providerUserName.add(p.getUsername());
+                    if(mydatabase.find_provider_rate(p.getUsername())!=null){
+                        rate=Double.parseDouble(mydatabase.find_provider_rate(p.getUsername()));
+                        providerList.add(p.getUsername() + "          rate: "+ rate);
 
-                   ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
-                    providers.setAdapter(listAdapter);
+                        ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                        providers.setAdapter(listAdapter);
 
-               }
-               else{
-                    providerList.add(p.getUsername() + "          rate: not Rated  ");
-                    ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
-                    providers.setAdapter(listAdapter);
+                    }
+                    else{
+                        providerList.add(p.getUsername() + "          rate: not Rated  ");
+                        ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                        providers.setAdapter(listAdapter);
+                    }
+
                 }
 
 

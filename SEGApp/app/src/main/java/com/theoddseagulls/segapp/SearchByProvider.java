@@ -88,18 +88,23 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
     public void SearchByProviderClick(View view){
         ArrayList<String> providerList = new ArrayList<>();
         Cursor provider = mydatabase.getProviderListContents();
+        ArrayList<String> providerUserName = new ArrayList<>();
+
 
 
         if(provider.getCount()!=0){
-            while(provider.moveToNext()){
+
+            while(provider.moveToNext()) {
 
                 ProviderAccount p = mydatabase.findUsernameProviderAccount(provider.getString(1));
+                if (providerUserName.indexOf(p.getUsername()) == -1) {
+                    providerUserName.add(p.getUsername());
                     providerList.add(p.getUsername());
-                    ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                    ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, providerList);
                     providers.setAdapter(listAdapter);
 
                 }
-
+            }
 
 
             }
