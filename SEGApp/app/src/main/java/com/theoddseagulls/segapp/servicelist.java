@@ -15,6 +15,7 @@ public class servicelist extends AppCompatActivity {
 
     private DB_handler my_database;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
