@@ -2,7 +2,9 @@ package com.theoddseagulls.segapp;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -40,6 +43,11 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
 
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
+        providers = (ListView) findViewById(R.id.providerListRate);
+        mydatabase = new DB_handler(this);
+
+
+
 
 
 
@@ -88,22 +96,61 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
         return super.onOptionsItemSelected(item);
     }
 
-    public void showProviserClick(View view){
-        providers = (ListView) findViewById(R.id.providerList);
-        ArrayList<String> providerList = new ArrayList<>();
-        Cursor providerRate = mydatabase.getProviderRateContents();
-            if(providerRate.getCount() != 0) {
-                while(providerRate.moveToNext()) {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void showProviderClick(View view){
 
-                    ProviderAccount p = mydatabase.findUsernameProviderAccount(providerRate.getString(1));
-                    String rate=  mydatabase.find_provider_rate(p.getUsername());
-                    providerList.add(p.getName() + " " + p.getLastName()+"          "+rate);
+        ArrayList<String> providerList = new ArrayList<>();
+        Cursor provider = mydatabase.getProviderListContents();
+        double rate ;
+
+
+     if(provider.getCount()!=0){
+            while(provider.moveToNext()){
+
+                ProviderAccount p = mydatabase.findUsernameProviderAccount(provider.getString(1));
+                if(mydatabase.find_provider_rate(p.getUsername())!=null){
+                    rate=Double.parseDouble(mydatabase.find_provider_rate(p.getUsername()));
+                    providerList.add(p.getUsername() + "          rate: "+ rate);
+
+                   ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                    providers.setAdapter(listAdapter);
+
+               }
+               else{
+                    providerList.add(p.getUsername() + "          rate: not Rated  ");
                     ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                     providers.setAdapter(listAdapter);
                 }
-            }//S'il y a des services dans la base de donnee
 
+
+                }
+
+
+                }
+
+
+        providers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), FournisseurProfil.class);
+
+                String fullName = (String) providers.getItemAtPosition(position);
+
+                String[] parts = fullName.split(" ");
+                String userName = parts[0];
+
+                ProviderAccount providerSelected = mydatabase.findUsernameProviderAccount(userName);
+
+                intent.putExtra("USERNAME", providerSelected.getUsername());
+
+                startActivityForResult(intent, 0);
             }
+        });
+
+
+
+
+    }
     }
 
 

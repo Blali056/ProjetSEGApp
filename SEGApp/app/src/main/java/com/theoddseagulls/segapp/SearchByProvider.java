@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -38,16 +40,8 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
 
-        providers = (ListView) findViewById(R.id.providerListRate);
-        ArrayList<String> providerList = new ArrayList<>();
-        Cursor providerservice = mydatabase.getProviderListContents();
-        if(providerservice.getCount() != 0){       //S'il y a des services dans la base de donnee
-            while(providerservice.moveToNext()) {
-                providerList.add(providerservice.getString(2));
-                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
-                providers.setAdapter(listAdapter);}
-
-        }
+        providers = (ListView) findViewById(R.id.providerList2);
+        mydatabase = new DB_handler(this);
 
     }
 
@@ -91,5 +85,46 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
         }
         return super.onOptionsItemSelected(item);
     }
+    public void SearchByProviderClick(View view){
+        ArrayList<String> providerList = new ArrayList<>();
+        Cursor provider = mydatabase.getProviderListContents();
+
+
+        if(provider.getCount()!=0){
+            while(provider.moveToNext()){
+
+                ProviderAccount p = mydatabase.findUsernameProviderAccount(provider.getString(1));
+                    providerList.add(p.getUsername());
+                    ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
+                    providers.setAdapter(listAdapter);
+
+                }
+
+
+
+            }
+        providers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), FournisseurProfil.class);
+
+                String userName = (String) providers.getItemAtPosition(position);
+
+
+
+                ProviderAccount providerSelected = mydatabase.findUsernameProviderAccount(userName);
+
+                intent.putExtra("USERNAME", providerSelected.getUsername());
+
+                startActivityForResult(intent, 0);
+            }
+        });
+
+
+        }
+
+
 
 }
+
+
