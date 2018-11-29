@@ -12,10 +12,10 @@
         android:title="Recherche par fournisseur"/>
 
     <item android:id="@+id/byRating"
-        android:title="Recherche par rating"/>
+        android:title="Recherche par côte de service"/>
 
     <item android:id="@+id/byTime"
-        android:title="Recherche par heures"/>
+        android:title="Recherche par temps"/>
 
     <item android:id="@+id/listOfServices"
         android:title="Liste des services"/>

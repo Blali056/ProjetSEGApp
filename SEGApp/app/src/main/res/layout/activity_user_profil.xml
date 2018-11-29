@@ -13,12 +13,23 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/rdvTitle"
+            android:layout_toEndOf="@+id/title00"
+            android:text="Aucun rendez-vous"
+            android:textColor="@color/blackGrey"
+            android:textSize="17sp" />
+
+        <TextView
             android:id="@+id/rdvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="120dp"
-            android:layout_toStartOf="@+id/title00"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="119dp"
             android:text="Vos rendez-vous"
             android:textColor="@color/blackGrey"
             android:textSize="17sp"
@@ -35,6 +46,13 @@
             android:textColor="@color/blackGrey"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/rdvList"
+            android:layout_width="match_parent"
+            android:layout_height="365dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

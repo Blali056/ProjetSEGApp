@@ -12,13 +12,14 @@ import java.util.ArrayList;
 public class DB_handler extends SQLiteOpenHelper{
 
 
-    private static final int DATABASE_VERSION = 27;
+    private static final int DATABASE_VERSION = 31;
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";
     public static final String TABLE_PROVIDERSERVICE = "ProviderService";
     public static final String TABLE_PROVIDER_AVAILABILITIES = "ProviderAvailabilities";
     public static final String TABLE_PROVIDER_RATING ="ProviderRating ";
+    public static final String TABLE_USER_APPOINTMENT ="UserAppointment";
 
     // Table Accounts
     public static final String COLUMN_ACCOUNT_ID = "_id";
@@ -54,7 +55,6 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_JEUDI = "Jeudi";
     public static final String COLUMN_VENDREDI = "Vendredi";
 
-
     // Table Provider Rating
 
     // faire une table  Provide--- Rate
@@ -64,7 +64,11 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_RATE = "rate";
 
 
-
+    // Table UserAppointment
+    public static final String COLUMN_APPOINTMENT_ID = "_id";
+    public static final String COLUMN_USER_USERNAME = "UserUsername";
+    public static final String COLUMN_NAME_PROVIDER = "ProviderFullName";
+    public static final String COLUMN_BOOKING = "Booking";
 
 
     public static final String CREATE_ACCOUNTS_TABLE = "CREATE TABLE " +
@@ -111,6 +115,14 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_RATE + " TEXT"+")";
 
 
+    public static final String CREATE_USER_APPOINTMENT_TABLE = "CREATE TABLE " +
+            TABLE_USER_APPOINTMENT + "("
+            + COLUMN_APPOINTMENT_ID + " INTEGER PRIMARY KEY," +
+            COLUMN_USER_USERNAME + " TEXT," +
+            COLUMN_NAME_PROVIDER + " TEXT," +
+            COLUMN_BOOKING + " TEXT" + ")";
+
+
 
     public DB_handler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -124,6 +136,8 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL(CREATE_PROVIDERSERVICE_TABLE);
         db.execSQL(CREATE_PROVIDER_AVAILABILITIES_TABLE);
         db.execSQL(CREATE_PROVIDER_RATING_TABLE);
+        db.execSQL(CREATE_USER_APPOINTMENT_TABLE);
+
     }
 
     @Override
@@ -133,8 +147,19 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDERSERVICE);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_AVAILABILITIES);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_RATING);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER_APPOINTMENT);
 
         onCreate(db);
+    }
+
+    public void addAppointment(UserAccount user, String providerName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_USERNAME, user.getUsername());
+        values.put(COLUMN_NAME_PROVIDER, providerName);
+        values.put(COLUMN_BOOKING, user.getAppointment());
+        db.insert(TABLE_USER_APPOINTMENT, null, values);
+        db.close();
     }
 
     public void addProvider_rate(ProviderAccount provider){
@@ -292,8 +317,6 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setName(cursor.getString(4));
             account.setLastName(cursor.getString(5));
             account.setType(cursor.getString(6));
-            account.setAddress(cursor.getString(7));
-            account.setPhone(cursor.getString(8));
 
             cursor.close();
         } else {
@@ -360,12 +383,39 @@ public class DB_handler extends SQLiteOpenHelper{
             account.setName(cursor.getString(4));
             account.setLastName(cursor.getString(5));
             account.setType(cursor.getString(6));
-            account.setAddress(cursor.getString(7));
-            account.setPhone(cursor.getString(8));
-            account.setCompany(cursor.getString(9));
-            account.setLicence(cursor.getString(10));
+
+            cursor.close();
+        } else {
+            account = null;
+        }
+        db.close();
+        return account;
+    }
 
 
+    public UserAccount findUserAccountByUsername(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "Select * FROM "
+                + TABLE_ACCOUNTS
+                + " WHERE "
+                + COLUMN_USERNAME
+                + " = \""
+                + username
+                + "\""
+                ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        UserAccount account = new UserAccount();
+
+        if(cursor.moveToFirst()){
+            account.setId(Integer.parseInt(cursor.getString(0)));
+            account.setEmail(cursor.getString(1));
+            account.setPassword(cursor.getString(2));
+            account.setUsername(cursor.getString(3));
+            account.setName(cursor.getString(4));
+            account.setLastName(cursor.getString(5));
+            account.setType(cursor.getString(6));
 
             cursor.close();
         } else {
@@ -681,6 +731,12 @@ public class DB_handler extends SQLiteOpenHelper{
     public Cursor getProviderRateContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_PROVIDER_RATING, null);
+        return cursor;
+    }
+
+    public Cursor getUserAppointment(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(" SELECT * FROM " + TABLE_USER_APPOINTMENT, null);
         return cursor;
     }
 
@@ -1173,7 +1229,5 @@ public class DB_handler extends SQLiteOpenHelper{
         db.close();
         return vendredi;
     }
-
-
 
 }

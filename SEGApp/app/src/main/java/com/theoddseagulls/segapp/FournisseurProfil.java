@@ -253,6 +253,9 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
 
         intent.putExtra("USERNAME",providerUsername);
 
+        String userUsername = getIntent().getStringExtra("USERNAMEUSER");
+        intent.putExtra("USER", userUsername);
+
         startActivityForResult(intent, 0);
 
     }

@@ -17,7 +17,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="900dp">
+            android:layout_height="800dp">
 
 
             <TextView
@@ -66,7 +66,7 @@
                 android:id="@+id/providerEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/providerPhone"
+                android:layout_alignStart="@+id/providerAvailablilities"
                 android:layout_alignTop="@+id/email"
                 android:text="TextView"
                 android:textColor="@color/blackGrey"
@@ -108,7 +108,7 @@
                 android:id="@+id/providerPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/providerCompany"
+                android:layout_alignStart="@+id/providerEmail"
                 android:layout_alignTop="@+id/phone"
                 android:text="TextView"
                 android:textColor="@color/blackGrey"
@@ -129,9 +129,8 @@
                 android:id="@+id/providerCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+                android:layout_alignStart="@+id/providerEmail"
                 android:layout_alignTop="@+id/company"
-                android:layout_marginStart="123dp"
                 android:text="TextView"
                 android:textColor="@color/blackGrey"
                 android:textSize="15sp" />
@@ -173,8 +172,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/servicesList"
-                android:layout_marginTop="40dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
                 android:text="Disponibilités"
                 android:textColor="@color/blackGrey"
                 android:textSize="17sp"
@@ -193,35 +192,27 @@
                 android:id="@+id/bookNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/email"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="76dp"
+                android:layout_alignStart="@+id/email"
                 android:onClick="bookNowClick"
-                android:text="book now " />
+                android:text="Prendre un rendez-vous" />
 
             <Button
                 android:id="@+id/rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="73dp"
-                android:layout_marginRight="73dp"
-                android:layout_marginBottom="11dp"
+                android:layout_toEndOf="@+id/providerServices"
                 android:onClick="rateClick"
-                android:text="Rate" />
+                android:text="Évaluer" />
 
             <TextView
                 android:id="@+id/ProviderRating"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/title"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="129dp"
-                android:layout_marginStart="129dp"
-                android:layout_marginTop="220dp"
+                android:layout_marginTop="218dp"
                 android:text="Aucune"
                 android:textColor="@color/blackGrey"
                 android:textSize="15sp" />
@@ -230,11 +221,9 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/address"
+                android:layout_alignStart="@+id/email"
                 android:layout_alignTop="@+id/ProviderRating"
-                android:layout_marginEnd="-9dp"
-                android:layout_marginTop="2dp"
-                android:text="Évaluation:"
+                android:text="Côte de service :"
                 android:textColor="@color/blackGrey" />
 
         </RelativeLayout>

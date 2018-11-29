@@ -77,7 +77,13 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
 
                 if(type.equals("Utilisateur")){
-                    startActivity(new Intent(getApplicationContext(),UserProfil.class ));
+                    Intent intent = new Intent(getApplicationContext(), UserProfil.class);
+
+                    // Passe le username à la prochaine activité
+                    String accountUsername = getIntent().getStringExtra("USERNAME");
+                    intent.putExtra("USERNAMEUSER", accountUsername);
+
+                    startActivityForResult(intent, 0);
                 }
             }
         });

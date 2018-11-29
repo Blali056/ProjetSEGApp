@@ -1,5 +1,7 @@
 package com.theoddseagulls.segapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,8 @@ public class book_now extends AppCompatActivity {
     private String mercredi;
     private String jeudi;
     private String vendredi;
+    private String providerUsername;
+    private UserAccount user;
 
 
 
@@ -31,7 +36,7 @@ public class book_now extends AppCompatActivity {
         setContentView(R.layout.activity_book_now);
         availibilities= findViewById(R.id.Availabilities);
         mydatabase = new DB_handler(this);
-        String providerUsername = getIntent().getStringExtra("USERNAME");
+        providerUsername = getIntent().getStringExtra("USERNAME");
 
         ArrayList<String> availabilitiesList = new ArrayList<>();
 
@@ -42,6 +47,8 @@ public class book_now extends AppCompatActivity {
         mercredi =  mydatabase.findMercredi(providerUsername);
         jeudi =  mydatabase.findJeudi(providerUsername);
         vendredi = mydatabase.findVendredi(providerUsername);
+
+        user = mydatabase.findUserAccountByUsername(getIntent().getStringExtra("USER"));
 
 
         if( samedi.indexOf("DE") <0 && samedi.indexOf("À") <0) {
@@ -71,8 +78,9 @@ public class book_now extends AppCompatActivity {
         if(vendredi.indexOf("DE") <0 && vendredi.indexOf("À") <0) {
             availabilitiesList.add(vendredi);
         }
-        else{
-            availabilitiesList.add("NO Availabilities ");
+        else if ( (samedi.indexOf("DE") >0) && (samedi.indexOf("À") >0) && (dimanche.indexOf("DE") >0) && (dimanche.indexOf("À") >0) && (lundi.indexOf("DE") > 0) && (lundi.indexOf("À") > 0) && (mardi.indexOf("DE") >0) && (mardi.indexOf("À") >0) && (mercredi.indexOf("DE") > 0) && (mercredi.indexOf("À") >0) && (jeudi.indexOf("DE") >0) && (jeudi.indexOf("À") >0) && (vendredi.indexOf("DE") >0) && (vendredi.indexOf("À") >0)){
+
+            availabilitiesList.add("Aucun disponibilité");
         }
 
 
@@ -81,8 +89,70 @@ public class book_now extends AppCompatActivity {
 
     }
     public void bookNow(View view){
-        if(availibilities.getSelectedItem().toString().equals("NO Availabilities")){
-            ((TextView)availibilities.getChildAt(0)).setError("NO Availabilities");
+        if(availibilities.getSelectedItem().toString().equals("Aucun disponibilité")){
+            ((TextView)availibilities.getChildAt(0)).setError("Aucun disponibilité");
+        }
+
+        else {
+            String selected = availibilities.getSelectedItem().toString();
+
+            ProviderAccount provider = mydatabase.findUsernameProviderAccount(providerUsername);
+            String providerFullName = provider.getName() + " " + provider.getLastName();
+
+            user.setAppointment(selected);
+            mydatabase.addAppointment(user, providerFullName);
+
+            String[] parts = selected.split(" ");
+            String day = parts[0];
+
+            if(day.equals("Samedi")){
+                String samedi = "Samedi : DE - À";
+                mydatabase.updateSamedi(providerUsername, samedi);
+            }
+
+            if(day.equals("Dimanche")){
+                String dimanche = "Dimanche : DE - À";
+                mydatabase.updateDimanche(providerUsername, dimanche);
+            }
+
+            if(day.equals("Lundi")){
+                String lundi = "Lundi : DE - À";
+                mydatabase.updateLundi(providerUsername, lundi);
+            }
+
+            if(day.equals("Mardi")){
+                String mardi = "Mardi : DE - À";
+                mydatabase.updateMardi(providerUsername, mardi);
+            }
+
+            if(day.equals("Mercredi")){
+                String mercredi = "Mercredi : DE - À";
+                mydatabase.updateMercredi(providerUsername, mercredi);
+            }
+
+            if(day.equals("Jeudi")){
+                String jeudi = "Jeudi : DE - À";
+                mydatabase.updateJeudi(providerUsername, jeudi);
+            }
+
+            if(day.equals("Vendredi")){
+                String vendredi = "Vendredi : DE - À";
+                mydatabase.updateVendredi(providerUsername,vendredi);
+            }
+
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Rendez-vous pris", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getApplicationContext(), UserProfil.class);
+
+            intent.putExtra("PROVIDERNAME", providerFullName);
+
+            String accountUsername = getIntent().getStringExtra("USER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
+
+
         }
 
     }
