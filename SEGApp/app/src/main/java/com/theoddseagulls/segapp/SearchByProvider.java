@@ -70,9 +70,7 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(getApplicationContext(),SearchByTime.class ));
         }
 
-        if(id == R.id.listOfServices){
-            startActivity(new Intent(getApplicationContext(),ListOfService.class ));
-        }
+
 
         return true;
     }

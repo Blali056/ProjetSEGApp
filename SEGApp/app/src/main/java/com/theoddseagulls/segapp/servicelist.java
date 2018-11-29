@@ -14,6 +14,7 @@ import java.util.Currency;
 public class servicelist extends AppCompatActivity {
 
     private DB_handler my_database;
+    private ListView ServiceList;
 
 
     @Override

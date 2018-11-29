@@ -57,9 +57,7 @@ public class ListOfService extends AppCompatActivity implements NavigationView.O
             startActivity(new Intent(getApplicationContext(),SearchByTime.class ));
         }
 
-        if(id == R.id.listOfServices){
-            startActivity(new Intent(getApplicationContext(),ListOfService.class ));
-        }
+
 
         return true;
     }

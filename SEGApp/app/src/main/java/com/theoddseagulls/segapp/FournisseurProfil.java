@@ -230,9 +230,7 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
             startActivity(new Intent(getApplicationContext(), SearchByTime.class));
         }
 
-        if (id == R.id.listOfServices) {
-            startActivity(new Intent(getApplicationContext(), ListOfService.class));
-        }
+
 
         return true;
     }

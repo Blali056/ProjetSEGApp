@@ -57,9 +57,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(getApplicationContext(),SearchByTime.class ));
         }
 
-        if(id == R.id.listOfServices){
-            startActivity(new Intent(getApplicationContext(),ListOfService.class ));
-        }
+
 
         return true;
     }
