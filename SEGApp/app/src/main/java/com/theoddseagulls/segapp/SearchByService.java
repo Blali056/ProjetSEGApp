@@ -117,7 +117,7 @@ public class SearchByService extends AppCompatActivity implements NavigationView
                     providerList.add(p.getName() + " " + p.getLastName());
                     ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                     providersList.setAdapter(listAdapter);
-                }
+            }
             }
         }
 
