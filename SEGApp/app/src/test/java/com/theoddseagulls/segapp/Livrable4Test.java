@@ -7,63 +7,56 @@ public class Livrable4Test {
 
     //To complete (10 tests)
     @Test
-    public void checkRateService() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "test@email.com",  anAdminAccount.getEmail());
+    public void checkBooking() {
+        UserAccount userAccount = new UserAccount("email", "password");
+        userAccount.setAppointment("appointment");
+        assertEquals("Check User Booking", "Fournisseur",  userAccount.getAppointment());
     }
     @Test
-    public void checkSearchProvider() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "test@email.com",  anAdminAccount.getEmail());
+    public void checkRate() {
+        ProviderAccount providerAccount = new ProviderAccount("email", "password");
+        providerAccount.setRate(2);
+        assertEquals("Check Provider Rate", 2,  providerAccount.getRate());
     }
     @Test
-    public void checkBookService() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "test@email.com",  anAdminAccount.getEmail());
+    public void checkTauxHoraire() {
+        Service service = new Service("serviceName", 120);
+        service.setTauxHoraire(200);
+        assertEquals("Check ServiceTauxHoraire", 200,  service.getTauxHoraire());
     }
-    @Test
-    public void checkPasswordEncryption() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkServiceName() {
+        Service service = new Service("serviceName", 120);
+        service.setService("newServiceName");
+        assertEquals("Check ServiceName", "serviceName",  service.getService());
     }
-    @Test
-    public void checkTest5() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkServiceId() {
+        Service service = new Service("serviceName", 120);
+        service.setId(1);
+        assertEquals("Check ServiceId", 1,  service.getId());
     }
-    @Test
-    public void checkTest6() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkProviderDay1() {
+        ProviderAccount provider = new ProviderAccount("providerAccount", "provider");
+        provider.setLundi("test");
+        assertEquals("Check ServiceId", "test",  provider.getLundi());
     }
-    @Test
-    public void checkTest7() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkProviderDay2() {
+        ProviderAccount provider = new ProviderAccount("providerAccount", "provider");
+        provider.setMardi("test");
+        assertEquals("Check ServiceId", "test",  provider.getMardi());
     }
-    @Test
-    public void checkTest8() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkProviderDay3() {
+        ProviderAccount provider = new ProviderAccount("providerAccount", "provider");
+        provider.setMercredi("test");
+        assertEquals("Check ServiceId", "test",  provider.getMercredi());
     }
-    @Test
-    public void checkTest9() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkProviderDay4() {
+        ProviderAccount provider = new ProviderAccount("providerAccount", "provider");
+        provider.setJeudi("test");
+        assertEquals("Check ServiceId", "test",  provider.getJeudi());
     }
-    @Test
-    public void checkTest10() {
-        AdminAccount.getTheaccount("test@email.com", "secret");
-        Account anAdminAccount = AdminAccount.getTheaccount();
-        assertEquals("Check the email of the admin", "secret",  anAdminAccount.getPassword());
+    public void checkProviderDay5() {
+        ProviderAccount provider = new ProviderAccount("providerAccount", "provider");
+        provider.setVendredi("test");
+        assertEquals("Check ServiceId", "test",  provider.getVendredi());
     }
 }
