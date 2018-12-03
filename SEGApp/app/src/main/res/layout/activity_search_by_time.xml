@@ -51,6 +51,7 @@
             android:layout_alignEnd="@+id/title00"
             android:layout_alignParentTop="true"
             android:layout_marginTop="154dp"
+            android:onClick="OnClickSearch"
             android:text="rechercher" />
 
     </RelativeLayout>

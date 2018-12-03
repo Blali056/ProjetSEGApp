@@ -48,8 +48,8 @@ public class SearchByService extends AppCompatActivity implements NavigationView
         serviceName = findViewById(R.id.service);
 
         ArrayList<String> service_options =new ArrayList<>();
-        Cursor service = mydatabase.getListContents();
 
+        Cursor service = mydatabase.getListContents();
 
         if(service.getCount() != 0) {       //S'il y a des services dans la base de donnee
             while (service.moveToNext()) {
@@ -70,26 +70,54 @@ public class SearchByService extends AppCompatActivity implements NavigationView
         int id = menuItem.getItemId();
 
         if(id == R.id.profil){
-            startActivity(new Intent(getApplicationContext(),UserProfil.class ));
+            Intent intent = new Intent(getApplicationContext(), UserProfil.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byService){
-            startActivity(new Intent(getApplicationContext(),SearchByService.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByService.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byProvider){
-            startActivity(new Intent(getApplicationContext(),SearchByProvider.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByProvider.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byRating){
-            startActivity(new Intent(getApplicationContext(),SearchByRating.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByRating.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byTime){
-            startActivity(new Intent(getApplicationContext(),SearchByTime.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByTime.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
-
-
 
         return true;
     }
@@ -115,7 +143,7 @@ public class SearchByService extends AppCompatActivity implements NavigationView
                     providerList.add(p.getName() + " " + p.getLastName());
                     ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                     providersList.setAdapter(listAdapter);
-            }
+                }
             }
         }
 
