@@ -136,11 +136,9 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
     public void OnClickSearch(View view) {
         providersList = (ListView) findViewById(R.id.providerListJour);
-<<<<<<< HEAD
-       
-=======
+
         providersList.setAdapter(null);
->>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
+
         ArrayList<String> providerList = new ArrayList<>();
         providerList.clear();
         Cursor providerAvailabilities = mydatabase.getListAvailabilities();
@@ -156,7 +154,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 if (dayOfTheWeek.getSelectedItem().toString().equals("Samedi")) {
                     if(samedi.indexOf("DE") <0 && samedi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+samedi);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
                     }
@@ -167,7 +165,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Dimanche")) {
                     if(dimanche.indexOf("DE") <0 && dimanche.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+dimanche);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
 
@@ -177,7 +175,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Lundi")) {
                     if(lundi.indexOf("DE") <0 && lundi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+lundi);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
 
@@ -187,7 +185,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Mardi")) {
                     if(mardi.indexOf("DE") <0 && mardi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+mardi);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
 
@@ -197,35 +195,31 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Mercredi")) {
                     if(mercredi.indexOf("DE") <0 && mercredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+mercredi);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
 
                     }
 
                 }
-<<<<<<< HEAD
+
                  else if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
-=======
-                else if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
->>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
+
                     if(jeudi.indexOf("DE") <0 && jeudi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+jeudi);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
 
                     }
 
                 }
-<<<<<<< HEAD
-                else   {
-=======
+
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Vendredi")) {
->>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
+
                     if(vendredi.indexOf("DE") <0 && vendredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
-                        providerList.add(p.getName() + " " + p.getLastName());
+                        providerList.add(p.getName() + " " + p.getLastName() + "  "+vendredi);
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
 
@@ -233,15 +227,6 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 }
 
 
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
             }
         }
         providersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
