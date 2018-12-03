@@ -33,7 +33,6 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
     private String jeudi;
     private String vendredi;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +61,8 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
         days.add("Dimanche");
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,days);
         dayOfTheWeek.setAdapter(Adapter);
-
-
-
+        
+        mydatabase = new DB_handler(this);
 
     }
 
@@ -138,7 +136,11 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
     public void OnClickSearch(View view) {
         providersList = (ListView) findViewById(R.id.providerListJour);
+<<<<<<< HEAD
        
+=======
+        providersList.setAdapter(null);
+>>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
         ArrayList<String> providerList = new ArrayList<>();
         providerList.clear();
         Cursor providerAvailabilities = mydatabase.getListAvailabilities();
@@ -157,7 +159,6 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                         providerList.add(p.getName() + " " + p.getLastName());
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
-
                     }
 
 
@@ -203,7 +204,11 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
+<<<<<<< HEAD
                  else if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
+=======
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
+>>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
                     if(jeudi.indexOf("DE") <0 && jeudi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -213,7 +218,11 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
+<<<<<<< HEAD
                 else   {
+=======
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Vendredi")) {
+>>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
                     if(vendredi.indexOf("DE") <0 && vendredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -221,7 +230,6 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                         providersList.setAdapter(listAdapter);
 
                     }
-
                 }
 
 
@@ -230,6 +238,10 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd969c82e9c2da0df4bc2eaf0b5914d6ed4e176d
             }
         }
         providersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

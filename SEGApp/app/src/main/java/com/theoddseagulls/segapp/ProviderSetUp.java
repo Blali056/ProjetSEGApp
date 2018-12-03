@@ -189,7 +189,7 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
             ((TextView)city.getChildAt(0)).setError("Choisissez une ville");
         }
 
-        if( company.getText().length() == 0){
+        if( company.getText().length() == 0 /*&& ((company.getText()).charAt(0)).equals(' ')*/){
             company.setError("Entrez une compagnie");
         }
 
