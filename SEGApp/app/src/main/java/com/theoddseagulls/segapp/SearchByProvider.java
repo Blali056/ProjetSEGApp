@@ -51,26 +51,54 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
         int id = menuItem.getItemId();
 
         if(id == R.id.profil){
-            startActivity(new Intent(getApplicationContext(),UserProfil.class ));
+            Intent intent = new Intent(getApplicationContext(), UserProfil.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byService){
-            startActivity(new Intent(getApplicationContext(),SearchByService.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByService.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byProvider){
-            startActivity(new Intent(getApplicationContext(),SearchByProvider.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByProvider.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byRating){
-            startActivity(new Intent(getApplicationContext(),SearchByRating.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByRating.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byTime){
-            startActivity(new Intent(getApplicationContext(),SearchByTime.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByTime.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
-
-
 
         return true;
     }
@@ -88,8 +116,6 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
         Cursor provider = mydatabase.getProviderListContents();
         ArrayList<String> providerUserName = new ArrayList<>();
 
-
-
         if(provider.getCount()!=0){
 
             while(provider.moveToNext()) {
@@ -100,7 +126,6 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
                     providerList.add(p.getUsername());
                     ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, providerList);
                     providers.setAdapter(listAdapter);
-
                 }
             }
 
@@ -113,11 +138,12 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
 
                 String userName = (String) providers.getItemAtPosition(position);
 
-
-
                 ProviderAccount providerSelected = mydatabase.findUsernameProviderAccount(userName);
 
                 intent.putExtra("USERNAME", providerSelected.getUsername());
+
+                String userUsername = getIntent().getStringExtra("USERNAMEUSER");
+                intent.putExtra("USERNAMEUSER", userUsername );
 
                 startActivityForResult(intent, 0);
             }
