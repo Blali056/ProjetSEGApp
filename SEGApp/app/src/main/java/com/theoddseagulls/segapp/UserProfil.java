@@ -25,6 +25,7 @@ public class UserProfil extends AppCompatActivity implements NavigationView.OnNa
     private static DB_handler mydatabase;
     private TextView none;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

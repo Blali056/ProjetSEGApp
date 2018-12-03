@@ -12,16 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewService"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/service"
-            android:layout_toStartOf="@+id/service"
-            android:text="Service :"
-            android:textColor="@color/blackGrey"
-            android:textSize="15sp" />
-
         <Spinner
             android:id="@+id/service"
             android:layout_width="234dp"

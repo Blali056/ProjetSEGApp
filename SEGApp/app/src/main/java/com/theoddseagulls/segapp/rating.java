@@ -10,9 +10,11 @@ import android.widget.Toast;
 
 public class rating extends AppCompatActivity {
     private EditText rate_it_editText;
+    private EditText comment_it_editText;
     private static DB_handler mydatabase;
     private String rate;
     private String provider;
+    private String comment ;
 
 
     @Override
@@ -20,6 +22,7 @@ public class rating extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
         rate_it_editText = (EditText) findViewById(R.id.rate_it_editText);
+        comment_it_editText =(EditText) findViewById(R.id.comment_it_editText2);
         mydatabase = new DB_handler(this);
 
 
@@ -29,8 +32,12 @@ public class rating extends AppCompatActivity {
 
         if (rate_it_editText.getText().length() == 0) {
             rate_it_editText.setError("Entrez une évaluation");
-        } else if (Double.parseDouble(rate_it_editText.getText().toString()) < 0 || Double.parseDouble(rate_it_editText.getText().toString()) > 5) {
+        } else if (Double.parseDouble(rate_it_editText.getText().toString()) < 1 || Double.parseDouble(rate_it_editText.getText().toString()) > 5) {
             rate_it_editText.setError("Une évaluation est entre 0 et 5");
+
+        } else if(comment_it_editText.getText().length() == 0){
+            comment_it_editText.setError("Entrez un Commentaire");
+
         } else {
             String providerEmail = getIntent().getStringExtra("EMAIL");
             ProviderAccount providerAccount = mydatabase.findProviderAccountByEmail(providerEmail);
