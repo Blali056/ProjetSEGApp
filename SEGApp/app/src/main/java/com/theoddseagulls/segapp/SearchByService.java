@@ -160,7 +160,7 @@ public class SearchByService extends AppCompatActivity implements NavigationView
                 ProviderAccount providerSelected = mydatabase.findProviderAccountByName(name);
                 intent.putExtra("USERNAME", providerSelected.getUsername());
 
-                String userUsername = getIntent().getStringExtra("UUSERNAME");
+                String userUsername = getIntent().getStringExtra("USERNAMEUSER");
                 intent.putExtra("USERNAMEUSER", userUsername );
 
                 startActivityForResult(intent, 0);

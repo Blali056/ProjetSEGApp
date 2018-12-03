@@ -29,7 +29,6 @@ public class book_now extends AppCompatActivity {
     private UserAccount user;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +47,7 @@ public class book_now extends AppCompatActivity {
         jeudi =  mydatabase.findJeudi(providerUsername);
         vendredi = mydatabase.findVendredi(providerUsername);
 
-        user = mydatabase.findUserAccountByUsername(getIntent().getStringExtra("USER"));
-
+        user = mydatabase.findUserAccountByUsername(getIntent().getStringExtra("USERNAMEUSER"));
 
         if( samedi.indexOf("DE") <0 && samedi.indexOf("À") <0) {
             availabilitiesList.add(samedi);
@@ -147,7 +145,7 @@ public class book_now extends AppCompatActivity {
 
             intent.putExtra("PROVIDERNAME", providerFullName);
 
-            String accountUsername = getIntent().getStringExtra("USER");
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
             intent.putExtra("USERNAMEUSER", accountUsername);
 
             startActivityForResult(intent, 0);

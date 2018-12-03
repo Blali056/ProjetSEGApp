@@ -19,7 +19,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="43dp"
-            android:text="provider search"
+            android:text="Recherche par fournisseur"
             android:textColor="@color/blackGrey"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -41,7 +41,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="93dp"
             android:onClick="SearchByProviderClick"
-            android:text="search by provider " />
+            android:text="Rechercher" />
 
     </RelativeLayout>
 

@@ -73,7 +73,13 @@ public class UserProfil extends AppCompatActivity implements NavigationView.OnNa
         int id = menuItem.getItemId();
 
         if(id == R.id.profil){
-            startActivity(new Intent(getApplicationContext(),UserProfil.class));
+            Intent intent = new Intent(getApplicationContext(), UserProfil.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byService){
@@ -81,24 +87,40 @@ public class UserProfil extends AppCompatActivity implements NavigationView.OnNa
 
             // Passe le username à la prochaine activité
             String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
-            intent.putExtra("UUSERNAME", accountUsername);
+            intent.putExtra("USERNAMEUSER", accountUsername);
 
             startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byProvider){
-            startActivity(new Intent(getApplicationContext(),SearchByProvider.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByProvider.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byRating){
-            startActivity(new Intent(getApplicationContext(),SearchByRating.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByRating.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
         if(id == R.id.byTime){
-            startActivity(new Intent(getApplicationContext(),SearchByTime.class ));
+            Intent intent = new Intent(getApplicationContext(), SearchByTime.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
-
-
 
         return true;
     }
