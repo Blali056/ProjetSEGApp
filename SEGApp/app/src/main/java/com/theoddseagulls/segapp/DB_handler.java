@@ -11,12 +11,8 @@ import java.util.ArrayList;
 
 public class DB_handler extends SQLiteOpenHelper{
 
-
-<<<<<<< HEAD
     private static final int DATABASE_VERSION = 42;
-=======
-    private static final int DATABASE_VERSION = 40;
->>>>>>> 7ddb04548e976a32cd54670da03f9adc34df17f0
+
     private static final String DATABASE_NAME = "accountRegistereds.db";
     public static final String TABLE_ACCOUNTS = "Accounts";
     public static final String TABLE_SERVICE = "Services";

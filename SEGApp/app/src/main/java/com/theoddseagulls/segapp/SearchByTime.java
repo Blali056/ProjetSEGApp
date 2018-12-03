@@ -33,7 +33,6 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
     private String jeudi;
     private String vendredi;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +59,8 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
         days.add("Dimanche");
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,days);
         dayOfTheWeek.setAdapter(Adapter);
-
-
-
+        
+        mydatabase = new DB_handler(this);
 
     }
 
@@ -136,6 +134,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
     public void OnClickSearch(View view) {
         providersList = (ListView) findViewById(R.id.providerListJour);
+        providersList.setAdapter(null);
         ArrayList<String> providerList = new ArrayList<>();
         Cursor providerAvailabilities = mydatabase.getListAvailabilities();
         if (providerAvailabilities.getCount() != 0) {
@@ -153,12 +152,11 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                         providerList.add(p.getName() + " " + p.getLastName());
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providersList.setAdapter(listAdapter);
-
                     }
 
                 }
 
-                if (dayOfTheWeek.getSelectedItem().toString().equals("Dimanche")) {
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Dimanche")) {
                     if(dimanche.indexOf("DE") <0 && dimanche.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -168,7 +166,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
-                if (dayOfTheWeek.getSelectedItem().toString().equals("Lundi")) {
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Lundi")) {
                     if(lundi.indexOf("DE") <0 && lundi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -178,7 +176,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
-                if (dayOfTheWeek.getSelectedItem().toString().equals("Mardi")) {
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Mardi")) {
                     if(mardi.indexOf("DE") <0 && mardi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -188,7 +186,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
-                if (dayOfTheWeek.getSelectedItem().toString().equals("Mercredi")) {
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Mercredi")) {
                     if(mercredi.indexOf("DE") <0 && mercredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -198,7 +196,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
-                if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
                     if(jeudi.indexOf("DE") <0 && jeudi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -208,7 +206,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                     }
 
                 }
-                if (dayOfTheWeek.getSelectedItem().toString().equals("Vendredi")) {
+                else if (dayOfTheWeek.getSelectedItem().toString().equals("Vendredi")) {
                     if(vendredi.indexOf("DE") <0 && vendredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName());
@@ -216,8 +214,9 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                         providersList.setAdapter(listAdapter);
 
                     }
-
                 }
+
+
 
 
 
