@@ -20,6 +20,8 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String TABLE_PROVIDER_AVAILABILITIES = "ProviderAvailabilities";
     public static final String TABLE_PROVIDER_RATING ="ProviderRating ";
     public static final String TABLE_USER_APPOINTMENT ="UserAppointment";
+    public static final String TABLE_USER_AVAILABILITIES = "UserAvailabilities";
+
 
     // Table Accounts
     public static final String COLUMN_ACCOUNT_ID = "_id";
@@ -55,13 +57,19 @@ public class DB_handler extends SQLiteOpenHelper{
     public static final String COLUMN_JEUDI = "Jeudi";
     public static final String COLUMN_VENDREDI = "Vendredi";
 
+    // Table User Availabilities
+    public static final String COLUMN_USER_AVAILABILITIES_ID = "_id";
+
+
     // Table Provider Rating
 
     // faire une table  Provide--- Rate
     // add rate remove rate modify rate
     public static final String COLUMN_PROVIDER_RATE_ID= "_id";
     public static final String COLUMN_PROVIDER = "ProviderEmail";
-    public static final String COLUMN_RATE = "rate";
+    public static final String COLUMN_RATE = "Rate";
+    public static final String COLUMN_COMMENT = "Comment";
+
 
 
     // Table UserAppointment
@@ -108,11 +116,25 @@ public class DB_handler extends SQLiteOpenHelper{
             COLUMN_JEUDI + " TEXT," +
             COLUMN_VENDREDI + " TEXT" + ")";
 
+    public static final String CREATE_USER_AVAILABILITIES_TABLE = "CREATE TABLE " +
+            TABLE_USER_AVAILABILITIES + "("
+            + COLUMN_USER_AVAILABILITIES_ID + " INTEGER PRIMARY KEY," +
+            COLUMN_USER_USERNAME + " TEXT," +
+            COLUMN_SAMEDI + " TEXT," +
+            COLUMN_DIMANCHE + " TEXT," +
+            COLUMN_LUNDI + " TEXT," +
+            COLUMN_MARDI + " TEXT," +
+            COLUMN_MERCREDI + " TEXT," +
+            COLUMN_JEUDI + " TEXT," +
+            COLUMN_VENDREDI + " TEXT" + ")";
+
+
+
     public static final String CREATE_PROVIDER_RATING_TABLE="CREATE TABLE "+
             TABLE_PROVIDER_RATING + "("
             + COLUMN_PROVIDER_RATE_ID+ " INTEGER PRIMARY KEY," +
             COLUMN_PROVIDER +" TEXT,"+
-            COLUMN_RATE + " TEXT"+")";
+            COLUMN_RATE + " TEXT, "+ COLUMN_COMMENT + "TEXT "+")";
 
 
     public static final String CREATE_USER_APPOINTMENT_TABLE = "CREATE TABLE " +
@@ -137,6 +159,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL(CREATE_PROVIDER_AVAILABILITIES_TABLE);
         db.execSQL(CREATE_PROVIDER_RATING_TABLE);
         db.execSQL(CREATE_USER_APPOINTMENT_TABLE);
+        db.execSQL(CREATE_USER_AVAILABILITIES_TABLE);
 
     }
 
@@ -148,6 +171,7 @@ public class DB_handler extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_AVAILABILITIES);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_PROVIDER_RATING);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER_APPOINTMENT);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_USER_APPOINTMENT);
 
         onCreate(db);
     }
@@ -859,6 +883,22 @@ public class DB_handler extends SQLiteOpenHelper{
         values.put(COLUMN_VENDREDI, provider.getVendredi());
 
         db.insert(TABLE_PROVIDER_AVAILABILITIES, null, values);
+        db.close();
+    }
+    public void addUserAvailabilities(UserAccount user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_USERNAME, user.getUsername());
+        values.put(COLUMN_SAMEDI, user.getSamedi());
+        values.put(COLUMN_DIMANCHE, user.getDimanche());
+        values.put(COLUMN_LUNDI, user.getLundi());
+        values.put(COLUMN_MARDI, user.getMardi());
+        values.put(COLUMN_MERCREDI, user.getMercredi());
+        values.put(COLUMN_JEUDI, user.getJeudi());
+        values.put(COLUMN_VENDREDI, user.getVendredi());
+
+        db.insert(TABLE_USER_AVAILABILITIES, null, values);
         db.close();
     }
 

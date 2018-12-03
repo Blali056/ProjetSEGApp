@@ -48,8 +48,8 @@ public class SearchByService extends AppCompatActivity implements NavigationView
         serviceName = findViewById(R.id.service);
 
         ArrayList<String> service_options =new ArrayList<>();
-
         Cursor service = mydatabase.getListContents();
+
 
         if(service.getCount() != 0) {       //S'il y a des services dans la base de donnee
             while (service.moveToNext()) {

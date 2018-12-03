@@ -12,6 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ListView
+            android:id="@+id/providerListJour"
+            android:layout_width="360dp"
+            android:layout_height="259dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="37dp" />
+
+        <Spinner
+            android:id="@+id/days"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="101dp"
+            android:layout_marginEnd="73dp"
+            android:layout_marginRight="73dp" />
+
         <TextView
             android:id="@+id/title00"
             android:layout_width="wrap_content"
@@ -23,6 +43,16 @@
             android:textColor="@color/blackGrey"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/search2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/title00"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="154dp"
+            android:text="rechercher" />
+
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

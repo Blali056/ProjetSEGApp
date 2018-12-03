@@ -1,6 +1,7 @@
 package com.theoddseagulls.segapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,11 +9,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class SearchByTime extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
+    private Spinner dayOfTheWeek;
+    private static  DB_handler mydatabase;
+    private ListView providersList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,21 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
+        dayOfTheWeek= findViewById(R.id.days);
+        ArrayList<String> days =new ArrayList<>();
+        Cursor provider = mydatabase.getProviderListContents();
+        if(provider.getCount() != 0) {       //S'il y a des services dans la base de donnee
+            while (provider.moveToNext()) {
+                service_options.add(service.getString(1) + " - " + service.getString(2) + "$/heure");
+            }
+        } else {
+            service_options.add("Aucun service");
+        }
+
+        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,service_options);
+        serviceName.setAdapter(Adapter);
+
+
 
     }
 
