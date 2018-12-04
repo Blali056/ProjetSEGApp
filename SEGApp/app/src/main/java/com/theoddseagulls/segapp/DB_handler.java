@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 
@@ -223,7 +225,11 @@ public class DB_handler extends SQLiteOpenHelper{
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_EMAIL, user.getEmail());
-        values.put(COLUMN_PASSWORD, user.getPassword());
+        try {
+            values.put(COLUMN_PASSWORD, Sha1.hash(user.getPassword()));
+        }catch (UnsupportedEncodingException e) {
+            System.out.println("EncodingError");
+        }
         values.put(COLUMN_USERNAME, user.getUsername());
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_LASTNAME, user.getLastName());
@@ -241,7 +247,11 @@ public class DB_handler extends SQLiteOpenHelper{
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_EMAIL, provider.getEmail());
-        values.put(COLUMN_PASSWORD, provider.getPassword());
+        try {
+            values.put(COLUMN_PASSWORD, Sha1.hash(provider.getPassword()));
+        }catch (UnsupportedEncodingException e) {
+            System.out.println("EncodingError");
+        }
         values.put(COLUMN_USERNAME, provider.getUsername());
         values.put(COLUMN_NAME, provider.getName());
         values.put(COLUMN_LASTNAME, provider.getLastName());
@@ -261,7 +271,11 @@ public class DB_handler extends SQLiteOpenHelper{
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_EMAIL, admin.getEmail());
-        values.put(COLUMN_PASSWORD, admin.getPassword());
+        try {
+            values.put(COLUMN_PASSWORD, Sha1.hash(admin.getPassword()));
+        }catch (UnsupportedEncodingException e) {
+            System.out.println("EncodingError");
+        }
         values.put(COLUMN_USERNAME, admin.getUsername());
         values.put(COLUMN_NAME, admin.getName());
         values.put(COLUMN_LASTNAME, admin.getLastName());
