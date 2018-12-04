@@ -141,7 +141,7 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
 
     public void infoClick ( View view){
 
-        if( phone.getText().length() == 0 ){
+        if( (phone.getText().length() == 0 )||(Character.isWhitespace(phone.getText().charAt(0)))){
             phone.setError("Entrez un numéro de téléphone" );
         }
 
@@ -149,11 +149,11 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
             phone.setError("Numéro de téléphone invalide" );
         }
 
-        if( streetNumber.getText().length() == 0){
+        if( (streetNumber.getText().length() == 0)||Character.isWhitespace(streetNumber.getText().charAt(0))){
             streetNumber.setError("Entrez un numéro");
         }
 
-        if( streetName.getText().length() == 0){
+        if(( streetName.getText().length() == 0)||(Character.isWhitespace( streetName.getText().charAt(0)))){
             streetName.setError("Entrez un nom de rue");
         }
 
@@ -189,7 +189,7 @@ public class ProviderSetUp extends AppCompatActivity /*implements AdapterView.On
             ((TextView)city.getChildAt(0)).setError("Choisissez une ville");
         }
 
-        if( company.getText().length() == 0 /*&& ((company.getText()).charAt(0)).equals(' ')*/){
+        if( company.getText().length() == 0 || Character.isWhitespace(company.getText().charAt(0))){
             company.setError("Entrez une compagnie");
         }
 

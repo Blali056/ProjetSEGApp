@@ -35,10 +35,10 @@ public class AddService extends AppCompatActivity {
     }
 
     public void addClick(View view){
-        if( serviceName.getText().length() == 0 ){
+        if(( serviceName.getText().length() == 0 )||(Character.isWhitespace(serviceName.getText().charAt(0)))){
             serviceName.setError("Entrez un service" );
         }
-        if( tauxHoraire.getText().length() == 0 ){
+        if(( tauxHoraire.getText().length() == 0)|| (Character.isWhitespace( tauxHoraire.getText().charAt(0))) ){
             tauxHoraire.setError("Entrez un taux horaire" );
         }
         else if(serviceExist() == true ){       // Si le service existe deja

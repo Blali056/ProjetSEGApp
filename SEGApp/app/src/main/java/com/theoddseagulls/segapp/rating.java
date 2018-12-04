@@ -35,7 +35,7 @@ public class rating extends AppCompatActivity {
         } else if (Double.parseDouble(rate_it_editText.getText().toString()) < 1 || Double.parseDouble(rate_it_editText.getText().toString()) > 5) {
             rate_it_editText.setError("Une évaluation est entre 0 et 5");
 
-        } else if(comment_it_editText.getText().length() == 0){
+        } else if((comment_it_editText.getText().length() == 0)||(Character.isWhitespace(comment_it_editText.getText().charAt(0)))){
             comment_it_editText.setError("Entrez un Commentaire");
 
         } else {

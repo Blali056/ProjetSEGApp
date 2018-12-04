@@ -37,10 +37,10 @@ public class ModifySErvice extends AppCompatActivity {
     }
 
     public void modifyClick(View view){
-        if( serviceName.getText().length() == 0 ){       // Si aucun service n'est entré
+        if(( serviceName.getText().length() == 0 ) || (Character.isWhitespace( serviceName.getText().charAt(0)))){       // Si aucun service n'est entré
             serviceName.setError("Entrez un service" );
         }
-        if( newTauxHoraire.getText().length() == 0 ){       // Si aucun taux horaire n'est entré
+        if(( newTauxHoraire.getText().length() == 0 )||(Character.isWhitespace(newTauxHoraire.getText().charAt(0)))){       // Si aucun taux horaire n'est entré
             newTauxHoraire.setError("Entrez un taux horaire" );
         }
         else if(serviceExist() == false ){       // Si le service n'existe pas

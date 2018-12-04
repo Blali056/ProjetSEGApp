@@ -240,7 +240,7 @@ public class EditProviderProfil extends AppCompatActivity {
             ((TextView)city.getChildAt(0)).setError("Choisissez une ville");
         }
 
-        if( company.getText().length() == 0){
+        if( (company.getText().length() == 0)||(Character.isWhitespace(company.getText().charAt(0)))){
             company.setError("Entrez une compagnie");
         }
 
