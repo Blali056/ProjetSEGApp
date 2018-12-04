@@ -27,7 +27,7 @@
         android:layout_marginStart="-2dp"
         android:layout_marginTop="325dp"
         android:ems="10"
-        android:inputType="textPersonName|number"
+        android:inputType="textPersonName"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="165dp" />
 
@@ -63,13 +63,13 @@
         android:id="@+id/textView5"
         android:layout_width="301dp"
         android:layout_height="46dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="208dp"
-        android:text="Veuiller entrer un commentaire:"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:text="Veuillez entrer un commentaire:"
         android:textColor="@color/blackGrey"
         android:textSize="20sp" />
 </android.widget.RelativeLayout>

@@ -33,13 +33,24 @@
             android:layout_marginRight="73dp" />
 
         <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/days"
+            android:layout_marginStart="15dp"
+            android:text="Jour :"
+            android:textColor="@color/blackGrey"
+            android:textSize="17sp" />
+
+        <TextView
             android:id="@+id/title00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="43dp"
-            android:text="time search"
+            android:text="Recherche par temps"
             android:textColor="@color/blackGrey"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -48,9 +59,9 @@
             android:id="@+id/search2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/title00"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="154dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="153dp"
             android:onClick="OnClickSearch"
             android:text="rechercher" />
 

@@ -225,10 +225,9 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
                     }
                 }
-
-
             }
         }
+
         providersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -242,7 +241,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 ProviderAccount providerSelected = mydatabase.findProviderAccountByName(name);
                 intent.putExtra("USERNAME", providerSelected.getUsername());
 
-                String userUsername = getIntent().getStringExtra("UUSERNAME");
+                String userUsername = getIntent().getStringExtra("USERNAMEUSER");
                 intent.putExtra("USERNAMEUSER", userUsername );
 
                 startActivityForResult(intent, 0);

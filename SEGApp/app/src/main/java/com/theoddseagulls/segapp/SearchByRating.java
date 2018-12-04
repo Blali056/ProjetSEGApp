@@ -140,14 +140,14 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
                     providerUserName.add(p.getUsername());
                     if(mydatabase.find_provider_rate(p.getUsername())!=null){
                         rate=Double.parseDouble(mydatabase.find_provider_rate(p.getUsername()));
-                        providerList.add(p.getUsername() + "          rate: "+ rate);
+                        providerList.add(p.getName() + " " + p.getLastName() + " - Évaluation: "+ rate);
 
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providers.setAdapter(listAdapter);
 
                     }
                     else{
-                        providerList.add(p.getUsername() + "          rate: not Rated  ");
+                        providerList.add(p.getName() + " " + p.getLastName() +  " - Évaluation: Aucune ");
                         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,providerList);
                         providers.setAdapter(listAdapter);
                     }
