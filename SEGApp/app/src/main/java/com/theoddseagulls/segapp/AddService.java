@@ -58,6 +58,10 @@ public class AddService extends AppCompatActivity {
         }
 
     }
+    public void signOutClick(View view){
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivityForResult (intent,0);
+    }
 
 
 

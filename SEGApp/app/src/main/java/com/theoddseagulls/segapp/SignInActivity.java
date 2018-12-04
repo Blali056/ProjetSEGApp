@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
+
 public class SignInActivity extends AppCompatActivity {
 
     private EditText email;
@@ -51,10 +53,13 @@ public class SignInActivity extends AppCompatActivity {
         if( validateEmail() == true){        // Si l'email est valide
 
             String validPassword = (mydatabase.findAccount(email.getText().toString())).getPassword();
-            String enteredPassword = password.getText().toString();
-
-            if( enteredPassword.equals(validPassword) == false){        // Verifie si le password est faux
-                isValid = false;
+            try {
+                String enteredPassword = Sha1.hash(password.getText().toString());
+                if( enteredPassword.equals(validPassword) == false){        // Verifie si le password est faux
+                    isValid = false;
+                }
+            }catch (UnsupportedEncodingException e) {
+                System.out.println("EncodingError");
             }
         }
 

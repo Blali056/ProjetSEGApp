@@ -302,7 +302,10 @@ public class Availibilities extends AppCompatActivity implements TimePickerDialo
 
 
     }
-
+    public void signOutClick(View view){
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivityForResult (intent,0);
+    }
 
 }
 
