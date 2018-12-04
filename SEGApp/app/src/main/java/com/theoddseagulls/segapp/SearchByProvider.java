@@ -123,7 +123,7 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
                 ProviderAccount p = mydatabase.findUsernameProviderAccount(provider.getString(1));
                 if (providerUserName.indexOf(p.getUsername()) == -1) {
                     providerUserName.add(p.getUsername());
-                    providerList.add(p.getUsername());
+                    providerList.add(p.getName() + " " + p.getLastName());
                     ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, providerList);
                     providers.setAdapter(listAdapter);
                 }
