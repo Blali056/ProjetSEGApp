@@ -169,10 +169,9 @@ public class SearchByRating extends AppCompatActivity implements NavigationView.
                 String fullName = (String) providers.getItemAtPosition(position);
 
                 String[] parts = fullName.split(" ");
-                String userName = parts[0];
+                String name = parts[0];
 
-                ProviderAccount providerSelected = mydatabase.findUsernameProviderAccount(userName);
-
+                ProviderAccount providerSelected = mydatabase.findProviderAccountByName(name);
                 intent.putExtra("USERNAME", providerSelected.getUsername());
 
                 String userUsername = getIntent().getStringExtra("USERNAMEUSER");

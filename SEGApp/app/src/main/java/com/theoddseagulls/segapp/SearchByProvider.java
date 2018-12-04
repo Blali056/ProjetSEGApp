@@ -136,10 +136,12 @@ public class SearchByProvider extends AppCompatActivity implements NavigationVie
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), FournisseurProfil.class);
 
-                String userName = (String) providers.getItemAtPosition(position);
+                String fullName = (String) providers.getItemAtPosition(position);
 
-                ProviderAccount providerSelected = mydatabase.findUsernameProviderAccount(userName);
+                String[] parts = fullName.split(" ");
+                String name = parts[0];
 
+                ProviderAccount providerSelected = mydatabase.findProviderAccountByName(name);
                 intent.putExtra("USERNAME", providerSelected.getUsername());
 
                 String userUsername = getIntent().getStringExtra("USERNAMEUSER");
