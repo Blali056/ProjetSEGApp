@@ -44,6 +44,16 @@
             android:textSize="17sp" />
 
         <TextView
+            android:id="@+id/msg"
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="230dp"
+            android:textColor="@color/blackGrey"
+            android:textSize="15sp" />
+
+        <TextView
             android:id="@+id/title00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

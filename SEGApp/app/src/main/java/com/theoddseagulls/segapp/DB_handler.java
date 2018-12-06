@@ -1294,4 +1294,6 @@ public class DB_handler extends SQLiteOpenHelper{
         return vendredi;
     }
 
+
+
 }

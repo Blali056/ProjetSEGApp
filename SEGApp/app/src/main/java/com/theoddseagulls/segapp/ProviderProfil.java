@@ -221,4 +221,9 @@ public class ProviderProfil extends AppCompatActivity {
 
     }
 
+    public void decoClick( View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
 }

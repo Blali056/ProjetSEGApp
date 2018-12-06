@@ -210,27 +210,55 @@ public class FournisseurProfil extends AppCompatActivity implements NavigationVi
 
         int id = menuItem.getItemId();
 
-        if (id == R.id.profil) {
-            startActivity(new Intent(getApplicationContext(), UserProfil.class));
+        if(id == R.id.profil){
+            Intent intent = new Intent(getApplicationContext(), UserProfil.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
-        if (id == R.id.byService) {
-            startActivity(new Intent(getApplicationContext(), SearchByService.class));
+        if(id == R.id.byService){
+            Intent intent = new Intent(getApplicationContext(), SearchByService.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
-        if (id == R.id.byProvider) {
-            startActivity(new Intent(getApplicationContext(), SearchByProvider.class));
+        if(id == R.id.byProvider){
+            Intent intent = new Intent(getApplicationContext(), SearchByProvider.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
-        if (id == R.id.byRating) {
-            startActivity(new Intent(getApplicationContext(), SearchByRating.class));
+        if(id == R.id.byRating){
+            Intent intent = new Intent(getApplicationContext(), SearchByRating.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
 
-        if (id == R.id.byTime) {
-            startActivity(new Intent(getApplicationContext(), SearchByTime.class));
+        if(id == R.id.byTime){
+            Intent intent = new Intent(getApplicationContext(), SearchByTime.class);
+
+            // Passe le username à la prochaine activité
+            String accountUsername = getIntent().getStringExtra("USERNAMEUSER");
+            intent.putExtra("USERNAMEUSER", accountUsername);
+
+            startActivityForResult(intent, 0);
         }
-
-
 
         return true;
     }

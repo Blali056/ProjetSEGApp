@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,8 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
     private String jeudi;
     private String vendredi;
 
+    private TextView msg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,8 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         mydatabase = new DB_handler(this);
+
+        msg = findViewById(R.id.msg);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -152,6 +157,7 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                 jeudi =  mydatabase.findJeudi(providerAvailabilities.getString(1));
                 vendredi = mydatabase.findVendredi(providerAvailabilities.getString(1));
                 if (dayOfTheWeek.getSelectedItem().toString().equals("Samedi")) {
+                    msg.setText("");
                     if(samedi.indexOf("DE") <0 && samedi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName() + "  "+samedi);
@@ -159,10 +165,13 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                         providersList.setAdapter(listAdapter);
                     }
 
-
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
                 }
 
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Dimanche")) {
+                    msg.setText("");
                     if(dimanche.indexOf("DE") <0 && dimanche.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName() + "  "+dimanche);
@@ -171,8 +180,13 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
                     }
 
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
+
                 }
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Lundi")) {
+                    msg.setText("");
                     if(lundi.indexOf("DE") <0 && lundi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName() + "  "+lundi);
@@ -181,8 +195,13 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
                     }
 
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
+
                 }
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Mardi")) {
+                    msg.setText("");
                     if(mardi.indexOf("DE") <0 && mardi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName() + "  "+mardi);
@@ -191,8 +210,13 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
                     }
 
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
+
                 }
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Mercredi")) {
+                    msg.setText("");
                     if(mercredi.indexOf("DE") <0 && mercredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
                         providerList.add(p.getName() + " " + p.getLastName() + "  "+mercredi);
@@ -201,9 +225,14 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
                     }
 
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
+
                 }
 
                  else if (dayOfTheWeek.getSelectedItem().toString().equals("Jeudi")) {
+                    msg.setText("");
 
                     if(jeudi.indexOf("DE") <0 && jeudi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
@@ -213,9 +242,15 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
 
                     }
 
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
+
                 }
 
                 else if (dayOfTheWeek.getSelectedItem().toString().equals("Vendredi")) {
+
+                    msg.setText("");
 
                     if(vendredi.indexOf("DE") <0 && vendredi.indexOf("À") <0){
                         ProviderAccount p = mydatabase.findUsernameProviderAccount(providerAvailabilities.getString(1));
@@ -224,9 +259,14 @@ public class SearchByTime extends AppCompatActivity implements NavigationView.On
                         providersList.setAdapter(listAdapter);
 
                     }
+
+                    else if(providerList.isEmpty()){
+                        msg.setText("Aucun fournisseur disponible");
+                    }
                 }
             }
         }
+
 
         providersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
